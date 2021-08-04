@@ -1,0 +1,14 @@
+// .eslintignore
+ 
+node_modules
+build
+.next
+.git
+.eslintrc.js
+next.config.js
+**/*.svg
+**/*.css
+**/*.scss
+**/*.json
+**/*.yml
+
