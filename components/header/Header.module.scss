@@ -1,0 +1,15 @@
+.container {
+  margin: 60px 0;
+}
+
+.links {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+}
