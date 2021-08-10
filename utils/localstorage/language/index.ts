@@ -7,9 +7,9 @@ export const setLanguage = (value: string) => {
 export const getLanguage = () => {
   if (isRunningOnServer) {
     // when running on server, there is no concept of localStorage
-    return ''
+    return 'en'
   }
 
   const value = localStorage.getItem('language')
-  return value
+  return value || 'en'
 }

@@ -5,11 +5,15 @@ import { INameCode } from './INameCode'
 
 export const availableTranslations: INameCode[] = [
   {
-    name: 'english',
+    name: 'EN',
     code: 'en',
   },
   {
-    name: 'czech',
+    name: 'CZ',
     code: 'cz',
+  },
+  {
+    name: 'SV',
+    code: 'sv',
   },
 ]
