@@ -16,7 +16,7 @@ i18n
     debug: false, // This logs messages to the console
     whitelist: [...availableTranslationCodes],
     backend: {
-      loadPath: `${process.env.PUBLIC_URL}/translations/{{lng}}.json`,
+      loadPath: `/translations/{{lng}}.json`,
     },
   })
 

@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './Header.module.scss'
 import Image from 'next/image'
 import logo from '../../assets/images/logo.png'
+import LanguageSwitcher from '../language-switcher'
 
 export default function Header() {
   const renderLinks = () => {
@@ -48,6 +49,7 @@ export default function Header() {
         />
       </div>
       {renderLinks()}
+      <LanguageSwitcher />
     </div>
   )
 }
