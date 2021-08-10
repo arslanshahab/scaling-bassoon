@@ -1,0 +1,13 @@
+@import './../../styles/globalTheme.scss';
+
+.footerWrapper {
+  width: 100%;
+  padding: 20px 5%;
+  background-color: $primary-text-color;
+}
+
+.logo {
+  img {
+    width: 200px;
+  }
+}
