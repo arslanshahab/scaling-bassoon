@@ -1,6 +1,12 @@
+// contact icons
 import phone from './../assets/icons/phone.svg'
 import email from './../assets/icons/email.svg'
 import mapMarker from './../assets/icons/map-marker.svg'
+
+// social media icons
+import instagram from './../assets/icons/instagram.svg'
+import facebook from './../assets/icons/facebook.svg'
+import youtube from './../assets/icons/youtube.svg'
 
 export const menuLinks = [
   {
@@ -52,5 +58,23 @@ export const contactInfo = {
     title: 'Winmed s.r.o. Vysočanská 12, 190 00 Praha',
     link: 'https://www.google.com/maps/place/Winmed,+s.r.o./@48.2762498,18.0951787,17z/data=!3m1!4b1!4m5!3m4!1s0x476b3f04c5d99fff:0x75b439c2a65f49fd!8m2!3d48.2762274!4d18.0973117',
     icon: mapMarker,
+  },
+}
+
+export const socialMediaLinks = {
+  phone: {
+    title: 'Instagram',
+    link: 'https://www.instagram.com',
+    icon: instagram,
+  },
+  email: {
+    title: 'Facebook',
+    link: 'https://www.facebook.com',
+    icon: facebook,
+  },
+  location: {
+    title: 'Youtube',
+    link: 'https://www.youtube.com',
+    icon: youtube,
   },
 }
