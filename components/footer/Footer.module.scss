@@ -1,13 +1,63 @@
-@import './../../styles/globalTheme.scss';
+@import "./../../styles/globalTheme.scss";
 
+// outer wrapper
 .footerWrapper {
   width: 100%;
   padding: 20px 5%;
   background-color: $primary-text-color;
-}
+  color: $white;
 
-.logo {
-  img {
-    width: 200px;
+  h4 {
+    color: $white;
+    font-size: 22px; // follow some standard, theme etc
+  }
+
+  // logo column
+  .logo {
+    color: $white;
+    img {
+      width: 200px;
+    }
+    p {
+      margin-top: 2rem;
+    }
+  }
+
+  // menu links column
+  .menu {
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+      li {
+        line-height: 2rem;
+        &::before {
+          content: "\2022";
+          color: $secondary-text-color;
+          font-weight: bold;
+          font-size: 22px;
+          display: inline-block;
+          width: 1.5em;
+          margin-left: -1em;
+        }
+        a {
+          &:hover {
+            // text-decoration: underline;
+            color: $secondary-text-color;
+          }
+        }
+      }
+    }
+  }
+
+  // contact column
+  .contact {
+    .contactLink {
+      margin: 2rem 0;
+      display: flex;
+      align-items: center;
+      a {
+        margin-left: 1rem;
+      }
+    }
   }
 }

@@ -2,35 +2,17 @@ import React from 'react'
 import styles from './Header.module.scss'
 import Image from 'next/image'
 import logo from '../../assets/images/logo.png'
+import { menuLinks } from '../../data'
 
 export default function Header() {
   const renderLinks = () => {
     return (
       <ul className={styles.links}>
-        <li>
-          <a href=''>Řešení</a>
-        </li>
-        <li>
-          <a href=''>Produkty</a>
-        </li>
-        <li>
-          <a href=''>Značky</a>
-        </li>
-        <li>
-          <a href=''>Ke stažení</a>
-        </li>
-        <li>
-          <a href=''>Události</a>
-        </li>
-        <li>
-          <a href=''>Vzdělání</a>
-        </li>
-        <li>
-          <a href=''>O nás</a>
-        </li>
-        <li>
-          <a href=''>Kontakt</a>
-        </li>
+        {menuLinks.map(menuItem => (
+          <li key={menuItem.title}>
+            <a href={menuItem.link}>{menuItem.title}</a>
+          </li>
+        ))}
       </ul>
     )
   }
