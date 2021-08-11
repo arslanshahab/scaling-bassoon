@@ -3,7 +3,7 @@ import styles from './Header.module.scss'
 import Image from 'next/image'
 import logo from '../../assets/images/logo.png'
 import LanguageSwitcher from '../language-switcher'
-import { links } from './links'
+import { links } from '../../constants/links'
 import Link from 'next/link'
 import useTranslation from 'next-translate/useTranslation'
 
