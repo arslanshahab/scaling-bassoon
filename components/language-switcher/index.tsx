@@ -13,7 +13,7 @@ export default function LanguageSwitcher() {
 
   const changeLanguage = (langCode: string): void => {
     if (langCode) {
-      router.push('/', '/', { locale: langCode })
+      router.push(router.asPath, router.asPath, { locale: langCode })
     }
   }
 
