@@ -1,6 +1,7 @@
 import { Row, Col } from 'antd'
+import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
-import React from 'react'
+import Link from 'next/link'
 import logo from '../../assets/images/logo-white.png'
 import { contactInfo } from '../../constants/contactInfo'
 import { menuLinks } from '../../constants/menuLinks'
@@ -8,12 +9,16 @@ import { socialMediaLinks } from '../../constants/socialLinks'
 import styles from './Footer.module.scss'
 
 function Footer() {
+  const { t } = useTranslation('common')
+
   const renderLinks = () => {
     return (
       <ul>
         {menuLinks.map(menuItem => (
           <li key={menuItem.key}>
-            <a href={menuItem.link}>{menuItem.key}</a>
+            <Link href={menuItem.link}>
+              <a>{t(menuItem.key)}</a>
+            </Link>
           </li>
         ))}
       </ul>
@@ -45,7 +50,7 @@ function Footer() {
     )
   }
   return (
-    <React.Fragment>
+    <>
       <div className={styles.footerWrapper}>
         <Row gutter={32}>
           <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
@@ -77,7 +82,7 @@ function Footer() {
       <div className={styles.copyright}>
         <p>© 2021 Winmed. Všechna práva vyhrazena.</p>
       </div>
-    </React.Fragment>
+    </>
   )
 }
 
