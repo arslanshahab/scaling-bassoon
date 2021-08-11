@@ -3,35 +3,25 @@ import styles from './Header.module.scss'
 import Image from 'next/image'
 import logo from '../../assets/images/logo.png'
 import LanguageSwitcher from '../language-switcher'
+import { links } from './links'
+import Link from 'next/link'
+import { useTranslation } from 'react-i18next'
 
 export default function Header() {
+  const { t } = useTranslation()
+
   const renderLinks = () => {
     return (
       <ul className={styles.links}>
-        <li>
-          <a href=''>Řešení</a>
-        </li>
-        <li>
-          <a href=''>Produkty</a>
-        </li>
-        <li>
-          <a href=''>Značky</a>
-        </li>
-        <li>
-          <a href=''>Ke stažení</a>
-        </li>
-        <li>
-          <a href=''>Události</a>
-        </li>
-        <li>
-          <a href=''>Vzdělání</a>
-        </li>
-        <li>
-          <a href=''>O nás</a>
-        </li>
-        <li>
-          <a href=''>Kontakt</a>
-        </li>
+        {links.map(link => {
+          return (
+            <li key={link.key}>
+              <Link href={link.link}>
+                <a>{t(link.key)}</a>
+              </Link>
+            </li>
+          )
+        })}
       </ul>
     )
   }
