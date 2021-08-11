@@ -7,9 +7,16 @@
   background-color: $primary-text-color;
   color: $white;
 
+  // default style for all h4 tags
   h4 {
     color: $white;
     font-size: 22px; // follow some standard, theme etc
+  }
+
+  // default style for all anchor tags
+  a{
+    color: $white;
+    text-transform: capitalize;
   }
 
   // logo column

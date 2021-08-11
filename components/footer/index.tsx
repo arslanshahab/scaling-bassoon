@@ -2,7 +2,9 @@ import { Row, Col } from 'antd'
 import Image from 'next/image'
 import React from 'react'
 import logo from '../../assets/images/logo-white.png'
-import { contactInfo, menuLinks, socialMediaLinks } from '../../data'
+import { contactInfo } from '../../constants/contactInfo'
+import { menuLinks } from '../../constants/menuLinks'
+import { socialMediaLinks } from '../../constants/socialLinks'
 import styles from './Footer.module.scss'
 
 function Footer() {
@@ -10,8 +12,8 @@ function Footer() {
     return (
       <ul>
         {menuLinks.map(menuItem => (
-          <li key={menuItem.title}>
-            <a href={menuItem.link}>{menuItem.title}</a>
+          <li key={menuItem.key}>
+            <a href={menuItem.link}>{menuItem.key}</a>
           </li>
         ))}
       </ul>

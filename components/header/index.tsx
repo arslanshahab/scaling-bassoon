@@ -2,17 +2,26 @@ import React from 'react'
 import styles from './Header.module.scss'
 import Image from 'next/image'
 import logo from '../../assets/images/logo.png'
-import { menuLinks } from '../../data'
+import LanguageSwitcher from '../language-switcher'
+import { menuLinks } from '../../constants/menuLinks'
+import Link from 'next/link'
+import useTranslation from 'next-translate/useTranslation'
 
 export default function Header() {
+  const { t } = useTranslation('common')
+
   const renderLinks = () => {
     return (
       <ul className={styles.links}>
-        {menuLinks.map(menuItem => (
-          <li key={menuItem.title}>
-            <a href={menuItem.link}>{menuItem.title}</a>
-          </li>
-        ))}
+        {menuLinks.map(link => {
+          return (
+            <li key={link.key}>
+              <Link href={link.link}>
+                <a>{t(link.key)}</a>
+              </Link>
+            </li>
+          )
+        })}
       </ul>
     )
   }
@@ -30,6 +39,7 @@ export default function Header() {
         />
       </div>
       {renderLinks()}
+      <LanguageSwitcher />
     </div>
   )
 }
