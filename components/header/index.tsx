@@ -17,7 +17,7 @@ export default function Header() {
           return (
             <li key={link.key}>
               <Link href={link.link}>
-                <a>{t(link.key)}</a>
+                <a>{t(`${link.key}.titleCase`)}</a>
               </Link>
             </li>
           )

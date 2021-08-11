@@ -17,7 +17,7 @@ function Footer() {
         {menuLinks.map(menuItem => (
           <li key={menuItem.key}>
             <Link href={menuItem.link}>
-              <a>{t(menuItem.key)}</a>
+              <a>{t(`${menuItem.key}.titleCase`)}</a>
             </Link>
           </li>
         ))}
@@ -41,7 +41,14 @@ function Footer() {
           return (
             <div className={styles.socialIcon} key={key}>
               <a href={val.link}>
-                <val.icon />
+                <Image
+                  src={`/icons/${val.title}.svg`}
+                  alt='Flag'
+                  priority
+                  width='30px'
+                  height='30px'
+                  className={styles.flag}
+                />
               </a>
             </div>
           )
@@ -52,32 +59,34 @@ function Footer() {
   return (
     <>
       <div className={styles.footerWrapper}>
-        <Row gutter={32}>
-          <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
-            <div className={styles.logo}>
-              <Image src={logo} alt='Winmed Logo' />
-              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
-            </div>
-          </Col>
-          <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
-            <div className={styles.menu}>
-              <h4>Menu</h4>
-              {renderLinks()}
-            </div>
-          </Col>
-          <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
-            <div className={styles.contact}>
-              <h4>Kontaktujte nás</h4>
-              {renderContactInfo()}
-            </div>
-          </Col>
-          <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
-            <div className={styles.social}>
-              <h4>Sledujte nás</h4>
-              {renderSocialLinks()}
-            </div>
-          </Col>
-        </Row>
+        <div className={styles.container}>
+          <Row gutter={32}>
+            <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
+              <div className={styles.logo}>
+                <Image src={logo} alt='Winmed Logo' />
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+              </div>
+            </Col>
+            <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
+              <div className={styles.menu}>
+                <h4>Menu</h4>
+                {renderLinks()}
+              </div>
+            </Col>
+            <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
+              <div className={styles.contact}>
+                <h4>Kontaktujte nás</h4>
+                {renderContactInfo()}
+              </div>
+            </Col>
+            <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
+              <div className={styles.social}>
+                <h4>Sledujte nás</h4>
+                {renderSocialLinks()}
+              </div>
+            </Col>
+          </Row>
+        </div>
       </div>
       <div className={styles.copyright}>
         <p>© 2021 Winmed. Všechna práva vyhrazena.</p>

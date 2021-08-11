@@ -1,6 +1,6 @@
-import phone from './../assets/icons/phone.svg'
-import email from './../assets/icons/email.svg'
-import mapMarker from './../assets/icons/map-marker.svg'
+import phone from './../public/icons/phone.svg'
+import email from './../public/icons/email.svg'
+import mapMarker from './../public/icons/map-marker.svg'
 
 export const contactInfo = {
   phone: {

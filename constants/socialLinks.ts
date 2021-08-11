@@ -1,6 +1,6 @@
-import instagram from './../assets/icons/instagram.svg'
-import facebook from './../assets/icons/facebook.svg'
-import youtube from './../assets/icons/youtube.svg'
+import instagram from './../public/icons/instagram.svg'
+import facebook from './../public/icons/facebook.svg'
+import youtube from './../public/icons/youtube.svg'
 
 export const socialMediaLinks = {
   phone: {

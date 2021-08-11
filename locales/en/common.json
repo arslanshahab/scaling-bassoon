@@ -1,10 +1,42 @@
 {
-  "solutions": "Solutions",
-  "products": "Products",
-  "brands": "Brands",
-  "downloads": "Downloads",
-  "events": "Events",
-  "education": "Education",
-  "aboutUs": "About Us",
-  "contact": "Contact"
+  "solutions": {
+    "titleCase": "Solutions",
+    "upperCase": "SOLUTIONS",
+    "lowerCase": "solutions"
+  },
+  "products": {
+    "titleCase": "Products",
+    "upperCase": "PRODUCTS",
+    "lowerCase": "Products"
+  },
+  "brands": {
+    "titleCase": "Brands",
+    "upperCase": "BRANDS",
+    "lowerCase": "brands"
+  },
+  "downloads": {
+    "titleCase": "Downloads",
+    "upperCase": "DOWNLOADS",
+    "lowerCase": "downloads"
+  },
+  "events": {
+    "titleCase": "Events",
+    "upperCase": "EVENTS",
+    "lowerCase": "events"
+  },
+  "education": {
+    "titleCase": "Education",
+    "upperCase": "EDUCATION",
+    "lowerCase": "education"
+  },
+  "aboutUs": {
+    "titleCase": "Aabout Us",
+    "upperCase": "ABOUT US",
+    "lowerCase": "about us"
+  },
+  "contact": {
+    "titleCase": "Contact",
+    "upperCase": "CONTACT",
+    "lowerCase": "contact"
+  }
 }

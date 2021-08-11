@@ -3,9 +3,14 @@
 // outer wrapper
 .footerWrapper {
   width: 100%;
-  padding: 20px 5%;
+  padding: 20px 0;
   background-color: $primary-text-color;
   color: $white;
+
+  .container{
+    width: 100%;
+    padding: 32px 12.75%;
+  }
 
   // default style for all h4 tags
   h4 {
@@ -14,16 +19,16 @@
   }
 
   // default style for all anchor tags
-  a{
+  a {
     color: $white;
-    text-transform: capitalize;
   }
 
   // logo column
   .logo {
     color: $white;
     img {
-      width: 200px;
+      width: 169px;
+      height: 82px;
     }
     p {
       margin-top: 2rem;
@@ -48,7 +53,6 @@
         }
         a {
           &:hover {
-            // text-decoration: underline;
             color: $secondary-text-color;
           }
         }
@@ -61,7 +65,10 @@
     .contactLink {
       margin: 2rem 0;
       display: flex;
-      align-items: center;
+      // align-items: center;
+      svg {
+        width: 24px;
+      }
       a {
         margin-left: 1rem;
         &:hover {
@@ -82,8 +89,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 1.5rem;
-        border-radius: 4px;
+        padding: 1rem;
+        border-radius: 6px;
         width: 33.33%;
         box-sizing: border-box;
         border: 1px solid $secondary-text-color;
@@ -107,7 +114,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  p{
+  p {
     margin: 0;
   }
 }
