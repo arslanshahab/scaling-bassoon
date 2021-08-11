@@ -1,26 +1,28 @@
 import React from 'react'
 import { Select } from 'antd'
-import { availableTranslations } from '../../translations/availableTranslations'
-import i18n from '../../translations/i18next'
-import { setLanguage, getLanguage } from '../../utils/localstorage/language'
+import { availableTranslations } from './availableTranslations'
 import Image from 'next/image'
 import styles from './LanguageSwitcher.module.scss'
+import { useRouter } from 'next/router'
 
 const { Option } = Select
 
 export default function LanguageSwitcher() {
-  const currentLanguage = getLanguage()
-  const selectLanguage = (langCode: string): void => {
-    setLanguage(langCode)
-    i18n.changeLanguage(langCode)
+  const router = useRouter()
+  const language = router.locale || 'en'
+
+  const changeLanguage = (langCode: string): void => {
+    if (langCode) {
+      router.push('/', '/', { locale: langCode })
+    }
   }
 
   return (
     <Select
       bordered={false}
       className={styles.select}
-      onChange={selectLanguage}
-      defaultValue={currentLanguage}>
+      onChange={changeLanguage}
+      defaultValue={language}>
       {availableTranslations.map(lang => {
         return (
           <Option value={lang.code} key={lang.code}>

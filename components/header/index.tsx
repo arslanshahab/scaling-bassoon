@@ -5,10 +5,10 @@ import logo from '../../assets/images/logo.png'
 import LanguageSwitcher from '../language-switcher'
 import { links } from './links'
 import Link from 'next/link'
-import { useTranslation } from 'react-i18next'
+import useTranslation from 'next-translate/useTranslation'
 
 export default function Header() {
-  const { t } = useTranslation()
+  const { t } = useTranslation('common')
 
   const renderLinks = () => {
     return (
