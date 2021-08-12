@@ -3,3 +3,16 @@ $primary-text-color: #002c5d;
 $secondary-text-color: #f47920;
 $white: #ffffff;
 $catelina-blue: #04366f;
+
+// Responsive Variables
+$lg: "(min-width: 1008px)";
+$md: "(min-width: 641px) and (max-width: 1007px)";
+$sm: "(max-width: 640px)";
+$sm-md: "(max-width: 1007px)";
+
+// ------ Common Classes ------
+
+.container {
+  width: 100%;
+  padding: 0 12.75%;
+}

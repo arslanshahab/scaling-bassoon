@@ -28,7 +28,14 @@ function Footer() {
     return Object.entries(contactInfo).map(([key, val]) => {
       return (
         <div className={styles.contactLink} key={key}>
-          <val.icon />
+          <Image
+            src={`/icons/${val.icon}.svg`}
+            alt={val.title}
+            priority
+            width='24px'
+            height='24px'
+            className={styles.icon}
+          />
           <a href={val.link}>{val.title}</a>
         </div>
       )
@@ -43,11 +50,11 @@ function Footer() {
               <a href={val.link}>
                 <Image
                   src={`/icons/${val.title}.svg`}
-                  alt='Flag'
+                  alt={val.title}
                   priority
                   width='30px'
                   height='30px'
-                  className={styles.flag}
+                  className={styles.socialIcon}
                 />
               </a>
             </div>
@@ -63,7 +70,14 @@ function Footer() {
           <Row gutter={32}>
             <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
               <div className={styles.logo}>
-                <Image src={logo} alt='Winmed Logo' />
+                <Image
+                  src={logo}
+                  alt='Winmed Logo'
+                  width='169px'
+                  height='82px'
+                  priority
+                  unoptimized
+                />
                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
               </div>
             </Col>
