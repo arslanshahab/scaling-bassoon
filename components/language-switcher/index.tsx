@@ -26,15 +26,17 @@ export default function LanguageSwitcher() {
       {availableTranslations.map(lang => {
         return (
           <Option value={lang.code} key={lang.code}>
-            {lang.name}
-            <Image
-              src={`/flags/${lang.code}.svg`}
-              alt='Flag'
-              priority
-              width='30px'
-              height='12px'
-              className={styles.flag}
-            />
+            <div className={styles['option-content']}>
+              {lang.name}
+              <Image
+                src={`/flags/${lang.code}.svg`}
+                alt='Flag'
+                priority
+                width='30px'
+                height='12px'
+                className={styles.flag}
+              />
+            </div>
           </Option>
         )
       })}
