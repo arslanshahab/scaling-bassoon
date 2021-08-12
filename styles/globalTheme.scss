@@ -11,8 +11,8 @@ $sm: "(max-width: 640px)";
 $sm-md: "(max-width: 1007px)";
 
 // ------ Common Classes ------
-
 .container {
   width: 100%;
-  padding: 0 12.75%;
+  margin: auto;
+  max-width: 1200px;
 }
