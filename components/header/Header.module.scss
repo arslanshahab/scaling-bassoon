@@ -21,12 +21,59 @@
   gap: 30px;
   font-weight: 600;
   font-size: 16px;
-  line-height: 19px;  
-  
-   a {
-     color: $primary-text-color;
+  line-height: 19px;
+
+  a {
+    color: $primary-text-color;
     &:hover {
       color: $secondary-text-color;
     }
+  }
+}
+
+.drawer-button {
+  float: right;
+  height: 32px;
+  padding: 6px;
+  display: none;
+  background: none;
+  border-color: $primary-text-color;
+}
+
+.drawer-button-content {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: $primary-text-color;
+  position: relative;
+}
+
+.drawer-button-content:after,
+.drawer-button-content:before {
+  content: attr(x);
+  width: 20px;
+  position: absolute;
+  top: -6px;
+  left: 0;
+  height: 2px;
+  background: $primary-text-color;
+}
+
+.drawer-button-content:after {
+  top: auto;
+  bottom: -6px;
+}
+
+.drawer-button > span {
+  display: block;
+}
+
+@media (max-width: 767px) {
+  .drawer-button {
+    display: inline-block;
+  }
+
+  .links-container {
+    display: none;
   }
 }

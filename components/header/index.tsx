@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './Header.module.scss'
 import Image from 'next/image'
 import logo from '../../assets/images/logo.png'
@@ -6,9 +6,11 @@ import LanguageSwitcher from '../language-switcher'
 import { menuLinks } from '../../constants/menuLinks'
 import Link from 'next/link'
 import useTranslation from 'next-translate/useTranslation'
+import { Drawer, Button } from 'antd'
 
 export default function Header() {
   const { t } = useTranslation('common')
+  const [showDrawer, setShowDrawer] = useState(false)
 
   const renderLinks = () => {
     return (
@@ -38,8 +40,21 @@ export default function Header() {
           unoptimized
         />
       </div>
-      {renderLinks()}
+      <div className={styles['links-container']}>{renderLinks()}</div>
       <LanguageSwitcher />
+      <Button
+        className={styles['drawer-button']}
+        onClick={() => setShowDrawer(!showDrawer)}>
+        <span className={styles['drawer-button-content']}></span>
+      </Button>
+      <Drawer
+        title='Menu'
+        placement='right'
+        closable={false}
+        onClose={() => setShowDrawer(false)}
+        visible={showDrawer}>
+        {renderLinks()}
+      </Drawer>
     </div>
   )
 }
