@@ -1,3 +1,5 @@
+@import './../../styles/globalTheme.scss';
+
 .select {
   width: 116px;
   height: 48px;
@@ -8,6 +10,15 @@
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
+
+  :global .ant-select-selector {
+    padding-left: 10px;
+  }
+
+  :global .ant-select-arrow {
+    color: $primary-text-color;
+    margin-right: 10px;
+  }
 }
 
 .option-content {
