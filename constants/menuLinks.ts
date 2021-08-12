@@ -1,4 +1,4 @@
-export const links = [
+export const menuLinks = [
   { key: 'solutions', link: '/' },
   { key: 'products', link: '/' },
   { key: 'brands', link: '/' },

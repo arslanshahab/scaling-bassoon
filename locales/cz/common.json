@@ -1,10 +1,42 @@
 {
-  "solutions": "Řešení",
-  "products": "Produkty",
-  "brands": "Značky",
-  "downloads": "Ke stažení",
-  "events": "Události",
-  "education": "Vzdělání",
-  "aboutUs": "O nás",
-  "contact": "Kontakt"
+  "solutions": {
+    "titleCase": "Řešení",
+    "upperCase": "ŘEŠENÍ",
+    "lowerCase": "řešení"
+  },
+  "products": {
+    "titleCase": "Produkty",
+    "upperCase": "PRODUKTY",
+    "lowerCase": "produkty"
+  },
+  "brands": {
+    "titleCase": "Značky",
+    "upperCase": "ZNAČKY",
+    "lowerCase": "značky"
+  },
+  "downloads": {
+    "titleCase": "Ke stažení",
+    "upperCase": "KE STAŽENÍ",
+    "lowerCase": "ke stažení"
+  },
+  "events": {
+    "titleCase": "Události",
+    "upperCase": "UDÁLOSTI",
+    "lowerCase": "události"
+  },
+  "education": {
+    "titleCase": "Vzdělání",
+    "upperCase": "VZDĚLÁNÍ",
+    "lowerCase": "vzdělání"
+  },
+  "aboutUs": {
+    "titleCase": "O nás",
+    "upperCase": "O NÁS",
+    "lowerCase": "o nás"
+  },
+  "contact": {
+    "titleCase": "Kontakt",
+    "upperCase": "KONTAKT",
+    "lowerCase": "kontakt"
+  }
 }

@@ -3,7 +3,7 @@ import styles from './Header.module.scss'
 import Image from 'next/image'
 import logo from '../../assets/images/logo.png'
 import LanguageSwitcher from '../language-switcher'
-import { links } from '../../constants/links'
+import { menuLinks } from '../../constants/menuLinks'
 import Link from 'next/link'
 import useTranslation from 'next-translate/useTranslation'
 
@@ -13,11 +13,11 @@ export default function Header() {
   const renderLinks = () => {
     return (
       <ul className={styles.links}>
-        {links.map(link => {
+        {menuLinks.map(link => {
           return (
             <li key={link.key}>
               <Link href={link.link}>
-                <a>{t(link.key)}</a>
+                <a>{t(`${link.key}.titleCase`)}</a>
               </Link>
             </li>
           )
