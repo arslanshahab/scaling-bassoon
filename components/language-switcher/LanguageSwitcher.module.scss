@@ -4,6 +4,7 @@
   width: 116px;
   height: 48px;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   background: rgba(0, 44, 93, 0.03);
   border-radius: 6px;

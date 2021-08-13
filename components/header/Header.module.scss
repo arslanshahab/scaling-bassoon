@@ -1,24 +1,28 @@
 @import './../../styles/globalTheme.scss';
 
 .container {
+  max-width: 1200px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   width: 90%;
-  margin: 60px auto;
+  margin: 30px auto;
 }
 
 .logo {
   flex-shrink: 0;
 }
 
+.links-container {
+  flex: 1 0px;
+}
+
 .links {
-  margin: 0 75px 0 75px;
+  margin: 0 40px 0 40px;
   list-style-type: none;
   padding: 0;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  gap: 30px;
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
@@ -32,7 +36,7 @@
 }
 
 .drawer-button {
-  float: right;
+  margin-left: 12px;
   height: 32px;
   padding: 6px;
   display: none;
@@ -68,7 +72,17 @@
   display: block;
 }
 
-@media (max-width: 767px) {
+@media #{$lg} {
+  .container {
+    width: 95%;
+  }
+}
+
+@media #{$sm-md} {
+  .logo {
+    flex: 1;
+  }
+
   .drawer-button {
     display: inline-block;
   }
