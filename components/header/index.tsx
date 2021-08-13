@@ -12,12 +12,28 @@ export default function Header() {
   const { t } = useTranslation('common')
   const [showDrawer, setShowDrawer] = useState(false)
 
-  const renderLinks = () => {
+  const renderLinksDesktop = () => {
     return (
       <ul className={styles.links}>
         {menuLinks.map(link => {
           return (
             <li key={link.key}>
+              <Link href={link.link}>
+                <a>{t(`${link.key}.titleCase`)}</a>
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
+    )
+  }
+
+  const renderLinksDrawer = () => {
+    return (
+      <ul className={styles['links-mobile']}>
+        {menuLinks.map(link => {
+          return (
+            <li key={link.key} className={styles['link-mobile']}>
               <Link href={link.link}>
                 <a>{t(`${link.key}.titleCase`)}</a>
               </Link>
@@ -40,7 +56,7 @@ export default function Header() {
           unoptimized
         />
       </div>
-      <div className={styles['links-container']}>{renderLinks()}</div>
+      <div className={styles['links-container']}>{renderLinksDesktop()}</div>
       <LanguageSwitcher />
       <Button
         className={styles['drawer-button']}
@@ -50,10 +66,9 @@ export default function Header() {
       <Drawer
         title='Menu'
         placement='right'
-        closable={false}
         onClose={() => setShowDrawer(false)}
         visible={showDrawer}>
-        {renderLinks()}
+        {renderLinksDrawer()}
       </Drawer>
     </div>
   )

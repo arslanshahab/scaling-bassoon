@@ -16,7 +16,8 @@
   flex: 1 0px;
 }
 
-.links {
+.links,
+.links-mobile {
   margin: 0 40px 0 40px;
   list-style-type: none;
   padding: 0;
@@ -33,6 +34,15 @@
       color: $secondary-text-color;
     }
   }
+}
+
+.links-mobile {
+  margin: 0;
+  gap: 16px;
+}
+
+.link-mobile {
+  width: 100%;
 }
 
 .drawer-button {
