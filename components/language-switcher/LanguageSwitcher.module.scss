@@ -1,7 +1,6 @@
 @import './../../styles/globalTheme.scss';
 
 .select {
-  width: 116px;
   height: 48px;
   display: flex;
   flex-shrink: 0;
@@ -18,14 +17,26 @@
 
   :global .ant-select-arrow {
     color: $primary-text-color;
-    margin-right: 10px;
   }
 }
 
 .option-content {
   text-align: center !important;
+  display: flex;
 }
 
 .flag {
   margin-left: 5px !important;
+}
+
+@media #{$sm-md} {
+  .select {
+    height: 34px;
+  }
+}
+
+@media #{$sm} {
+  .flag {
+    display: none !important;
+  }
 }
