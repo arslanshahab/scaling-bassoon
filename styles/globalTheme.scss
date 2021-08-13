@@ -4,8 +4,15 @@ $secondary-text-color: #f47920;
 $white: #ffffff;
 $catelina-blue: #04366f;
 
-// -------- Screen sizes ---------
+// Responsive Variables
 $lg: '(min-width: 1008px)';
 $md: '(min-width: 641px) and (max-width: 1007px)';
 $sm: '(max-width: 640px)';
 $sm-md: '(max-width: 1007px)';
+
+// ------ Common Classes ------
+.container {
+  width: 100%;
+  margin: auto;
+  max-width: 1200px;
+}
