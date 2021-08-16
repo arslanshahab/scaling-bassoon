@@ -38,5 +38,9 @@
     "titleCase": "Contact",
     "upperCase": "CONTACT",
     "lowerCase": "contact"
-  }
+  },
+  "menu": "Menu",
+  "contactUs": "Contact Us",
+  "watchUs": "Watch Us",
+  "allRightsReserved": "All Rights Reserved"
 }

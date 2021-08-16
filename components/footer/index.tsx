@@ -31,9 +31,8 @@ function Footer() {
           <Image
             src={`/icons/${val.icon}.svg`}
             alt={val.title}
-            priority
-            width='24px'
-            height='24px'
+            width={24}
+            height={24}
             className={styles.icon}
           />
           <a href={val.link}>{val.title}</a>
@@ -51,9 +50,8 @@ function Footer() {
                 <Image
                   src={`/icons/${val.title}.svg`}
                   alt={val.title}
-                  priority
-                  width='30px'
-                  height='30px'
+                  width={30}
+                  height={30}
                   className={styles.socialIcon}
                 />
               </a>
@@ -73,29 +71,28 @@ function Footer() {
                 <Image
                   src={logo}
                   alt='Winmed Logo'
-                  width='169px'
-                  height='82px'
+                  width={169}
+                  height={82}
                   priority
-                  unoptimized
                 />
                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
               </div>
             </Col>
             <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
               <div className={styles.menu}>
-                <h4>Menu</h4>
+                <h4>{t('menu')}</h4>
                 {renderLinks()}
               </div>
             </Col>
             <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
               <div className={styles.contact}>
-                <h4>Kontaktujte nás</h4>
+                <h4>{t('contactUs')}</h4>
                 {renderContactInfo()}
               </div>
             </Col>
             <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
               <div className={styles.social}>
-                <h4>Sledujte nás</h4>
+                <h4>{t('watchUs')}</h4>
                 {renderSocialLinks()}
               </div>
             </Col>
@@ -103,7 +100,9 @@ function Footer() {
         </div>
       </div>
       <div className={styles.copyright}>
-        <p>© 2021 Winmed. Všechna práva vyhrazena.</p>
+        <p>
+          &copy; {new Date().getFullYear()} Winmed. {t('allRightsReserved')}.
+        </p>
       </div>
     </>
   )

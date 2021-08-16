@@ -38,5 +38,9 @@
     "titleCase": "Contact",
     "upperCase": "CONTACT",
     "lowerCase": "contact"
-  }
+  },
+  "menu": "Ponuka",
+  "contactUs": "Kontaktujte nás",
+  "watchUs": "Sledujte nás",
+  "allRightsReserved": "Všetky práva vyhradené"
 }
