@@ -15,5 +15,8 @@ module.exports = withBundleAnalyzer(
 
       return config
     },
+    images: {
+      domains: ['admin-winmed.testing2.creativehandles.com'],
+    },
   })
 )

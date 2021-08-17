@@ -27,7 +27,7 @@ function Footer() {
   const renderContactInfo = () => {
     return Object.entries(contactInfo).map(([key, val]) => {
       return (
-        <div className={styles.contactLink} key={key}>
+        <div className={styles['contact-link']} key={key}>
           <Image
             src={`/icons/${val.icon}.svg`}
             alt={val.title}
@@ -42,7 +42,7 @@ function Footer() {
   }
   const renderSocialLinks = () => {
     return (
-      <div className={styles.socialIconsWrapper}>
+      <div className={styles['social-icons-wrapper']}>
         {Object.entries(socialMediaLinks).map(([key, val]) => {
           return (
             <div className={styles.socialIcon} key={key}>
@@ -63,7 +63,7 @@ function Footer() {
   }
   return (
     <>
-      <div className={styles.footerWrapper}>
+      <div className={styles['footer-wrapper']}>
         <div className={styles.container}>
           <Row gutter={32}>
             <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>

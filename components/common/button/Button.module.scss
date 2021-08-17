@@ -1,0 +1,23 @@
+@import "./../../../styles/globalTheme.scss";
+
+.theme-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 44px;
+  border-radius: 4px;
+  background: $secondary-text-color;
+  border: 1px solid $secondary-text-color;
+  color: $white !important;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-weight: 600;
+  &:hover {
+    background: transparent;
+    color: $secondary-text-color;
+  }
+  @media #{$sm} {
+    padding: 8px 20px;
+  }
+}
