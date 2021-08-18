@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import React from 'react'
+import AboutSection from '../components/about-us'
 import Carousel from '../components/carousel'
 import Layout from '../components/layout'
 import styles from '../styles/Home.module.scss'
@@ -14,6 +15,7 @@ export default function Home() {
       </Head>
       <Layout>
         <Carousel />
+        <AboutSection />
       </Layout>
     </div>
   )

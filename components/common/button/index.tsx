@@ -3,9 +3,9 @@ import styles from './Button.module.scss'
 interface IButtonProps {
   size: string
   variant: string
-  fullWidth: boolean
+  fullWidth?: boolean
   children: any
-  className: string
+  className?: string
   onClick: () => void
 }
 
@@ -21,7 +21,7 @@ function Button({
     <button
       className={`${styles['theme-button']} ${styles[size]} ${
         styles[variant]
-      } ${fullWidth && styles.block} ${styles[className]}`}
+      } ${fullWidth && styles.block} ${styles[className!]}`}
       onClick={onClick}>
       {children}
     </button>
