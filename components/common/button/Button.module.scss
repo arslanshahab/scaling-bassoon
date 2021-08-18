@@ -19,5 +19,13 @@
   }
   @media #{$sm} {
     padding: 8px 20px;
+    border-radius: 2px;
+  }
+  &.block {
+    width: 100%;
+  }
+  &.sm {
+    padding: 8px 20px;
+    border-radius: 2px;
   }
 }

@@ -6,7 +6,7 @@ interface IButtonProps {
   fullWidth?: boolean
   children: any
   className?: string
-  onClick: () => void
+  onClick?: () => void
 }
 
 function Button({

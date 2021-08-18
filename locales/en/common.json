@@ -44,6 +44,11 @@
   "watchUs": "Watch Us",
   "allRightsReserved": "All Rights Reserved",
   "moreInfo": "More Information",
+  "forDoctors": "For Doctors",
+  "forClubs": "For Clubs",
+  "forSalons": "For Salons",
+  "showProducts": "Show Products",
   "aboutUsHeading": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-  "loremIpsumLong": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Fusce nibh. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Nullam eget nisl. Donec vitae arcu. Integer malesuada. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis."
+  "loremIpsumLong": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Fusce nibh. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Nullam eget nisl. Donec vitae arcu. Integer malesuada. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis.",
+  "ourProducts": "Our Products"
 }

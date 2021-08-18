@@ -3,6 +3,7 @@ import React from 'react'
 import AboutSection from '../components/about-us'
 import Carousel from '../components/carousel'
 import Layout from '../components/layout'
+import OurProductsSection from '../components/our-products-section'
 import styles from '../styles/Home.module.scss'
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       </Head>
       <Layout>
         <Carousel />
+        <OurProductsSection />
         <AboutSection />
       </Layout>
     </div>
