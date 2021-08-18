@@ -1,4 +1,5 @@
 {
+  "home": { "titleCase": "Home" },
   "solutions": {
     "titleCase": "Solutions",
     "upperCase": "SOLUTIONS",

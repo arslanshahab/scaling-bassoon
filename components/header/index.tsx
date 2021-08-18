@@ -7,10 +7,12 @@ import { menuLinks } from '../../constants/menuLinks'
 import Link from 'next/link'
 import useTranslation from 'next-translate/useTranslation'
 import { Drawer, Button } from 'antd'
+import { useRouter } from 'next/router'
 
 export default function Header() {
   const { t } = useTranslation('common')
   const [showDrawer, setShowDrawer] = useState(false)
+  const router = useRouter()
 
   const renderLinksDesktop = () => {
     return (
@@ -19,7 +21,10 @@ export default function Header() {
           return (
             <li key={link.key}>
               <Link href={link.link}>
-                <a>{t(`${link.key}.titleCase`)}</a>
+                <a
+                  className={router.pathname == link.link ? 'active-link' : ''}>
+                  {t(`${link.key}.titleCase`)}
+                </a>
               </Link>
             </li>
           )
@@ -28,15 +33,25 @@ export default function Header() {
     )
   }
 
+  const onClickMobileLink = (link: string) => {
+    setShowDrawer(false)
+    router.push(link, link)
+  }
+
   const renderLinksDrawer = () => {
+    const menuLinksWithHome = [{ key: 'home', link: '/' }, ...menuLinks]
+
     return (
       <ul className={styles['links-mobile']}>
-        {menuLinks.map(link => {
+        {menuLinksWithHome.map(link => {
           return (
-            <li key={link.key} className={styles['link-mobile']}>
-              <Link href={link.link}>
-                <a>{t(`${link.key}.titleCase`)}</a>
-              </Link>
+            <li
+              key={link.key}
+              className={styles['link-mobile']}
+              onClick={() => onClickMobileLink(link.link)}>
+              <p className={router.pathname == link.link ? 'active-link' : ''}>
+                {t(`${link.key}.titleCase`)}
+              </p>
             </li>
           )
         })}
@@ -46,16 +61,18 @@ export default function Header() {
 
   return (
     <div className={styles.container}>
-      <div className={styles.logo}>
-        <Image
-          src={logo}
-          alt='Winmed logo'
-          priority
-          width='169px'
-          height='82px'
-          unoptimized
-        />
-      </div>
+      <Link href={'/'}>
+        <div className={styles.logo}>
+          <Image
+            src={logo}
+            alt='Winmed logo'
+            priority
+            width='169px'
+            height='82px'
+            unoptimized
+          />
+        </div>
+      </Link>
       <div className={styles['links-container']}>{renderLinksDesktop()}</div>
       <LanguageSwitcher />
       <Button
@@ -64,7 +81,7 @@ export default function Header() {
         <span className={styles['drawer-button-content']}></span>
       </Button>
       <Drawer
-        title='Menu'
+        title={t('menu')}
         placement='right'
         onClose={() => setShowDrawer(false)}
         visible={showDrawer}>
