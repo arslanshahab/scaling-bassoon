@@ -2,10 +2,10 @@ import { Carousel } from 'react-responsive-carousel'
 import useTranslation from 'next-translate/useTranslation'
 import { Row, Col } from 'antd'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import styles from './Carousel.module.scss'
 import Button from '../common/button'
 import { http } from '../../utils/http'
-import { useEffect, useState } from 'react'
 
 interface ISlide {
   content: string

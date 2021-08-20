@@ -4,6 +4,7 @@ import AboutSection from '../components/about-us'
 import Carousel from '../components/carousel'
 import Layout from '../components/layout'
 import OurProductsSection from '../components/our-products-section'
+import ReferencesSection from '../components/references'
 import styles from '../styles/Home.module.scss'
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
         <Carousel />
         <OurProductsSection />
         <AboutSection />
+        <ReferencesSection />
       </Layout>
     </div>
   )

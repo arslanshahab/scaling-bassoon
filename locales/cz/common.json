@@ -51,5 +51,11 @@
   "showProducts": "Zobrazit Produkty",
   "aboutUsHeading": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
   "loremIpsumLong": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Fusce nibh. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Nullam eget nisl. Donec vitae arcu. Integer malesuada. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis.",
-  "ourProducts": "Naše Výrobky"
+  "ourProducts": "Naše Výrobky",
+  "reference": "Odkaz",
+  "physio": "Fyzioterapie a rehabilitace",
+  "urology": "Urologie",
+  "ortho": "Ortopedie",
+  "gyno": "Gynekologie",
+  "loremIpsumShort": "Lorem ipsum dolor sit amet."
 }

@@ -51,5 +51,11 @@
   "showProducts": "Show Products",
   "aboutUsHeading": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
   "loremIpsumLong": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpat ante, in pharetra metus odio a lectus. Fusce nibh. In laoreet, magna id viverra tincidunt, sem odio bibendum justo, vel imperdiet sapien wisi sed libero. Nullam eget nisl. Donec vitae arcu. Integer malesuada. Nulla turpis magna, cursus sit amet, suscipit a, interdum id, felis.",
-  "ourProducts": "Our Products"
+  "ourProducts": "Our Products",
+  "reference": "Reference",
+  "physio": "Physiotherapy and rehabilitation",
+  "urology": "Urology",
+  "ortho": "Orthopedics",
+  "gyno": "Gynecology",
+  "loremIpsumShort": "Lorem ipsum dolor sit amet."
 }
