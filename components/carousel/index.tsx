@@ -76,6 +76,17 @@ function Slider() {
         className={styles['main-carousel']}>
         {slides.map(slide => renderSlide(slide))}
       </Carousel>
+      <div className={styles['scroll-btn']}>
+        <Image
+          src={`/icons/arrow-down.svg`}
+          alt='arrow-down'
+          width={25}
+          height={25}
+          onClick={() => {
+            window.scrollTo({ top: 750, behavior: 'smooth' })
+          }}
+        />
+      </div>
     </div>
   )
 }
