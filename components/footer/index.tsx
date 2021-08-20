@@ -2,6 +2,7 @@ import { Row, Col } from 'antd'
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 import logo from '../../assets/images/logo-white.png'
 import { contactInfo } from '../../constants/contactInfo'
 import { menuLinks } from '../../constants/menuLinks'
@@ -10,6 +11,7 @@ import styles from './Footer.module.scss'
 
 function Footer() {
   const { t } = useTranslation('common')
+  const router = useRouter()
 
   const renderLinks = () => {
     return (
@@ -17,7 +19,12 @@ function Footer() {
         {menuLinks.map(menuItem => (
           <li key={menuItem.key}>
             <Link href={menuItem.link}>
-              <a>{t(`${menuItem.key}.titleCase`)}</a>
+              <a
+                className={
+                  router.pathname == menuItem.link ? 'active-link' : ''
+                }>
+                {t(`${menuItem.key}.titleCase`)}
+              </a>
             </Link>
           </li>
         ))}
@@ -35,7 +42,7 @@ function Footer() {
             height={24}
             className={styles.icon}
           />
-          <a href={val.link}>{val.title}</a>
+          <a href={val.link} dangerouslySetInnerHTML={{ __html: val.title }} />
         </div>
       )
     })
@@ -65,7 +72,7 @@ function Footer() {
     <>
       <div className={styles['footer-wrapper']}>
         <div className={styles.container}>
-          <Row gutter={32}>
+          <Row gutter={{ sm: 32, md: 64 }}>
             <Col span={6} xs={{ span: 12 }} md={{ span: 6 }} lg={{ span: 6 }}>
               <div className={styles.logo}>
                 <Image
