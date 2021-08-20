@@ -1,6 +1,7 @@
 import { Row, Col } from 'antd'
 import Image from 'next/image'
 import useTranslation from 'next-translate/useTranslation'
+import { useRouter } from 'next/router'
 import styles from './OurProducts.module.scss'
 import Button from '../common/button'
 import { solutions } from '../../constants/solutions'
@@ -10,10 +11,13 @@ interface ISolution {
   description: string
   image: any
   buttonText: string
+  link: string
 }
 
 function OurProductsSection() {
   const { t } = useTranslation('common')
+  const router = useRouter()
+
   const renderProductCard = (solution: ISolution, index: number) => {
     return (
       <Col
@@ -35,7 +39,10 @@ function OurProductsSection() {
               className={styles.readButton}
               fullWidth
               size='sm'
-              variant='regular'>
+              variant='regular'
+              onClick={() => {
+                router.push(solution.link, undefined, { shallow: true })
+              }}>
               {t(solution.buttonText)}
             </Button>
           </div>

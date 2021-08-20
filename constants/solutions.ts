@@ -8,17 +8,20 @@ export const solutions = [
     description: 'loremIpsumLong',
     image: doctors,
     buttonText: 'showProducts',
+    link: '/doctors',
   },
   {
     title: 'forClubs',
     description: 'loremIpsumLong',
     image: clubs,
     buttonText: 'showProducts',
+    link: '/clubs',
   },
   {
     title: 'forSalons',
     description: 'loremIpsumLong',
     image: salons,
     buttonText: 'showProducts',
+    link: '/salons',
   },
 ]
