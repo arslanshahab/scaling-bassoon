@@ -23,7 +23,7 @@ function Slider() {
   useEffect(() => {
     http
       .get(
-        `/api/v1/blocks/get-folder-by-name?system_name=slideshow&with[0]=blocks&with[1]=parentFolder`,
+        `/api/v1/blocks/get-folder-by-name?system_name=slideshow_${lang}&with[0]=blocks&with[1]=parentFolder`,
         {
           headers: {
             'Content-Language': lang,
