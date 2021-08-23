@@ -1,0 +1,45 @@
+@import "./../../styles/globalTheme.scss";
+@import "./../../styles/mixins.scss";
+
+.our-partners {
+  width: 100%;
+  padding: 2rem 4%;
+  h2 {
+    color: $primary-text-color;
+    font-weight: bold;
+  }
+  .main-carousel {
+    :global .carousel {
+      &.carousel-slider {
+        overflow: visible;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        .slider-wrapper {
+          background: $white;
+          box-shadow: 0px 4px 57px rgba(2, 16, 32, 0.05);
+        }
+      }
+    }
+
+    @include control-arrow(inherit, 2);
+
+    :global .slide {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      cursor: pointer;
+      box-sizing: border-box;
+      border-top: 2px solid transparent;
+      border-bottom: 2px solid transparent;
+      &:hover {
+        background: rgba($color: #000000, $alpha: 0.05);
+        border-bottom: 2px solid $secondary-text-color;
+      }
+    }
+    .partner-slide {
+      padding: 1rem 0;
+    }
+  }
+}

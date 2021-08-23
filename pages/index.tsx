@@ -3,6 +3,7 @@ import React from 'react'
 import AboutSection from '../components/about-us'
 import Carousel from '../components/carousel'
 import Layout from '../components/layout'
+import OurPartners from '../components/our-partners'
 import OurProductsSection from '../components/our-products-section'
 import ReferencesSection from '../components/references'
 import styles from '../styles/Home.module.scss'
@@ -20,6 +21,7 @@ export default function Home() {
         <OurProductsSection />
         <AboutSection />
         <ReferencesSection />
+        <OurPartners />
       </Layout>
     </div>
   )
