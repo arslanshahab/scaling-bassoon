@@ -30,7 +30,7 @@ export default function LanguageSwitcher() {
               {lang.name}
               <div className={styles.flag}>
                 <Image
-                  src={`/flags/${lang.code}.svg`}
+                  src={`/flags/${lang.name.toLowerCase()}.svg`}
                   alt='Flag'
                   priority
                   width='30px'

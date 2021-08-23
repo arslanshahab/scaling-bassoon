@@ -7,7 +7,7 @@ export const availableTranslations: NameCode[] = [
   },
   {
     name: 'CZ',
-    code: 'cz',
+    code: 'cs',
   },
   {
     name: 'SK',
