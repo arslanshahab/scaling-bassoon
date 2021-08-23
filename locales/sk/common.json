@@ -1,46 +1,46 @@
 {
   "home": { "titleCase": "Domov" },
   "solutions": {
-    "titleCase": "Solutions",
-    "upperCase": "SOLUTIONS",
-    "lowerCase": "solutions"
+    "titleCase": "Riešenia",
+    "upperCase": "Riešenia",
+    "lowerCase": "Riešenia"
   },
   "products": {
-    "titleCase": "Products",
-    "upperCase": "PRODUCTS",
-    "lowerCase": "Products"
+    "titleCase": "Produkty",
+    "upperCase": "Produkty",
+    "lowerCase": "Produkty"
   },
   "brands": {
-    "titleCase": "Brands",
-    "upperCase": "BRANDS",
-    "lowerCase": "brands"
+    "titleCase": "Značky",
+    "upperCase": "Značky",
+    "lowerCase": "Značky"
   },
   "downloads": {
-    "titleCase": "Downloads",
-    "upperCase": "DOWNLOADS",
-    "lowerCase": "downloads"
+    "titleCase": "K stiahnutiu",
+    "upperCase": "K stiahnutiu",
+    "lowerCase": "K stiahnutiu"
   },
   "events": {
-    "titleCase": "Events",
-    "upperCase": "EVENTS",
-    "lowerCase": "events"
+    "titleCase": "Diania",
+    "upperCase": "Diania",
+    "lowerCase": "Diania"
   },
   "education": {
-    "titleCase": "Education",
-    "upperCase": "EDUCATION",
-    "lowerCase": "education"
+    "titleCase": "Vzdelávanie",
+    "upperCase": "Vzdelávanie",
+    "lowerCase": "Vzdelávanie"
   },
   "aboutUs": {
-    "titleCase": "About Us",
-    "upperCase": "ABOUT US",
-    "lowerCase": "about us"
+    "titleCase": "O nás",
+    "upperCase": "O nás",
+    "lowerCase": "O nás"
   },
   "contact": {
-    "titleCase": "Contact",
-    "upperCase": "CONTACT",
-    "lowerCase": "contact"
+    "titleCase": "Kontakt",
+    "upperCase": "Kontakt",
+    "lowerCase": "Kontakt"
   },
-  "menu": "Ponuka",
+  "menu": "Menu",
   "contactUs": "Kontaktujte nás",
   "watchUs": "Sledujte nás",
   "allRightsReserved": "Všetky práva vyhradené",

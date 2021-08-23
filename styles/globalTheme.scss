@@ -6,6 +6,7 @@ $catelina-blue: #04366f;
 $alto: #d0d0d0;
 
 // Responsive Variables
+$xlg: '(min-width: 1366px)';
 $lg: '(min-width: 1008px)';
 $md: '(min-width: 641px) and (max-width: 1007px)';
 $sm: '(max-width: 640px)';
@@ -16,4 +17,7 @@ $sm-md: '(max-width: 1007px)';
   width: 90%;
   margin: auto;
   max-width: 1200px;
+  @media #{$xlg} {
+    max-width: 80%;
+  }
 }

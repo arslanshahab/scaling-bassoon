@@ -6,6 +6,9 @@
   align-items: center;
   width: 90%;
   margin: 30px auto;
+  @media #{$xlg} {
+    max-width: 80%;
+  }
 }
 
 .logo {
