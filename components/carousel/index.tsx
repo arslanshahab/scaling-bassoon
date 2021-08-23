@@ -17,25 +17,27 @@ interface ISlide {
 }
 
 function Slider() {
-  const { t } = useTranslation('common')
+  const { t, lang } = useTranslation('common')
   const [slides, setSlides] = useState([])
 
   useEffect(() => {
     http
       .get(
-        `/api/v1/blocks/get-all-over-folders?with[0]=folders&with[1]=folders.blocks`
+        `/api/v1/blocks/get-folder-by-name?system_name=slideshow&with[0]=blocks&with[1]=parentFolder`,
+        {
+          headers: {
+            'Content-Language': lang,
+          },
+        }
       )
       .then(res => {
-        // get the slideshow folder only
-        const slides = res.data?.data?.[0]?.folders?.find(
-          (f: any) => f.system_name === 'slideshow'
-        )?.blocks
+        const slides = res.data?.data?.blocks
         setSlides(slides)
       })
       .catch(err => {
         console.error('API response error', err)
       })
-  }, [])
+  }, [lang])
 
   const renderSlide = ({ id, content, name, image }: ISlide) => {
     return (
