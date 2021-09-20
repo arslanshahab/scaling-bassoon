@@ -1,0 +1,71 @@
+@import "./../../styles/globalTheme.scss";
+
+.short-description-wrapper {
+  h1 {
+    font-weight: bold;
+    font-size: 40px;
+    color: $primary-text-color;
+  }
+  h4{
+    color: $primary-text-color;
+    font-weight: bold;
+  }
+  .specifications-title {
+    font-weight: 500;
+    font-size: 16px;
+    color: $secondary-text-color;
+  }
+  .specifications-item-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    .specifications {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-sizing: border-box;
+      width: 85%;
+      .specifications-item {
+        width: 48%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 20px;
+        background: $white;
+        box-shadow: 0px 4px 57px rgba(2, 16, 32, 0.05);
+        border-radius: 10px;
+        margin-bottom: 4%;
+        h4 {
+          font-weight: 500;
+          font-size: 14px;
+          color: $primary-text-color;
+          opacity: 0.7;
+        }
+        p {
+          font-weight: bold;
+          font-size: 16px;
+          color: $primary-text-color;
+          margin-bottom: 0;
+        }
+      }
+    }
+    .view-more-lables-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 12px;
+      background: $white;
+      box-shadow: 0px 4px 57px rgba(2, 16, 32, 0.05);
+      border-radius: 10px;
+      cursor: pointer;
+      width: 12%;
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 4%;
+    }
+  }
+  button {
+    margin-top: 24px;
+  }
+}

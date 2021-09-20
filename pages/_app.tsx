@@ -1,5 +1,6 @@
 import 'antd/dist/antd.css'
 import 'react-responsive-carousel/lib/styles/carousel.min.css' // requires a loader
+import 'react-image-lightbox/style.css'
 import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
 import { Provider } from 'react-redux'
