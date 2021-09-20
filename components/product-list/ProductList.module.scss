@@ -1,0 +1,28 @@
+@import "./../../styles/globalTheme.scss";
+
+.products-list-wrapper {
+  width: 100%;
+  padding: 2rem 0;
+  .btn-view-more {
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+    &::after {
+      content: "";
+      margin-left: 12px;
+      margin-bottom: 4px;
+      border: solid black;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 4px;
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+    }
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}

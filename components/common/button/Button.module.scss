@@ -28,4 +28,13 @@
     padding: 8px 20px;
     border-radius: 2px;
   }
+  &.outlined {
+    background-color: transparent;
+    border: 1px solid $secondary-text-color;
+    color: $secondary-text-color !important;
+    &:hover {
+      background: $secondary-text-color;
+      color: $white !important;
+    }
+  }
 }

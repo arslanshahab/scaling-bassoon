@@ -6,13 +6,13 @@ import { Row, Col } from 'antd'
 import Layout from '../../../components/layout'
 import styles from '../../../styles/CategoriesDetail.module.scss'
 import { http } from '../../../utils/http'
-import { ProductModel } from '../../../models/Product'
+import { Product } from '../../../models/Product'
 import ProductCarousel from '../../../components/product-carousel'
 import ProductShortDescription from '../../../components/product-short-description'
 
 export default function CategoryDetail() {
   const { t, lang } = useTranslation('common')
-  const [product, setProduct] = useState<ProductModel>()
+  const [product, setProduct] = useState<Product>()
   const router = useRouter()
   const { id } = router.query
 
