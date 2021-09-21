@@ -1,0 +1,17 @@
+@import "./../../styles/globalTheme.scss";
+
+.long-description-wrapper {
+  padding-top: 4rem;
+  color: $primary-text-color;
+  @media #{$sm} {
+    padding-top: 2rem;
+  }
+  h4 {
+    font-weight: bold;
+    font-size: 22px;
+    color: $primary-text-color;
+  }
+  p {
+    opacity: 0.7;
+  }
+}

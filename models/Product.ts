@@ -1,11 +1,11 @@
 export type Product = {
   id: number
-  products_title: string
-  products_short_description: string
-  products_description: string
-  products_category_id: number
-  products_featured_image: string
-  products_additional_info: string
+  productsTitle: string
+  productsShortDescription: string
+  productsDescription: string
+  productsAdditionalInfo: string
+  productsCategoryId: number
+  productsFeaturedImage: string
   visibility: number
   slug: string
   categories: Category[]

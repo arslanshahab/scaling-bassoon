@@ -48,9 +48,9 @@ function ProductList() {
                 key={product.id}>
                 <ProductCard
                   id={product.id}
-                  name={product.products_title}
-                  description={product.products_short_description}
-                  image={product.products_featured_image}
+                  name={product.productsTitle}
+                  description={product.productsShortDescription}
+                  image={product.productsFeaturedImage}
                 />
               </Col>
             )

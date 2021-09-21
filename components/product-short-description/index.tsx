@@ -8,9 +8,9 @@ import { Attribute } from '../../models/Product'
 
 interface IProps {
   id: number
-  products_title: string
-  products_short_description: string
-  products_description: string
+  productsTitle: string
+  productsShortDescription: string
+  productsDescription: string
   slug: string
   attributes: Attribute[]
 }
@@ -62,8 +62,8 @@ function ProductShortDescription(props: IProps) {
   return (
     <div className={styles['short-description-wrapper']}>
       <div>
-        <h1>{props.products_title}</h1>
-        <p>{props.products_short_description}</p>
+        <h1>{props.productsTitle}</h1>
+        <p>{props.productsShortDescription}</p>
         {props.attributes?.length > 0 && renderSpecificationsList()}
         <Button
           className='contact-us-btn'
