@@ -61,5 +61,13 @@
   "loremIpsumShort": "Lorem ipsum dolor sit amet.",
   "categories": "Categories",
   "loadMoreProducts": "Load More Products",
-  "specifications": "Specifications"
+  "specifications": "Specifications",
+  "followSocial": "Follow us on social media",
+  "writeMessage": "Write us a message",
+  "tncMessage": "By entering personal data, you agree to the",
+  "termsConditions": "terms of personal data protection",
+  "name": "Name",
+  "email": "Email",
+  "phone": "Telephone",
+  "message": "Message"
 }

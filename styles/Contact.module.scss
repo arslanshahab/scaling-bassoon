@@ -1,0 +1,17 @@
+@import "./globalTheme.scss";
+
+.contact-wrapper {
+  width: 100%;
+  padding-bottom: 4rem;
+  .image-wrapper {
+    padding-bottom: 4rem;
+    background-image: url("./../assets/images/hand-holding-sign.png");
+    background-position-y: 0px;
+    background-position-x: 40%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    @media #{$sm-md} {
+      background: none;
+    }
+  }
+}

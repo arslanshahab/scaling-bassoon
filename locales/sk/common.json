@@ -61,5 +61,13 @@
   "loremIpsumShort": "Lorem ipsum dolor sit amet.",
   "categories": "Kategórie",
   "loadMoreProducts": "Načítať viac produktov",
-  "specifications": "Technické údaje"
+  "specifications": "Technické údaje",
+  "followSocial": "Sledujte nás na sociálnych sieťach",
+  "writeMessage": "Napíšte nám správu",
+  "tncMessage": "Vložením osobných údajov súhlasíte s",
+  "termsConditions": "podmienkami ochrany osobných údajov",
+  "name": "Meno",
+  "email": "Email",
+  "phone": "Telefón",
+  "message": "Správa"
 }

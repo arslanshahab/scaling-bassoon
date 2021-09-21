@@ -5,13 +5,14 @@ $white: #ffffff;
 $catelina-blue: #04366f;
 $alto: #d0d0d0;
 $wild-sand: #f4f4f4;
+$alabaster: #fefefe;
 
 // Responsive Variables
-$xlg: '(min-width: 1366px)';
-$lg: '(min-width: 1008px)';
-$md: '(min-width: 641px) and (max-width: 1007px)';
-$sm: '(max-width: 640px)';
-$sm-md: '(max-width: 1007px)';
+$xlg: "(min-width: 1366px)";
+$lg: "(min-width: 1008px)";
+$md: "(min-width: 641px) and (max-width: 1007px)";
+$sm: "(max-width: 640px)";
+$sm-md: "(max-width: 1007px)";
 
 // ------ Common Classes ------
 .container {
