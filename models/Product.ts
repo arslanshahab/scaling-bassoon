@@ -13,6 +13,7 @@ export type Product = {
   images: ProductImage[]
   brand: ProductBrand
   attributes: Attribute[]
+  recommendedProducts: Product[]
 }
 
 export type Category = {
@@ -29,9 +30,9 @@ export type Category = {
 
 export type Attachment = {
   id: number
-  product_id: number
-  attachment_url: string
-  attachment_name: string
+  productId: number
+  attachmentUrl: string
+  attachmentName: string
 }
 
 export type Attribute = {

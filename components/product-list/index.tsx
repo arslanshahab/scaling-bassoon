@@ -24,9 +24,22 @@ function ProductList() {
         },
       })
       .then(res => {
-        const products = res.data?.data?.items || []
+        const { items } = res.data?.data || []
         const paginationInfo = res.data?.data?.pagination
-        setProducts(prevState => [...prevState, ...products])
+        if (items?.length > 0) {
+          const products = items.map((item: any) => {
+            return {
+              ...item,
+              productsTitle: item.products_title,
+              productsShortDescription: item.products_short_description,
+              productsDescription: item.products_description,
+              productsAdditionalInfo: item.products_additional_info,
+              productsCategoryId: item.products_category_id,
+              productsFeaturedImage: item.products_featured_image,
+            }
+          })
+          setProducts(prevState => [...prevState, ...products])
+        }
         setPaginationInfo(paginationInfo)
       })
       .catch(err => {

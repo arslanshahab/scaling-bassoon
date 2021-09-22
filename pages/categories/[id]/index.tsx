@@ -11,6 +11,8 @@ import ProductCarousel from '../../../components/product-carousel'
 import ProductShortDescription from '../../../components/product-short-description'
 import ProductLongDescription from '../../../components/product-long-description'
 import ProductBulletsDescription from '../../../components/product-bullets-description'
+import ProductAttachments from '../../../components/product-attachments'
+import RelatedProducts from '../../../components/related-products'
 
 export default function CategoryDetail() {
   const { t, lang } = useTranslation('common')
@@ -28,7 +30,10 @@ export default function CategoryDetail() {
       })
       .then((res: any) => {
         const { data } = res.data
+        const { recommended_products } = data
+        const { attachments } = data
         if (data) {
+          // mapping product properties to retain camelCase convention
           const product = {
             ...data,
             productsTitle: data.products_title,
@@ -36,7 +41,28 @@ export default function CategoryDetail() {
             productsDescription: data.products_description,
             productsAdditionalInfo: data.products_additional_info,
             productsCategoryId: data.products_category_id,
-            productsFeaturedImage: data,
+            productsFeaturedImage: data.products_featured_image,
+            // mapping recommendedProperties properties to retain camelCase convention
+            recommendedProducts: recommended_products.map((rp: any) => {
+              return {
+                ...rp,
+                productsTitle: rp.products_title,
+                productsShortDescription: rp.products_short_description,
+                productsDescription: rp.products_description,
+                productsAdditionalInfo: rp.products_additional_info,
+                productsCategoryId: rp.products_category_id,
+                productsFeaturedImage: rp.products_featured_image,
+              }
+            }),
+            // mapping attachments properties to retain camelCase convention
+            attachments: attachments.map((attachment: any) => {
+              return {
+                id: attachment.id,
+                productId: attachment.product_id,
+                attachmentUrl: attachment.attachment_url,
+                attachmentName: attachment.attachment_name,
+              }
+            }),
           }
           setProduct(product)
           setIsFullDesc(product.productsAdditionalInfo === '')
@@ -108,10 +134,18 @@ export default function CategoryDetail() {
                 <ProductBulletsDescription
                   productsAdditionalInfo={product?.productsAdditionalInfo!}
                 />
+                <ProductAttachments attachments={product?.attachments!} />
               </Col>
             )}
           </Row>
         </div>
+        <Row gutter={{ sm: 32, md: 32, lg: 32 }}>
+          <Col span={24} xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
+            <RelatedProducts
+              recommendedProducts={product?.recommendedProducts!}
+            />
+          </Col>
+        </Row>
       </Layout>
     </div>
   )

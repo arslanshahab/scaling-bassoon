@@ -1,0 +1,25 @@
+@import "./../../styles/globalTheme.scss";
+
+.attachments-wrapper {
+  .attachment-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    .icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: $white;
+      box-shadow: 0px 4px 57px rgba(2, 16, 32, 0.05);
+      border-radius: 10px;
+      margin-right: 1rem;
+      width: 64px;
+      height: 64px;
+      cursor: pointer;
+    }
+    span {
+      display: inline-block;
+      text-transform: uppercase;
+    }
+  }
+}
