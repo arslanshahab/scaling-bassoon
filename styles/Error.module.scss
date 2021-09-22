@@ -1,0 +1,25 @@
+@import "./globalTheme.scss";
+
+.content-wrapper {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  margin: 4rem auto;
+  padding: 0 4rem;
+  @media #{$sm} {
+    padding: 0 2rem;
+  }
+  img {
+    width: 40%;
+    @media #{$sm} {
+      width: 75%;
+    }
+  }
+  p {
+    margin: 2rem 0;
+    font-weight: 500;
+    color: $primary-text-color;
+    text-align: center;
+  }
+}

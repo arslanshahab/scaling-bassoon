@@ -70,5 +70,8 @@
   "name": "Jméno",
   "email": "Email",
   "phone": "Telefon",
-  "message": "Zpráva"
+  "message": "Zpráva",
+  "error404": "Chyba 404",
+  "error404Text": "Nenašli jsme stránku, kterou hledáte.",
+  "backToMain": "Zpět na hlavní stránku"
 }

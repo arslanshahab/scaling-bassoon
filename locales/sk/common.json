@@ -70,5 +70,8 @@
   "name": "Meno",
   "email": "Email",
   "phone": "Telefón",
-  "message": "Správa"
+  "message": "Správa",
+  "error404": "Chyba 404",
+  "error404Text": "Nenašli sme stránku, ktorú hľadáte.",
+  "backToMain": "Späť na hlavnú stránku"
 }
