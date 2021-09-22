@@ -17,12 +17,18 @@
       font-weight: bolder;
       font-size: 40px;
       line-height: 3rem;
+      &.small-heading {
+        font-size: 30px;
+        @media #{$sm} {
+          font-size: 24px;
+        }
+      }
       @media #{$md} {
         font-size: 32px;
         line-height: 2rem;
       }
       @media #{$sm} {
-        font-size: 28px;
+        font-size: 24px;
         line-height: 2rem;
       }
     }
@@ -40,7 +46,7 @@
     }
     overflow: hidden;
     .image {
-      border-radius: 140px 4px;
+      border-radius: 80px 4px;
       transform: matrix(-1, 0, 0, 1, 0, 0);
       @media #{$md} {
         border-radius: 72px 4px;

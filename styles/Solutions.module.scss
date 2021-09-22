@@ -1,0 +1,19 @@
+@import "./globalTheme.scss";
+
+.solutions-wrapper {
+  width: 100%;
+  h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: $primary-text-color;
+    @media #{$sm} {
+      font-size: 32px;
+    }
+  }
+  .solution-card {
+    margin-bottom: 4rem;
+    @media #{$sm} {
+      margin-bottom: 2rem;
+    }
+  }
+}

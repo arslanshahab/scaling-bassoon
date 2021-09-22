@@ -10,6 +10,7 @@ interface IProps {
   image: any
   reverse?: boolean
   onClick?: () => void
+  orderReverse: boolean
 }
 
 function ImageSection({
@@ -19,6 +20,7 @@ function ImageSection({
   image,
   reverse,
   onClick,
+  orderReverse,
 }: IProps) {
   return (
     <div className={styles['image-section']}>
@@ -26,10 +28,10 @@ function ImageSection({
         <Col
           span={12}
           xs={{ span: 24, order: 2 }}
-          md={{ span: 12, order: 1 }}
+          md={{ span: 12, order: orderReverse ? 1 : 2 }}
           lg={{ span: 12 }}>
           <div className={styles['text-wrapper']}>
-            <h1>{heading}</h1>
+            <h1 className={styles['small-heading']}>{heading}</h1>
             {paragraphs?.map((para, index) => {
               return <p key={index}>{para}</p>
             })}
@@ -41,11 +43,11 @@ function ImageSection({
         <Col
           span={12}
           xs={{ span: 24, order: 1 }}
-          md={{ span: 12, order: 2 }}
+          md={{ span: 12, order: orderReverse ? 2 : 1 }}
           lg={{ span: 12 }}>
           <div
             className={`${styles['image-wrapper']} ${
-              reverse && 'img-reverse'
+              reverse && styles['img-reverse']
             }`}>
             <Image
               src={image}
