@@ -1,5 +1,6 @@
 import { Row, Col } from 'antd'
 import Image from 'next/image'
+import { ReactElement } from 'react'
 import Button from '../common/button'
 import styles from './ImageSection.module.scss'
 
@@ -11,6 +12,8 @@ interface IProps {
   staticImage?: StaticImageData
   reverse?: boolean
   onClick?: () => void
+  hideButton?: boolean
+  children?: ReactElement
   orderReverse?: boolean
 }
 
@@ -22,25 +25,32 @@ function ImageSection({
   reverse,
   onClick,
   orderReverse,
+  hideButton,
+  children,
   staticImage,
 }: IProps) {
   return (
     <div className={styles['image-section']}>
-      <Row gutter={64}>
+      <Row gutter={48}>
         <Col
           span={12}
           xs={{ span: 24, order: 2 }}
           md={{ span: 12, order: orderReverse ? 1 : 2 }}
           lg={{ span: 12 }}>
-          <div className={styles['text-wrapper']}>
-            <h1 className={styles['small-heading']}>{heading}</h1>
-            <div
-              className={styles.content}
-              dangerouslySetInnerHTML={{ __html: content }}
-            />
-            <Button size='md' variant='regular' onClick={onClick!}>
-              {buttonText}
-            </Button>
+          <div>
+            <div className={styles['text-wrapper']}>
+              <h1 className={styles['small-heading']}>{heading}</h1>
+              <div
+                className={styles.content}
+                dangerouslySetInnerHTML={{ __html: content }}
+              />
+              {!hideButton && (
+                <Button size='md' variant='regular' onClick={onClick!}>
+                  {buttonText}
+                </Button>
+              )}
+            </div>
+            {children}
           </div>
         </Col>
         <Col

@@ -74,5 +74,14 @@
   "message": "Zpráva",
   "error404": "Chyba 404",
   "error404Text": "Nenašli jsme stránku, kterou hledáte.",
-  "backToMain": "Zpět na hlavní stránku"
+  "backToMain": "Zpět na hlavní stránku",
+  "technology": "Technologie",
+  "assistingServices": "Asistenční služby",
+  "training": "Školení",
+  "supportService": "Servis, podpora",
+  "technologyDesc": "Nejmodernější technologie",
+  "assistingServicesDesc": "Pomoc s aplikací",
+  "trainingDesc": "Podpora operátora",
+  "supportServiceDesc": "Péče o zákazníky",
+  "followOnYoutube": "Sledujte nás na našem kanálu YouTube"
 }

@@ -74,5 +74,14 @@
   "message": "Message",
   "error404": "Error 404",
   "error404Text": "We couldn't find the page you are looking for.",
-  "backToMain": "Back to main page"
+  "backToMain": "Back to main page",
+  "technology": "Technology",
+  "assistingServices": "Assisting Services",
+  "training": "Training",
+  "supportService": "Service, Support",
+  "technologyDesc": "State art technology",
+  "assistingServicesDesc": "Application assistance",
+  "trainingDesc": "Operator support",
+  "supportServiceDesc": "Customer care",
+  "followOnYoutube": "Follow us on our YouTube channel"
 }
