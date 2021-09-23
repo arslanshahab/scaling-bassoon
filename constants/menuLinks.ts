@@ -1,6 +1,6 @@
 export const menuLinks = [
   { key: 'solutions', link: '/solutions' },
-  { key: 'products', link: '/products' },
+  { key: 'products', link: '/categories' },
   { key: 'brands', link: '/brands' },
   { key: 'downloads', link: '/downloads' },
   { key: 'events', link: '/events' },

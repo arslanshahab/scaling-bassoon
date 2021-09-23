@@ -1,51 +1,29 @@
 import { Row, Col } from 'antd'
 import useTranslation from 'next-translate/useTranslation'
-import { useEffect, useState } from 'react'
 import { Product } from '../../models/Product'
-import { http } from '../../utils/http'
 import ProductCard from '../common/product-card'
 import styles from './ProductList.module.scss'
 
-const perpage = 4
+interface IProps {
+  products: Product[]
+  paginationInfo: IPagination
+  loadMoreProducts: (url: string, isPaginatedRequest: boolean) => void
+}
 
-function ProductList() {
-  const { t, lang } = useTranslation('common')
-  const [products, setProducts] = useState<Product[]>([])
-  const [paginationInfo, setPaginationInfo] = useState<any>()
-  const [currentURL, setCurrentURL] = useState<string>(
-    `/api/v1/products/get-all-products?paginate=1&perpage=${perpage}`
-  )
+interface IPagination {
+  total: number
+  count: number
+  per_page: number
+  current_page: number
+  total_pages: number
+  previous_page_url: string
+  next_page_url: string
+}
 
-  useEffect(() => {
-    http
-      .get(`${currentURL}`, {
-        headers: {
-          'Content-Language': lang,
-        },
-      })
-      .then(res => {
-        const { items } = res.data?.data || []
-        const paginationInfo = res.data?.data?.pagination
-        if (items?.length > 0) {
-          const products = items.map((item: any) => {
-            return {
-              ...item,
-              productsTitle: item.products_title,
-              productsShortDescription: item.products_short_description,
-              productsDescription: item.products_description,
-              productsAdditionalInfo: item.products_additional_info,
-              productsCategoryId: item.products_category_id,
-              productsFeaturedImage: item.products_featured_image,
-            }
-          })
-          setProducts(prevState => [...prevState, ...products])
-        }
-        setPaginationInfo(paginationInfo)
-      })
-      .catch(err => {
-        console.error('API response error', err)
-      })
-  }, [lang, currentURL])
+function ProductList(props: IProps) {
+  const { products, paginationInfo, loadMoreProducts } = props
+
+  const { t } = useTranslation('common')
 
   const renderProductsList = () => {
     return (
@@ -79,7 +57,9 @@ function ProductList() {
         {paginationInfo?.next_page_url && (
           <button
             className={styles['btn-view-more']}
-            onClick={() => setCurrentURL(paginationInfo?.next_page_url)}>
+            onClick={() =>
+              loadMoreProducts(paginationInfo?.next_page_url, true)
+            }>
             {t('loadMoreProducts')}
           </button>
         )}

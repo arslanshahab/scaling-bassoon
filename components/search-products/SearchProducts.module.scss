@@ -1,0 +1,27 @@
+@import "./../../styles/globalTheme.scss";
+
+.search-products {
+  width: 100%;
+  padding: 1rem 0;
+  h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: $primary-text-color;
+  }
+  .input-wrapper {
+    width: 40%;
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      opacity: 0.7;
+    }
+    input {
+      padding: 0.5rem 1rem;
+    }
+    :global .ant-input-affix-wrapper {
+      border: none;
+      box-shadow: 0px 4px 36px rgba(2, 16, 32, 0.05);
+      border-radius: 4px;
+    }
+  }
+}
