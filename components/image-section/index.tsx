@@ -5,22 +5,24 @@ import styles from './ImageSection.module.scss'
 
 interface IProps {
   heading: string
-  paragraphs: string[]
+  content: string
   buttonText: string
-  image: any
+  image?: StaticImageData
+  staticImage?: StaticImageData
   reverse?: boolean
   onClick?: () => void
-  orderReverse: boolean
+  orderReverse?: boolean
 }
 
 function ImageSection({
   heading,
-  paragraphs,
+  content,
   buttonText,
   image,
   reverse,
   onClick,
   orderReverse,
+  staticImage,
 }: IProps) {
   return (
     <div className={styles['image-section']}>
@@ -32,9 +34,10 @@ function ImageSection({
           lg={{ span: 12 }}>
           <div className={styles['text-wrapper']}>
             <h1 className={styles['small-heading']}>{heading}</h1>
-            {paragraphs?.map((para, index) => {
-              return <p key={index}>{para}</p>
-            })}
+            <div
+              className={styles.content}
+              dangerouslySetInnerHTML={{ __html: content }}
+            />
             <Button size='md' variant='regular' onClick={onClick!}>
               {buttonText}
             </Button>
@@ -49,12 +52,23 @@ function ImageSection({
             className={`${styles['image-wrapper']} ${
               reverse && styles['img-reverse']
             }`}>
-            <Image
-              src={image}
-              alt='About Us - Buildings'
-              objectFit='cover'
-              className={styles.image}
-            />
+            {staticImage! ? (
+              <Image
+                src={staticImage!}
+                alt='About Us - Buildings'
+                objectFit='cover'
+                className={styles.image}
+              />
+            ) : (
+              <Image
+                src={`${process.env.NEXT_PUBLIC_API_URL}${image}`}
+                alt='About Us - Buildings'
+                width={705}
+                height={498}
+                objectFit='cover'
+                className={styles.image}
+              />
+            )}
           </div>
         </Col>
       </Row>

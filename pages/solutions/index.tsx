@@ -24,9 +24,9 @@ export default function Solutions() {
               <div key={index} className={styles['solution-card']}>
                 <ImageSection
                   heading={t(`${solution.title}`)}
-                  paragraphs={[t(`${solution.description}`)]}
+                  content={t(`${solution.description}`)}
                   buttonText={t(`${solution.buttonText}`)}
-                  image={solution.imageSecondary || solution.image}
+                  staticImage={solution.imageSecondary || solution.image}
                   reverse
                   orderReverse={index % 2 === 0}
                 />
