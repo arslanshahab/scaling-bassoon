@@ -4,9 +4,17 @@ import useTranslation from 'next-translate/useTranslation'
 import styles from './ContactForm.module.scss'
 import Button from './../common/button'
 import { contactFormFields } from '../../constants/contactForm'
+import { http } from '../../utils/http'
+
+interface IRequestBody {
+  name: string
+  email: string
+  phone: string
+  message: string
+}
 
 function ContactForm() {
-  const { t } = useTranslation('common')
+  const { t, lang } = useTranslation('common')
 
   const renderRulesConfig = (message: string) => {
     return [
@@ -28,7 +36,6 @@ function ContactForm() {
         remember: false,
       },
       onFinish: onFinish,
-      onFinishFailed: onFinishFailed,
       autoComplete: 'off',
     }
   }
@@ -44,8 +51,21 @@ function ContactForm() {
     )
   }
 
-  const onFinish = () => null
-  const onFinishFailed = () => null
+  const onFinish = (values: IRequestBody) => {
+    http
+      .post(`/api/v1/contact-us-form`, values, {
+        headers: {
+          'Content-Language': lang,
+        },
+      })
+      .then(() => {
+        alert(t('contactThankyou'))
+      })
+      .catch((err: any) => {
+        console.error('API response error', err)
+      })
+  }
+
   return (
     <div className={styles['contact-form']}>
       <h3>{t('writeMessage')}</h3>
@@ -59,7 +79,8 @@ function ContactForm() {
             fullWidth={false}
             onClick={() => {}}
             size='md'
-            variant='regular'>
+            variant='regular'
+            type='submit'>
             {t('contactUs')}
           </Button>
         </Form.Item>
