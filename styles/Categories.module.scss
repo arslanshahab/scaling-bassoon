@@ -5,26 +5,35 @@
   @media #{$xlg} {
     max-width: 90%;
   }
+  @media #{$sm} {
+    margin-right: auto;
+  }
 }
 
 .header {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   margin-bottom: 2rem;
   box-sizing: border-box;
+  width: 100%;
 
   .filteration-col {
     width: 45%;
     padding-right: 1rem;
     box-sizing: border-box;
+    @media #{$sm} {
+      width: 100%;
+    }
   }
   .slider-col {
     width: 55%;
-    padding-left: 1rem;
     box-sizing: border-box;
     .slider {
-      box-shadow: 0 0 10px #eee;
       height: 100%;
+    }
+    @media #{$sm} {
+      width: 100%;
     }
   }
 }

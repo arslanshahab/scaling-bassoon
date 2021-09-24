@@ -1,0 +1,123 @@
+@import "./../../styles/globalTheme.scss";
+@import "./../../styles/mixins.scss";
+
+.our-news {
+  @media #{$sm} {
+    margin-top: 2rem;
+  }
+  h4 {
+    font-weight: bold;
+    font-size: 22px;
+    color: $primary-text-color;
+  }
+
+  .text-section {
+    h4 {
+      font-weight: bold;
+      font-size: 22px;
+      color: $primary-text-color;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    div {
+      height: 76px;
+    }
+    button {
+      margin-top: 1rem;
+    }
+  }
+  .main-carousel {
+    ul {
+      gap: 16px;
+      li {
+        :global .slide-item {
+          box-shadow: 0px 4px 36px rgba(2, 16, 32, 0.05);
+          border-radius: 4px;
+          padding: 2rem;
+          @media #{$sm} {
+            padding: 1rem;
+          }
+          h4 {
+            font-weight: bold;
+            font-size: 20px;
+            color: $primary-text-color;
+          }
+          p {
+            color: $primary-text-color;
+            opacity: 0.7;
+          }
+          button {
+            font-weight: normal;
+          }
+        }
+      }
+    }
+    .btn-arrow {
+      top: 50%;
+      transform: translate(0%, -50%);
+      color: $catelina-blue;
+      font-size: 26px;
+      bottom: 0;
+      margin-top: 0;
+      width: 64px;
+      height: 64px;
+      background: $white;
+      box-shadow: 0px 4px 13px rgba(2, 16, 32, 0.11);
+      position: absolute;
+      border-radius: 50%;
+      opacity: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+
+      &:hover {
+        background: $primary-text-color;
+        color: $white;
+      }
+      &:disabled {
+        background-color: $alto;
+        opacity: 0.5;
+        color: $white;
+        &:hover {
+          background-color: $alto;
+          color: $white;
+        }
+        display: none;
+      }
+      &::before {
+        border-top: 0;
+        border-bottom: 0;
+        border-right: 0;
+        border-style: solid;
+        border-width: 0.125em 0.125em 0 0;
+        content: "";
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        left: 0.15em;
+        position: relative;
+        transform: rotate(-45deg);
+        vertical-align: top;
+      }
+      @media #{$sm} {
+        display: none;
+      }
+    }
+
+    :global .carousel__next-button {
+      right: calc(-20px);
+      &::before {
+        left: 0;
+        transform: rotate(45deg);
+      }
+    }
+    :global .carousel__back-button {
+      left: calc(-20px);
+      &::before {
+        right: 0;
+        transform: rotate(-135deg);
+      }
+    }
+  }
+}

@@ -8,6 +8,7 @@ import SearchProducts from '../../components/search-products'
 import { http } from '../../utils/http'
 import { Product } from '../../models/Product'
 import FilterProducts from '../../components/filter-products'
+import OurNewsCarousel from '../../components/our-news-carousel'
 
 const perpage = 4
 const baseURL = `/api/v1/products/get-all-products?paginate=1&perpage=${perpage}`
@@ -125,7 +126,12 @@ export default function Categories() {
             </div>
             <div className={styles['slider-col']}>
               <div className={styles.slider}>
-                <h2>Slider Goes Here</h2>
+                <OurNewsCarousel
+                  products={products?.slice(
+                    0,
+                    products?.length > 3 ? 4 : products?.length
+                  )}
+                />
               </div>
             </div>
           </div>

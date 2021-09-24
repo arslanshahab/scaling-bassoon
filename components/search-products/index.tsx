@@ -52,10 +52,8 @@ function SearchProducts({ searchProducts }: IProps) {
 
   return (
     <div className={styles['search-products']}>
-      <div className={styles.container}>
-        <h1>{t('categories')}</h1>
-        {renderSearchInput()}
-      </div>
+      <h1>{t('categories')}</h1>
+      {renderSearchInput()}
     </div>
   )
 }
