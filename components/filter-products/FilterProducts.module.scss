@@ -1,0 +1,98 @@
+@import "./../../styles/globalTheme.scss";
+
+.product-filters {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  gap: 8px;
+  .filter-wrapper {
+    @media #{$sm} {
+      width: 100%;
+    }
+  }
+  .checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    height: 50px;
+    color: $white;
+    box-shadow: 0px 4px 36px rgba(2, 16, 32, 0.05);
+    border-radius: 4px;
+    background-color: $white;
+    color: $primary-text-color;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    &.checked {
+      background-color: $secondary-text-color;
+      color: $white;
+    }
+    .form-checkbox {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      -webkit-print-color-adjust: exact;
+      display: inline-block;
+      vertical-align: middle;
+      background-origin: border-box;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      flex-shrink: 0;
+      height: 1rem;
+      width: 1rem;
+      color: $white;
+      background-color: transparent;
+      border: 1px solid $alto;
+      border-radius: 0.125rem;
+      transition: all 0.3s;
+      cursor: pointer;
+
+      &:checked {
+        background: url("/icons/check-white.svg");
+        border-color: $white;
+        background-color: $secondary-text-color;
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        transition: all 0.3s;
+      }
+    }
+
+    span {
+      margin-left: 1rem;
+      &::after,
+      &::before {
+        border-color: rgba(229, 231, 235, 1);
+      }
+    }
+  }
+  .btn-view-more {
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+    text-align: left;
+    width: 100%;
+    margin-top: 1rem;
+    &::after {
+      content: "";
+      margin-left: 12px;
+      margin-top: 4px;
+      border: solid black;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 4px;
+      transform: rotate(315deg);
+      -webkit-transform: rotate(315deg);
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

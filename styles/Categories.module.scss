@@ -1,0 +1,30 @@
+@import "./globalTheme.scss";
+
+.container {
+  margin-right: 0;
+  @media #{$xlg} {
+    max-width: 90%;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  box-sizing: border-box;
+
+  .filteration-col {
+    width: 45%;
+    padding-right: 1rem;
+    box-sizing: border-box;
+  }
+  .slider-col {
+    width: 55%;
+    padding-left: 1rem;
+    box-sizing: border-box;
+    .slider {
+      box-shadow: 0 0 10px #eee;
+      height: 100%;
+    }
+  }
+}
