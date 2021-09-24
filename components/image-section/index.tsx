@@ -15,6 +15,8 @@ interface IProps {
   hideButton?: boolean
   children?: ReactElement
   orderReverse?: boolean
+  icon?: string
+  iconName?: string
 }
 
 function ImageSection({
@@ -28,6 +30,8 @@ function ImageSection({
   hideButton,
   children,
   staticImage,
+  icon,
+  iconName,
 }: IProps) {
   return (
     <div className={styles['image-section']}>
@@ -78,6 +82,17 @@ function ImageSection({
                 objectFit='cover'
                 className={styles.image}
               />
+            )}
+            {icon && (
+              <div className={styles.icon}>
+                <Image
+                  src={`${icon}`}
+                  alt={iconName}
+                  width={40}
+                  height={45}
+                  objectFit='contain'
+                />
+              </div>
             )}
           </div>
         </Col>

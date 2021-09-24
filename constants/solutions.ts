@@ -10,6 +10,7 @@ export const solutions: Solution[] = [
     image: doctors,
     buttonText: 'showProducts',
     link: '/doctors',
+    icon: '/icons/medical-s.svg',
   },
   {
     title: 'forClubs',
@@ -17,6 +18,7 @@ export const solutions: Solution[] = [
     image: clubs,
     buttonText: 'showProducts',
     link: '/clubs',
+    icon: '/icons/gym-s.svg',
   },
   {
     title: 'forSalons',
@@ -25,6 +27,7 @@ export const solutions: Solution[] = [
     imageSecondary: salons2,
     buttonText: 'showProducts',
     link: '/salons',
+    icon: '/icons/beauty-s.svg',
   },
 ]
 
@@ -35,4 +38,5 @@ export type Solution = {
   buttonText: string
   link: string
   imageSecondary?: StaticImageData
+  icon?: string
 }

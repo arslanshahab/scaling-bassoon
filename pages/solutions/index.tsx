@@ -29,6 +29,8 @@ export default function Solutions() {
                   staticImage={solution.imageSecondary || solution.image}
                   reverse
                   orderReverse={index % 2 === 0}
+                  icon={solution.icon!}
+                  iconName={solution.title}
                 />
               </div>
             )
