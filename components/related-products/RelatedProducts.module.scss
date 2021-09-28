@@ -7,10 +7,23 @@
   width: 100%;
   color: $primary-text-color;
   position: relative;
-  h4 {
-    font-weight: bold;
-    font-size: 22px;
-    color: $primary-text-color;
+  .link-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    h4 {
+      font-weight: bold;
+      font-size: 22px;
+      color: $primary-text-color;
+    }
+    a {
+      &:hover {
+        color: $primary-text-color;
+        text-decoration: underline;
+      }
+    }
   }
   .related-products-carousel {
     ul {
@@ -82,15 +95,22 @@
         vertical-align: top;
       }
       @media #{$sm} {
-        display: none;
+        font-size: 22px;
+        bottom: 0;
+        margin-top: 0;
+        width: 48px;
+        height: 48px;
       }
     }
 
-    :global .carousel__next-button  {
+    :global .carousel__next-button {
       right: calc(-100px);
       &::before {
         left: 0;
         transform: rotate(45deg);
+      }
+      @media #{$sm} {
+        right: calc(-28px);
       }
     }
     :global .carousel__back-button {
@@ -98,6 +118,9 @@
       &::before {
         right: 0;
         transform: rotate(-135deg);
+      }
+      @media #{$sm} {
+        left: calc(-28px);
       }
     }
   }

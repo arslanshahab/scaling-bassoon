@@ -12,6 +12,7 @@ import styles from './RelatedProducts.module.scss'
 import useTranslation from 'next-translate/useTranslation'
 import ProductCard from '../common/product-card'
 import { Product } from '../../models/Product'
+import Link from 'next/link'
 
 interface IProps {
   recommendedProducts: Product[]
@@ -36,7 +37,10 @@ function RelatedProducts(props: IProps) {
 
   return (
     <div className={styles['related-products-wrapper']}>
-      <h4>{t('similarProducts')}</h4>
+      <div className={styles['link-title']}>
+        <h4>{t('similarProducts')}</h4>
+        <Link href='/categories'>{t('showAllProducts')}</Link>
+      </div>
       <CarouselProvider
         naturalSlideWidth={10}
         naturalSlideHeight={8}
