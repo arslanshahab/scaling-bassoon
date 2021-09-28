@@ -21,6 +21,7 @@ interface ICurrentURL {
 export default function Categories() {
   const { t, lang } = useTranslation('common')
   const [products, setProducts] = useState<Product[]>([])
+  const [newsProducts, setNewsProducts] = useState<Product[]>([])
   const [paginationInfo, setPaginationInfo] = useState<any>()
   const [currentURL, setCurrentURL] = useState<ICurrentURL>({
     url: baseURL,
@@ -36,6 +37,12 @@ export default function Categories() {
         if (items?.length > 0) {
           const products = mapProductPropertiesToCamelCase(items)
           setProducts(products)
+          // keep only top 4 items in our-news carousel and set only for the first page load
+          if (newsProducts?.length < 1) {
+            setNewsProducts(
+              products?.slice(0, products?.length > 3 ? 4 : products?.length)
+            )
+          }
           setPaginationInfo(paginationInfo)
         }
       } catch (error) {
@@ -126,12 +133,7 @@ export default function Categories() {
             </div>
             <div className={styles['slider-col']}>
               <div className={styles.slider}>
-                <OurNewsCarousel
-                  products={products?.slice(
-                    0,
-                    products?.length > 3 ? 4 : products?.length
-                  )}
-                />
+                <OurNewsCarousel products={newsProducts} />
               </div>
             </div>
           </div>

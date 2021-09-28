@@ -15,6 +15,7 @@ import styles from './OurNewsCarousel.module.scss'
 import { useEffect, useState } from 'react'
 import { Product } from '../../models/Product'
 import { global } from './../../constants/global'
+import { useRouter } from 'next/router'
 interface IProps {
   products: Product[]
 }
@@ -23,6 +24,7 @@ function OurNewsCarousel(props: IProps) {
   const { t } = useTranslation('common')
   const [visibleSlides, setVisibleSlides] = useState(2)
   const onlyWidth = useWindowWidth()
+  const router = useRouter()
 
   const { maxDescriptionLength, mobileMaxWidth, tabletMaxWidth } =
     global.ourNews
@@ -76,8 +78,9 @@ function OurNewsCarousel(props: IProps) {
               <Button
                 className={styles.readButton}
                 fullWidth={true}
-                onClick={() => {}}
+                onClick={() => router.push(`/categories/${id}`)}
                 size='sm'
+                type='button'
                 variant='outlined'>
                 {t('moreInfo')}
               </Button>

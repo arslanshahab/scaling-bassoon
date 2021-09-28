@@ -31,7 +31,7 @@ function SearchProducts({ searchProducts }: IProps) {
         <label htmlFor='searchInput'>{t('searchProducts')}</label>
         <Input
           size='large'
-          placeholder='Search'
+          placeholder={t('search')}
           name='searchInput'
           id='searchInput'
           value={searchText}
