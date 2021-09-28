@@ -10,7 +10,7 @@ import { Product } from '../../models/Product'
 import FilterProducts from '../../components/filter-products'
 import OurNewsCarousel from '../../components/our-news-carousel'
 
-const perpage = 4
+const perpage = 8
 const baseURL = `/api/v1/products/get-all-products?paginate=1&perpage=${perpage}`
 
 interface ICurrentURL {

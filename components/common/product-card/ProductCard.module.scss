@@ -30,6 +30,8 @@
       font-size: 20px;
       color: $primary-text-color;
       cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
     }
     p {
       color: $primary-text-color;
