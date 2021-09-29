@@ -14,6 +14,9 @@ import ProductBulletsDescription from '../../../components/product-bullets-descr
 import ProductAttachments from '../../../components/product-attachments'
 import RelatedProducts from '../../../components/related-products'
 
+// category to hide bullets for, temp category by default: name = "Uncategorized" | id = 1 (will be changed later)
+const categoryIdForHiddenBullets = 1
+
 export default function CategoryDetail() {
   const { t, lang } = useTranslation('common')
   const [product, setProduct] = useState<Product>()
@@ -65,7 +68,12 @@ export default function CategoryDetail() {
             }),
           }
           setProduct(product)
-          setIsFullDesc(product.productsAdditionalInfo === '')
+          // show full size description if the category matches the hide bullets id AND/OR the data for bullet points is empty
+          setIsFullDesc(
+            product.categories[0]?.id === categoryIdForHiddenBullets ||
+              product.productsAdditionalInfo === '' ||
+              product.productsAdditionalInfo === null
+          )
         }
       })
       .catch((err: any) => {
