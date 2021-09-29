@@ -8,7 +8,7 @@ interface IProps {
   heading: string
   content: string
   buttonText: string
-  image?: StaticImageData
+  image?: string
   staticImage?: StaticImageData
   reverse?: boolean
   onClick?: () => void
@@ -17,6 +17,8 @@ interface IProps {
   orderReverse?: boolean
   icon?: string
   iconName?: string
+  staticImageProps?: any
+  iconPosition?: 'top' | 'right' | 'bottom' | 'left' | 'center'
 }
 
 function ImageSection({
@@ -32,10 +34,12 @@ function ImageSection({
   staticImage,
   icon,
   iconName,
+  staticImageProps,
+  iconPosition,
 }: IProps) {
   return (
     <div className={styles['image-section']}>
-      <Row gutter={48}>
+      <Row gutter={64}>
         <Col
           span={12}
           xs={{ span: 24, order: 2 }}
@@ -49,7 +53,11 @@ function ImageSection({
                 dangerouslySetInnerHTML={{ __html: content }}
               />
               {!hideButton && (
-                <Button size='md' variant='regular' onClick={onClick!}>
+                <Button
+                  size='md'
+                  variant='regular'
+                  type='button'
+                  onClick={onClick!}>
                   {buttonText}
                 </Button>
               )}
@@ -72,6 +80,7 @@ function ImageSection({
                 alt='About Us - Buildings'
                 objectFit='cover'
                 className={styles.image}
+                {...staticImageProps}
               />
             ) : (
               <Image
@@ -84,7 +93,10 @@ function ImageSection({
               />
             )}
             {icon && (
-              <div className={styles.icon}>
+              <div
+                className={`${styles.icon} ${
+                  styles[iconPosition || 'bottom']
+                }`}>
                 <Image
                   src={`${icon}`}
                   alt={iconName}

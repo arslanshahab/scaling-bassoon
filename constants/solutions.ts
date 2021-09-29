@@ -1,42 +1,21 @@
-import doctors from './../assets/images/for-doctors.png'
-import clubs from './../assets/images/for-clubs.png'
-import salons from './../assets/images/for-salons.png'
-import salons2 from './../assets/images/skincare-woman.png'
-
-export const solutions: Solution[] = [
+export const solutionIcons = [
   {
-    title: 'forDoctors',
-    description: 'loremIpsumLong',
-    image: doctors,
-    buttonText: 'showProducts',
-    link: '/doctors',
+    identifier: 'SOLUTION01',
     icon: '/icons/medical-s.svg',
   },
   {
-    title: 'forClubs',
-    description: 'loremIpsumLong',
-    image: clubs,
-    buttonText: 'showProducts',
-    link: '/clubs',
+    identifier: 'SOLUTION02',
     icon: '/icons/gym-s.svg',
   },
   {
-    title: 'forSalons',
-    description: 'loremIpsumLong',
-    image: salons,
-    imageSecondary: salons2,
-    buttonText: 'showProducts',
-    link: '/salons',
+    identifier: 'SOLUTION03',
     icon: '/icons/beauty-s.svg',
   },
 ]
 
-export type Solution = {
+export type SolutionIcon = {
   title: string
-  description: string
-  image: StaticImageData
-  buttonText: string
-  link: string
-  imageSecondary?: StaticImageData
   icon?: string
 }
+
+export const solutionsIdentifier: string = 'PAGE_SOLUTIONS_V1'

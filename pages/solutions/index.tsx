@@ -1,13 +1,62 @@
 import Head from 'next/head'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../../components/layout'
 import styles from '../../styles/Solutions.module.scss'
 import useTranslation from 'next-translate/useTranslation'
 import ImageSection from '../../components/image-section'
-import { Solution, solutions } from './../../constants/solutions'
+import { http } from '../../utils/http'
+import { SolutionItem, SolutionPage } from '../../models/SolutionPage'
+import { solutionIcons, solutionsIdentifier } from '../../constants/solutions'
+import { useRouter } from 'next/router'
 
 export default function Solutions() {
-  const { t } = useTranslation('common')
+  const { t, lang } = useTranslation('common')
+  const [solutions, setSolutions] = useState<SolutionPage>()
+  const router = useRouter()
+
+  useEffect(() => {
+    http
+      .get(
+        `/api/v1/pagebuilder/get-by-identifier?identifier=${solutionsIdentifier}`,
+        {
+          headers: {
+            'Content-Language': lang,
+          },
+        }
+      )
+      .then(res => {
+        const { data } = res.data
+        const {
+          content: { SOLUTION01, SOLUTION02, SOLUTION03 },
+        } = data
+        if (data) {
+          const solutions: SolutionPage = {
+            id: data.id,
+            name: data.name,
+            identifier: data.identifier,
+            content: {
+              SOLUTION01: solutionsMapping(SOLUTION01),
+              SOLUTION02: solutionsMapping(SOLUTION02),
+              SOLUTION03: solutionsMapping(SOLUTION03),
+            },
+          }
+          setSolutions(solutions)
+        }
+      })
+      .catch(err => {
+        console.error('API response error', err)
+      })
+  }, [lang])
+
+  const solutionsMapping = (solution: any): SolutionItem => {
+    return {
+      title: solution.title,
+      shortDescription: solution['short-description'],
+      longDescription: solution['long-description'],
+      image01: solution['image-01'],
+      image02: solution['image-02'],
+    }
+  }
 
   return (
     <div className={styles['solutions-wrapper']}>
@@ -19,22 +68,31 @@ export default function Solutions() {
       <Layout>
         <div className={styles.container}>
           <h1>{t('solutions.titleCase')}</h1>
-          {solutions.map((solution: Solution, index: number) => {
-            return (
-              <div key={index} className={styles['solution-card']}>
-                <ImageSection
-                  heading={t(`${solution.title}`)}
-                  content={t(`${solution.description}`)}
-                  buttonText={t(`${solution.buttonText}`)}
-                  staticImage={solution.imageSecondary || solution.image}
-                  reverse
-                  orderReverse={index % 2 === 0}
-                  icon={solution.icon!}
-                  iconName={solution.title}
-                />
-              </div>
-            )
-          })}
+
+          {solutions?.content! &&
+            Object.entries(solutions?.content!).map(
+              ([key, solution], index) => {
+                return (
+                  <div
+                    key={index}
+                    data-attrib={key}
+                    className={styles['solution-card']}>
+                    <ImageSection
+                      heading={solution.title.value}
+                      content={`<p>${solution.shortDescription.value} </p> \n <p>${solution.longDescription.value}</p>`}
+                      buttonText={t('showSolutions')}
+                      onClick={() => router.push('/solutions/1')}
+                      image={solution.image01.value[0]}
+                      reverse
+                      orderReverse={index % 2 === 0}
+                      icon={solutionIcons[index].icon}
+                      iconName={solutionIcons[index].identifier}
+                      iconPosition={index % 2 === 0 ? 'bottom' : 'center'}
+                    />
+                  </div>
+                )
+              }
+            )}
         </div>
       </Layout>
     </div>
