@@ -1,17 +1,60 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import useTranslation from 'next-translate/useTranslation'
+import Image from 'next/image'
 import Layout from '../../components/layout'
 import styles from '../../styles/AboutUs.module.scss'
 import ImageSection from '../../components/image-section'
 import { AboutAttribute, aboutUsAttributes } from '../../constants/aboutUs'
-import Image from 'next/image'
-import ISOCertHospital from './../../assets/images/iso-cert-hospital.jpeg'
-import DoctorsPresentation from './../../assets/images/doctors.jpeg'
 import OurPartners from '../../components/our-partners'
+import { http } from '../../utils/http'
+import { AboutPage, AboutUsItem } from '../../models/AboutPage'
 
 export default function AboutUs() {
-  const { t } = useTranslation('common')
+  const { t, lang } = useTranslation('common')
+  const [aboutUs, setAboutUs] = useState<AboutPage>()
+
+  const aboutUsIdentifier = 'PAGE_ABOUT_US'
+
+  useEffect(() => {
+    http
+      .get(
+        `/api/v1/pagebuilder/get-by-identifier?identifier=${aboutUsIdentifier}`,
+        {
+          headers: {
+            'Content-Language': lang,
+          },
+        }
+      )
+      .then(res => {
+        const { data } = res.data
+        const {
+          content: { ABOUT_US01, ABOUT_US02 },
+        } = data
+        if (data) {
+          const aboutUs: AboutPage = {
+            id: data.id,
+            name: data.name,
+            identifier: data.identifier,
+            content: {
+              ABOUTUS01: aboutUsContentMapping(ABOUT_US01),
+              ABOUTUS02: aboutUsContentMapping(ABOUT_US02),
+            },
+          }
+          setAboutUs(aboutUs)
+        }
+      })
+      .catch(err => {
+        console.error('API response error', err)
+      })
+  }, [lang])
+
+  const aboutUsContentMapping = (aboutUs: any): AboutUsItem => {
+    return {
+      text: aboutUs.text,
+      image: aboutUs.image,
+    }
+  }
 
   const renderAttributeItem = (attribute: AboutAttribute, index: number) => {
     return (
@@ -58,6 +101,17 @@ export default function AboutUs() {
     )
   }
 
+  const renderInnerContent = (index: number) => {
+    switch (index) {
+      case 0:
+        return renderAboutAttributes()
+      case 1:
+        return renderYoutubeLink()
+      default:
+        break
+    }
+  }
+
   return (
     <div className={styles['about-wrapper']}>
       <Head>
@@ -67,30 +121,30 @@ export default function AboutUs() {
       </Head>
       <Layout>
         <div className={styles.container}>
-          <div className={styles['attributes-section']}>
-            <ImageSection
-              heading={t(`aboutUs.titleCase`)}
-              content={t(`loremIpsumLong`)}
-              buttonText=''
-              staticImage={ISOCertHospital}
-              hideButton
-              reverse
-              orderReverse>
-              {renderAboutAttributes()}
-            </ImageSection>
-          </div>
-          <div className={styles['video-section']}>
-            <ImageSection
-              heading=''
-              content={t(`loremIpsumLong`)}
-              buttonText=''
-              staticImage={DoctorsPresentation}
-              hideButton
-              reverse={false}
-              orderReverse={false}>
-              {renderYoutubeLink()}
-            </ImageSection>
-          </div>
+          {aboutUs?.content! &&
+            Object.entries(aboutUs?.content!).map(([key, about], index) => {
+              return (
+                <div
+                  key={index}
+                  data-attrib={key}
+                  className={
+                    styles[
+                      `${index === 0 ? 'attributes-section' : 'video-section'}`
+                    ]
+                  }>
+                  <ImageSection
+                    heading={index === 0 ? t(`aboutUs.titleCase`) : ''}
+                    content={about.text.value}
+                    buttonText=''
+                    hideButton
+                    image={about.image.value[0]}
+                    reverse
+                    orderReverse={index % 2 === 0}>
+                    {renderInnerContent(index)}
+                  </ImageSection>
+                </div>
+              )
+            })}
         </div>
         <div className={styles['partners-section']}>
           <OurPartners />

@@ -68,6 +68,7 @@ function ProductShortDescription(props: IProps) {
         <Button
           className='contact-us-btn'
           fullWidth={false}
+          type='button'
           size='md'
           onClick={() =>
             router.push(`/contact?pageSource=categoriesDetail&id=${props.id}`)

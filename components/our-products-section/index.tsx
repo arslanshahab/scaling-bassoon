@@ -38,6 +38,7 @@ function OurProductsSection() {
             <Button
               className={styles.readButton}
               fullWidth
+              type='button'
               size='sm'
               variant='regular'
               onClick={() => {

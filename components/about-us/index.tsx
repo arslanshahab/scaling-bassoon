@@ -8,7 +8,7 @@ import styles from './AboutUs.module.scss'
 interface IAboutUs {
   name: string
   content: string
-  image: StaticImageData
+  image: string // the image is going to be a URL path only
 }
 
 function AboutSection() {

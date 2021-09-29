@@ -35,6 +35,7 @@ function ProductCard(props: IProps) {
         <Button
           size='sm'
           variant='outlined'
+          type='button'
           fullWidth
           onClick={() => router.push(`/categories/${props.id}`)}>
           {t('moreInfo')}

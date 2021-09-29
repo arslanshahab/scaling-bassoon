@@ -39,7 +39,7 @@ function ImageSection({
 }: IProps) {
   return (
     <div className={styles['image-section']}>
-      <Row gutter={64}>
+      <Row gutter={48}>
         <Col
           span={12}
           xs={{ span: 24, order: 2 }}

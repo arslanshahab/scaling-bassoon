@@ -48,6 +48,7 @@ function Slider() {
             <div dangerouslySetInnerHTML={{ __html: content }}></div>
             <Button
               className={styles.readButton}
+              type='button'
               fullWidth={false}
               onClick={() => {}}
               size='md'

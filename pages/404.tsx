@@ -21,7 +21,11 @@ function Custom404() {
         <div className={styles['content-wrapper']}>
           <Image src={image404} alt='Error 404' objectFit='contain' />
           <p>{t('error404Text')}</p>
-          <Button size='md' variant='regular' onClick={() => router.push('/')}>
+          <Button
+            type='button'
+            size='md'
+            variant='regular'
+            onClick={() => router.push('/')}>
             {t('backToMain')}
           </Button>
         </div>
