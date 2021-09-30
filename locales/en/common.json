@@ -90,5 +90,10 @@
   "contactThankyou": "Thank you! Your request has been submitted. We will get back to you shortly.",
   "showAllProducts": "Show all products",
   "showSolutions": "Show Solutions",
-  "search": "Search"
+  "search": "Search",
+  "fileListing": "File listing",
+  "fileName": "File Name",
+  "fileSize": "File Size",
+  "download": "Download",
+  "filesForDownloads": "Files for downloads"
 }

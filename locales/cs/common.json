@@ -90,5 +90,10 @@
   "contactThankyou": "Děkuji! Vaše žádost byla odeslána. Brzy se vám ozveme.",
   "showAllProducts": "Zobrazit všechny produkty",
   "showSolutions": "Zobrazit řešení",
-  "search": "Vyhledávání"
+  "search": "Vyhledávání",
+  "fileListing": "Výpis souborů",
+  "fileName": "Název souboru",
+  "fileSize": "Velikost souboru",
+  "download": "Stáhnout",
+  "filesForDownloads": "Soubory ke stažení"
 }
