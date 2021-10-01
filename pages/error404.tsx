@@ -2,10 +2,10 @@ import useTranslation from 'next-translate/useTranslation'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import Layout from '../../components/layout'
-import image404 from './../../assets/images/404.png'
-import Button from './../../components/common/button'
-import styles from './../../styles/Error.module.scss'
+import Layout from '../components/layout'
+import image404 from './../assets/images/404.png'
+import Button from './../components/common/button'
+import styles from './../styles/Error.module.scss'
 function Custom404() {
   const { t } = useTranslation('common')
   const router = useRouter()
