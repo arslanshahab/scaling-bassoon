@@ -1,0 +1,51 @@
+@import "./../../styles/globalTheme.scss";
+
+.brand-card {
+  background-color: $white;
+  color: $primary-text-color;
+  box-shadow: 0px 4px 36px rgba(2, 16, 32, 0.05);
+  margin-bottom: 2rem;
+  width: 100%;
+  .card-image {
+    display: flex;
+    justify-content: center;
+    height: 215px;
+    width: 100%;
+    padding: 2rem 4rem;
+    cursor: pointer;
+    border-bottom: 1px solid $wild-sand;
+    .image {
+      object-fit: cover;
+      width: 25% !important;
+      position: relative !important;
+      height: unset !important;
+    }
+    & > div {
+      position: unset !important;
+    }
+  }
+  .card-description {
+    padding: 1rem;
+    text-align: center;
+    h4 {
+      font-weight: bold;
+      font-size: 30px;
+      color: $primary-text-color;
+      cursor: pointer;
+      white-space: nowrap;
+      overflow: hidden;
+      @media #{$sm} {
+        font-size: 20px;
+      }
+    }
+    p {
+      color: $primary-text-color;
+      opacity: 0.7;
+      margin-bottom: 2rem;
+      height: 80px;
+      @media #{$sm-md} {
+        height: 56px;
+      }
+    }
+  }
+}
