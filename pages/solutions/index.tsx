@@ -5,9 +5,10 @@ import styles from '../../styles/Solutions.module.scss'
 import useTranslation from 'next-translate/useTranslation'
 import ImageSection from '../../components/image-section'
 import { http } from '../../utils/http'
-import { SolutionItem, SolutionPage } from '../../models/SolutionPage'
+import { SolutionPage } from '../../models/SolutionPage'
 import { solutionIcons, solutionsIdentifier } from '../../constants/solutions'
 import { useRouter } from 'next/router'
+import { mapSolutionPropertiesToCamelCase } from '../../utils/mappings'
 
 export default function Solutions() {
   const { t, lang } = useTranslation('common')
@@ -35,9 +36,9 @@ export default function Solutions() {
             name: data.name,
             identifier: data.identifier,
             content: {
-              SOLUTION01: solutionsMapping(SOLUTION01),
-              SOLUTION02: solutionsMapping(SOLUTION02),
-              SOLUTION03: solutionsMapping(SOLUTION03),
+              SOLUTION01: mapSolutionPropertiesToCamelCase(SOLUTION01),
+              SOLUTION02: mapSolutionPropertiesToCamelCase(SOLUTION02),
+              SOLUTION03: mapSolutionPropertiesToCamelCase(SOLUTION03),
             },
           }
           setSolutions(solutions)
@@ -47,16 +48,6 @@ export default function Solutions() {
         console.error('API response error', err)
       })
   }, [lang])
-
-  const solutionsMapping = (solution: any): SolutionItem => {
-    return {
-      title: solution.title,
-      shortDescription: solution['short-description'],
-      longDescription: solution['long-description'],
-      image01: solution['image-01'],
-      image02: solution['image-02'],
-    }
-  }
 
   return (
     <div className={styles['solutions-wrapper']}>

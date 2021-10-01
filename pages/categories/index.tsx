@@ -9,6 +9,7 @@ import { http } from '../../utils/http'
 import { Product } from '../../models/Product'
 import FilterProducts from '../../components/filter-products'
 import OurNewsCarousel from '../../components/our-news-carousel'
+import { mapProductPropertiesToCamelCase } from '../../utils/mappings'
 
 const perpage = 8
 const baseURL = `/api/v1/products/get-all-products?paginate=1&perpage=${perpage}`
@@ -21,7 +22,6 @@ interface ICurrentURL {
 export default function Categories() {
   const { t, lang } = useTranslation('common')
   const [products, setProducts] = useState<Product[]>([])
-  const [newsProducts, setNewsProducts] = useState<Product[]>([])
   const [paginationInfo, setPaginationInfo] = useState<any>()
   const [currentURL, setCurrentURL] = useState<ICurrentURL>({
     url: baseURL,
@@ -37,12 +37,6 @@ export default function Categories() {
         if (items?.length > 0) {
           const products = mapProductPropertiesToCamelCase(items)
           setProducts(products)
-          // keep only top 4 items in our-news carousel and set only for the first page load
-          if (newsProducts?.length < 1) {
-            setNewsProducts(
-              products?.slice(0, products?.length > 3 ? 4 : products?.length)
-            )
-          }
           setPaginationInfo(paginationInfo)
         }
       } catch (error) {
@@ -71,21 +65,6 @@ export default function Categories() {
     }
 
     return response
-  }
-
-  const mapProductPropertiesToCamelCase = (items: Product[]) => {
-    const products = items.map((item: any) => {
-      return {
-        ...item,
-        productsTitle: item.products_title,
-        productsShortDescription: item.products_short_description,
-        productsDescription: item.products_description,
-        productsAdditionalInfo: item.products_additional_info,
-        productsCategoryId: item.products_category_id,
-        productsFeaturedImage: item.products_featured_image,
-      }
-    })
-    return products
   }
 
   const searchProducts = (searchText: string, withSearch: boolean) => {
@@ -133,7 +112,7 @@ export default function Categories() {
             </div>
             <div className={styles['slider-col']}>
               <div className={styles.slider}>
-                <OurNewsCarousel products={newsProducts} />
+                <OurNewsCarousel />
               </div>
             </div>
           </div>

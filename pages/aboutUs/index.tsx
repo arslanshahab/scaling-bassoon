@@ -8,7 +8,8 @@ import ImageSection from '../../components/image-section'
 import { AboutAttribute, aboutUsAttributes } from '../../constants/aboutUs'
 import OurPartners from '../../components/our-partners'
 import { http } from '../../utils/http'
-import { AboutPage, AboutUsItem } from '../../models/AboutPage'
+import { AboutPage } from '../../models/AboutPage'
+import { mapAboutUsPropertiesToCamelCase } from '../../utils/mappings'
 
 export default function AboutUs() {
   const { t, lang } = useTranslation('common')
@@ -37,8 +38,8 @@ export default function AboutUs() {
             name: data.name,
             identifier: data.identifier,
             content: {
-              ABOUTUS01: aboutUsContentMapping(ABOUT_US01),
-              ABOUTUS02: aboutUsContentMapping(ABOUT_US02),
+              ABOUTUS01: mapAboutUsPropertiesToCamelCase(ABOUT_US01),
+              ABOUTUS02: mapAboutUsPropertiesToCamelCase(ABOUT_US02),
             },
           }
           setAboutUs(aboutUs)
@@ -48,13 +49,6 @@ export default function AboutUs() {
         console.error('API response error', err)
       })
   }, [lang])
-
-  const aboutUsContentMapping = (aboutUs: any): AboutUsItem => {
-    return {
-      text: aboutUs.text,
-      image: aboutUs.image,
-    }
-  }
 
   const renderAttributeItem = (attribute: AboutAttribute, index: number) => {
     return (

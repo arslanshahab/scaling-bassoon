@@ -13,6 +13,11 @@ import ProductLongDescription from '../../../components/product-long-description
 import ProductBulletsDescription from '../../../components/product-bullets-description'
 import ProductAttachments from '../../../components/product-attachments'
 import RelatedProducts from '../../../components/related-products'
+import {
+  mapAttachmentPropertiesToCamelCase,
+  mapProductPropertiesToCamelCase,
+  mapSingleProductPropertiesToCamelCase,
+} from '../../../utils/mappings'
 
 // category to hide bullets for, temp category by default: name = "Uncategorized" | id = 1 (will be changed later)
 const categoryIdForHiddenBullets = 1
@@ -36,36 +41,14 @@ export default function CategoryDetail() {
         const { recommended_products } = data
         const { attachments } = data
         if (data) {
-          // mapping product properties to retain camelCase convention
           const product = {
-            ...data,
-            productsTitle: data.products_title,
-            productsShortDescription: data.products_short_description,
-            productsDescription: data.products_description,
-            productsAdditionalInfo: data.products_additional_info,
-            productsCategoryId: data.products_category_id,
-            productsFeaturedImage: data.products_featured_image,
+            // mapping product properties to retain camelCase convention
+            ...mapSingleProductPropertiesToCamelCase(data),
             // mapping recommendedProperties properties to retain camelCase convention
-            recommendedProducts: recommended_products.map((rp: any) => {
-              return {
-                ...rp,
-                productsTitle: rp.products_title,
-                productsShortDescription: rp.products_short_description,
-                productsDescription: rp.products_description,
-                productsAdditionalInfo: rp.products_additional_info,
-                productsCategoryId: rp.products_category_id,
-                productsFeaturedImage: rp.products_featured_image,
-              }
-            }),
+            recommendedProducts:
+              mapProductPropertiesToCamelCase(recommended_products),
             // mapping attachments properties to retain camelCase convention
-            attachments: attachments.map((attachment: any) => {
-              return {
-                id: attachment.id,
-                productId: attachment.product_id,
-                attachmentUrl: attachment.attachment_url,
-                attachmentName: attachment.attachment_name,
-              }
-            }),
+            attachments: mapAttachmentPropertiesToCamelCase(attachments),
           }
           setProduct(product)
           // show full size description if the category matches the hide bullets id AND/OR the data for bullet points is empty

@@ -16,13 +16,13 @@ import { useEffect, useState } from 'react'
 import { Product } from '../../models/Product'
 import { global } from './../../constants/global'
 import { useRouter } from 'next/router'
-interface IProps {
-  products: Product[]
-}
+import { http } from '../../utils/http'
+import { mapProductPropertiesToCamelCase } from '../../utils/mappings'
 
-function OurNewsCarousel(props: IProps) {
-  const { t } = useTranslation('common')
+function OurNewsCarousel() {
+  const { t, lang } = useTranslation('common')
   const [visibleSlides, setVisibleSlides] = useState(2)
+  const [products, setProducts] = useState<Product[]>([])
   const onlyWidth = useWindowWidth()
   const router = useRouter()
 
@@ -39,7 +39,30 @@ function OurNewsCarousel(props: IProps) {
     if (onlyWidth > tabletMaxWidth) {
       setVisibleSlides(2)
     }
-  }, [onlyWidth])
+  }, [onlyWidth, mobileMaxWidth, tabletMaxWidth])
+
+  useEffect(() => {
+    http
+      .get(
+        `/api/v1/products/get-all-products?order_column=products.id&order_direction=desc&length=4`,
+        {
+          headers: {
+            'Content-Language': lang,
+          },
+        }
+      )
+      .then(res => {
+        const { items } = res.data?.data || []
+
+        if (items?.length > 0) {
+          const products = mapProductPropertiesToCamelCase(items)
+          setProducts(products)
+        }
+      })
+      .catch(err => {
+        console.error('API response error', err)
+      })
+  }, [lang])
 
   const renderSlide = (product: Product) => {
     const {
@@ -101,9 +124,9 @@ function OurNewsCarousel(props: IProps) {
         visibleSlides={visibleSlides}
         step={visibleSlides}
         className={styles['main-carousel']}
-        totalSlides={props.products?.length || 0}>
+        totalSlides={products?.length || 0}>
         <Slider>
-          {props.products?.map((product: Product, index: number) => {
+          {products?.map((product: Product, index: number) => {
             return (
               <Slide index={index} key={index}>
                 {renderSlide(product)}

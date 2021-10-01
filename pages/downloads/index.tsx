@@ -7,6 +7,7 @@ import Layout from '../../components/layout'
 import { http } from '../../utils/http'
 import { Attachment } from '../../models/Attachment'
 import styles from './../../styles/Downloads.module.scss'
+import { mapAttachmentPropertiesToCamelCase } from '../../utils/mappings'
 
 const perpage = 15
 const baseURL = `/api/v1/products/get-all-attachments?paginate=1&perpage=${perpage}`
@@ -98,20 +99,6 @@ export default function Downloads() {
     }
 
     return response
-  }
-
-  const mapAttachmentPropertiesToCamelCase = (items: any[]) => {
-    const attachments: Attachment[] = items.map((item: any) => {
-      return {
-        id: item.id,
-        productId: item.product_id,
-        attachmentUrl: item.attachment_url,
-        attachmentName: item.attachment_name,
-        fileSize: '35 KB', // temporary, needs to be replaced by api response
-        key: item.attachment_name,
-      }
-    })
-    return attachments
   }
 
   const renderDownloadIcon = (url: string) => {
