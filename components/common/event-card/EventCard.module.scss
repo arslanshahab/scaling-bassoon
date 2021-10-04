@@ -1,0 +1,54 @@
+@import './../../../styles/globalTheme.scss';
+
+.event-card {
+  border-radius: 4px;
+  background-color: $white;
+  box-shadow: 0px 4px 57px rgba(2, 16, 32, 0.05);
+  width: 100%;
+  margin-bottom: 2rem;
+
+  .event-card-image {
+    object-fit: cover;
+    width: 100%;
+    height: 30%;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .event-card-description {
+    padding: 1.5rem 1rem;
+
+    .event-card-date {
+      font-size: 14px;
+      color: $primary-text-color;
+      opacity: 0.33;
+    }
+
+    h4 {
+      font-weight: bold;
+      font-size: 20px;
+      color: $primary-text-color;
+      cursor: pointer;
+      white-space: wrap;
+      overflow: hidden;
+      height: calc((20px * 1.6 * 2) + 8px);
+      @media #{$sm} {
+        height: auto;
+      }
+    }
+
+    .event-card-desc {
+      color: $primary-text-color;
+      font-size: 16px;
+      opacity: 0.7;
+      margin-bottom: 2rem;
+      height: calc((16px * 1.6 * 3) + 8px);
+
+      @media #{$xlg} {
+        height: calc((16px * 1.6 * 2) + 8px);
+      }
+      @media #{$sm} {
+        height: auto;
+      }
+    }
+  }
+}

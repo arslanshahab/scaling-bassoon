@@ -1,0 +1,42 @@
+@import './globalTheme.scss';
+
+.events-wrapper {
+  width: 100%;
+  overflow: hidden;
+
+  h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: $primary-text-color;
+    @media #{$sm} {
+      font-size: 32px;
+    }
+  }
+
+  .events-cards-wrapper {
+    margin-bottom: 2rem;
+  }
+
+  .btn-view-more {
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    display: block;
+    margin: auto;
+    cursor: pointer;
+    &::after {
+      content: '';
+      margin-left: 12px;
+      margin-bottom: 4px;
+      border: solid black;
+      border-width: 0 2px 2px 0;
+      display: inline-block;
+      padding: 4px;
+      transform: rotate(45deg);
+      -webkit-transform: rotate(45deg);
+    }
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
