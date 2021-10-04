@@ -38,23 +38,28 @@ function ProductShortDescription(props: IProps) {
           {t('specifications')}
         </h3>
         <div className={styles['specifications-item-grid']}>
-          <div className={styles.specifications}>
+          <div
+            className={`${styles.specifications} ${
+              !showAllLabels && attributes?.length > defaultSpecsCount
+                ? styles.collapsed
+                : styles.expanded
+            }`}>
             {attributes
               ?.slice(0, showAllLabels ? attributes?.length : defaultSpecsCount)
               .map(spec => renderSpecificationItem(spec))}
+            {!showAllLabels && attributes?.length > defaultSpecsCount && (
+              <span
+                className={styles['view-more-lables-btn']}
+                onClick={() => setShowAllLabels(true)}>
+                <Image
+                  src={`/icons/three-dots.svg`}
+                  alt='view more labels'
+                  width={20}
+                  height={24}
+                />
+              </span>
+            )}
           </div>
-          {!showAllLabels && attributes?.length > defaultSpecsCount && (
-            <span
-              className={styles['view-more-lables-btn']}
-              onClick={() => setShowAllLabels(true)}>
-              <Image
-                src={`/icons/three-dots.svg`}
-                alt='view more labels'
-                width={20}
-                height={24}
-              />
-            </span>
-          )}
         </div>
       </>
     )

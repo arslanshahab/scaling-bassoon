@@ -1,11 +1,15 @@
 import Image from 'next/image'
 import React, { useRef, useState } from 'react'
-import ImageGallery from 'react-image-gallery'
+import ImageGallery, { ReactImageGalleryItem } from 'react-image-gallery'
 import Lightbox from 'react-image-lightbox'
 import styles from './ProductCarousel.module.scss'
 
-function ProductCarousel(props: any) {
-  const galleryRef = useRef(null)
+interface IProps {
+  images: ReactImageGalleryItem[]
+}
+
+function ProductCarousel(props: IProps) {
+  const galleryRef = useRef<ImageGallery | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
   const [mainSrc, setMainSrc] = useState(props.images?.[0])
   const [showLightBox, setShowLightBox] = useState(false)
@@ -17,7 +21,7 @@ function ProductCarousel(props: any) {
     setMainSrc(props.images?.[currentIndex])
   }
 
-  const myImageGalleryRenderer = (item: any) => {
+  const myImageGalleryRenderer = (item: ReactImageGalleryItem) => {
     return (
       <div className={styles['image-gallery-image']}>
         <Image
@@ -77,6 +81,20 @@ function ProductCarousel(props: any) {
           }}
         />
       )}
+      <button
+        onClick={() =>
+          galleryRef?.current?.slideToIndex(
+            (currentIndex - 1) % (props.images?.length - 1)
+          )
+        }
+        className={`${styles['btn-arrow']} ${styles['arrow-left']}`}></button>
+      <button
+        onClick={() =>
+          galleryRef?.current?.slideToIndex(
+            (currentIndex + 1) % props.images?.length
+          )
+        }
+        className={`${styles['btn-arrow']} ${styles['arrow-right']}`}></button>
       {showLightBox && renderLightBox()}
     </div>
   )

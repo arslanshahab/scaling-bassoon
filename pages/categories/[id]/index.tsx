@@ -75,23 +75,26 @@ export default function CategoryDetail() {
         <div className={styles.container} style={{ paddingBottom: '2rem' }}>
           <Row gutter={{ sm: 32, md: 48, lg: 48 }}>
             <Col
-              span={12}
-              xs={{ span: 12 }}
+              span={24}
+              xs={{ span: 24 }}
               md={{ span: 11 }}
               lg={{ span: 11 }}>
               <ProductCarousel
-                images={product?.images?.map(x => {
-                  return {
-                    ...x,
-                    original: `${process.env.NEXT_PUBLIC_API_URL}${x.image_path}`,
-                    thumbnail: `${process.env.NEXT_PUBLIC_API_URL}${x.image_path}`,
-                  }
-                })}
+                images={
+                  (product?.images &&
+                    product.images.map(x => {
+                      return {
+                        original: `${process.env.NEXT_PUBLIC_API_URL}${x.image_path}`,
+                        thumbnail: `${process.env.NEXT_PUBLIC_API_URL}${x.image_path}`,
+                      }
+                    })) ||
+                  []
+                }
               />
             </Col>
             <Col
-              span={12}
-              xs={{ span: 12 }}
+              span={24}
+              xs={{ span: 24 }}
               md={{ span: 13 }}
               lg={{ span: 13 }}>
               {product && (
