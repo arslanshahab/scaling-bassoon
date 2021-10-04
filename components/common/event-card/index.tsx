@@ -23,11 +23,11 @@ function EventCard(props: IProps) {
         alt={props.title}
         layout='responsive'
         className={styles['event-card-image']}
-        onClick={() => router.push()}
+        onClick={() => router.push('/events/1')}
       />
       <div className={styles['event-card-description']}>
         <p className={styles['event-card-date']}>{props.date}</p>
-        <h4 onClick={() => router.push()}>{props.title}</h4>
+        <h4 onClick={() => router.push('/events/1')}>{props.title}</h4>
         <p className={styles['event-card-desc']}>
           {props.description?.length > 75
             ? `${props.description.substring(0, 75)}...`
@@ -38,7 +38,7 @@ function EventCard(props: IProps) {
           variant='outlined'
           type='button'
           fullWidth
-          onClick={() => router.push()}>
+          onClick={() => router.push('/events/1')}>
           {t('moreInfo')}
         </Button>
       </div>

@@ -8,14 +8,13 @@ import placeholderImg from '../../assets/images/doctors.jpeg'
 
 const placeholderData = [
   {
-    title: 'Event title Lorem ipsum dolor sit amet',
+    title: 'Event title Lorem ipsum dolor sit ametdfgfdg',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing el',
     date: '01.01.2022',
   },
   {
     title: 'Event title',
-    // description:
-    //   'Lorem ipsum dolor sit amet consectetur adipisicing elit dolor sit amet consectetur adipisicing elit dolor sit amet consectetur adipisicing elit',
+    description: '',
     date: '01.01.2022',
   },
   {
