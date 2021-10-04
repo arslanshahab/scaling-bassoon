@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx .",
     "lint:fix": "eslint --fix --ext .js,.jsx,.ts,.tsx .",
-    "analyze": "cross-env ANALYZE=true next build"
+    "analyze": "cross-env ANALYZE=true next build",
+    "prepare": "husky install",
+    "check-ts": "tsc --project tsconfig.json --noEmit"
   },
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
@@ -43,6 +45,7 @@
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^7.0.2",
     "prettier": "^2.3.2",
     "prettier-eslint": "^13.0.0"
   }
