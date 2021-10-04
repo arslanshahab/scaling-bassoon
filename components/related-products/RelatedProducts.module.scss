@@ -7,7 +7,7 @@
   width: 100%;
   color: $primary-text-color;
   position: relative;
-  .link-title {
+  .link-title-md {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -19,6 +19,28 @@
       color: $primary-text-color;
     }
     a {
+      @media #{$sm} {
+        display: none;
+      }
+      text-decoration: underline;
+      &:hover {
+        color: $primary-text-color;
+        text-decoration: underline;
+      }
+    }
+  }
+  .link-title-sm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    a {
+      display: none;
+      @media #{$sm} {
+        display: inline-block;
+      }
+      text-decoration: underline;
       &:hover {
         color: $primary-text-color;
         text-decoration: underline;

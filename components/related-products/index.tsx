@@ -37,7 +37,7 @@ function RelatedProducts(props: IProps) {
 
   return (
     <div className={styles['related-products-wrapper']}>
-      <div className={styles['link-title']}>
+      <div className={styles['link-title-md']}>
         <h4>{t('similarProducts')}</h4>
         <Link href='/categories'>{t('showAllProducts')}</Link>
       </div>
@@ -71,6 +71,9 @@ function RelatedProducts(props: IProps) {
           <></>
         </ButtonNext>
       </CarouselProvider>
+      <div className={styles['link-title-sm']}>
+        <Link href='/categories'>{t('showAllProducts')}</Link>
+      </div>
     </div>
   )
 }
