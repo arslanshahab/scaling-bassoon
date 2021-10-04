@@ -8,6 +8,7 @@ import { http } from '../../utils/http'
 import { Attachment } from '../../models/Attachment'
 import styles from './../../styles/Downloads.module.scss'
 import { mapAttachmentPropertiesToCamelCase } from '../../utils/mappings'
+import SearchAttachments from '../../components/search-attachments'
 
 const perpage = 15
 const baseURL = `/api/v1/products/get-all-attachments?paginate=1&perpage=${perpage}`
@@ -22,7 +23,7 @@ export default function Downloads() {
   const [attachments, setAttachments] = useState<Attachment[]>([])
   const [paginationInfo, setPaginationInfo] = useState<any>()
   const [currentPage, setCurrentPage] = useState<number>(1)
-  const [currentURL] = useState<ICurrentURL>({
+  const [currentURL, setCurrentURL] = useState<ICurrentURL>({
     url: baseURL,
     isSearch: false,
   })
@@ -54,7 +55,7 @@ export default function Downloads() {
   useEffect(() => {
     async function fetchProducts() {
       try {
-        const response = await loadMoreProducts(
+        const response = await loadMoreAttachments(
           currentURL.url,
           false,
           currentPage
@@ -74,7 +75,7 @@ export default function Downloads() {
   }, [lang, currentURL, currentPage])
 
   // default function to fetch attachments, made it separate to handle pagination and avoid conflicts on language switching
-  const loadMoreProducts = async (
+  const loadMoreAttachments = async (
     url: string,
     isPaginatedRequest: boolean,
     pageNumber?: number
@@ -99,6 +100,20 @@ export default function Downloads() {
     }
 
     return response
+  }
+
+  const searchAttachments = (searchText: string, withSearch: boolean) => {
+    if (withSearch) {
+      setCurrentURL({
+        url: `${baseURL}&search=${searchText}`,
+        isSearch: true,
+      })
+    } else {
+      setCurrentURL({
+        url: baseURL,
+        isSearch: true,
+      })
+    }
   }
 
   const renderDownloadIcon = (url: string) => {
@@ -142,9 +157,8 @@ export default function Downloads() {
       </Head>
       <Layout>
         <div className={styles.container}>
-          <h1 className={styles['page-title']}>{t('filesForDownloads')}</h1>
           <div className={styles.header}>
-            <h4>Search component goes here</h4>
+            <SearchAttachments searchAttachments={searchAttachments} />
           </div>
           <div className={styles['table-wrapper']}>
             <h4>{t('fileListing')}</h4>
