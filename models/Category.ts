@@ -10,5 +10,5 @@ export type Category = {
   imageUrl: string
   parentCategory: Category
   childrenCategories: Category[]
-  isChecked: boolean
+  isChecked?: boolean
 }

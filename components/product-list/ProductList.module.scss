@@ -21,8 +21,19 @@
       transform: rotate(45deg);
       -webkit-transform: rotate(45deg);
     }
-    &:hover{
+    &:hover {
       text-decoration: underline;
+    }
+  }
+  .empty-proudcts-message {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p {
+      color: $primary-text-color;
+      opacity: 0.7;
+      font-weight: 600;
     }
   }
 }

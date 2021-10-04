@@ -38,6 +38,9 @@ export default function Categories() {
           const products = mapProductPropertiesToCamelCase(items)
           setProducts(products)
           setPaginationInfo(paginationInfo)
+        } else {
+          setProducts([])
+          setPaginationInfo(null)
         }
       } catch (error) {
         console.error(error)

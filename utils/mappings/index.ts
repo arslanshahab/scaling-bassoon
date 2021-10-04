@@ -1,19 +1,14 @@
 import { AboutUsItem } from '../../models/AboutPage'
 import { Attachment } from '../../models/Attachment'
+import { Category } from '../../models/Category'
 import { Product } from '../../models/Product'
+import { Brand } from '../../models/Brand'
 import { SolutionItem } from '../../models/SolutionPage'
+import { Label } from '../../models/Label'
 
-export const mapProductPropertiesToCamelCase = (items: any[]): any[] => {
+export const mapProductPropertiesToCamelCase = (items: any[]): Product[] => {
   const products = items.map((item: any) => {
-    return {
-      ...item,
-      productsTitle: item.products_title,
-      productsShortDescription: item.products_short_description,
-      productsDescription: item.products_description,
-      productsAdditionalInfo: item.products_additional_info,
-      productsCategoryId: item.products_category_id,
-      productsFeaturedImage: item.products_featured_image,
-    }
+    return mapSingleProductPropertiesToCamelCase(item)
   })
   return products
 }
@@ -51,7 +46,9 @@ export const mapAboutUsPropertiesToCamelCase = (aboutUs: any): AboutUsItem => {
   }
 }
 
-export const mapAttachmentPropertiesToCamelCase = (items: any[]) => {
+export const mapAttachmentPropertiesToCamelCase = (
+  items: any[]
+): Attachment[] => {
   const attachments: Attachment[] = items.map((item: any) => {
     return {
       id: item.id,
@@ -63,4 +60,50 @@ export const mapAttachmentPropertiesToCamelCase = (items: any[]) => {
     }
   })
   return attachments
+}
+
+export const mapCategoryPropertiesToCamelCase = (items: any[]): Category[] => {
+  const categories = items.map((item: any) => {
+    return {
+      id: item.id,
+      categoryName: item.category_name,
+      categorySlug: item.category_slug,
+      categoryDescription: item.category_description,
+      parentId: item.parent_id,
+      seoTitle: item.seo_title,
+      seoUrl: item.seo_url,
+      seoDescription: item.seo_description,
+      imageUrl: item.image_url,
+      parentCategory: item.parent_category,
+      childrenCategories: item.children_categories,
+    }
+  })
+  return categories
+}
+
+export const mapBrandPropertiesToCamelCase = (items: any[]): Brand[] => {
+  const brands = items.map(brand => {
+    return {
+      id: brand.id,
+      title: brand.title,
+      shortDescription: brand.short_description,
+      image: brand.image,
+      slug: brand.slug,
+      isChecked: false,
+    }
+  })
+  return brands
+}
+
+export const mapLabelPropertiesToCamelCase = (items: any[]): Label[] => {
+  const labels = items.map(label => {
+    return {
+      id: label.id,
+      name: label.name,
+      color: label.color,
+      model: label.model,
+      isChecked: false,
+    }
+  })
+  return labels
 }

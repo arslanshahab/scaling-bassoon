@@ -53,7 +53,13 @@ function ProductList(props: IProps) {
   return (
     <div className={styles['products-list-wrapper']}>
       <div className={styles.container}>
-        {renderProductsList()}
+        {products?.length > 0 ? (
+          renderProductsList()
+        ) : (
+          <div className={styles['empty-proudcts-message']}>
+            <p>{t('noProducts')}</p>
+          </div>
+        )}
         {paginationInfo?.next_page_url && (
           <button
             className={styles['btn-view-more']}

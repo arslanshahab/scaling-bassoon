@@ -4,4 +4,5 @@ export type Brand = {
   slug?: string
   shortDescription: string
   image: string | null
+  isChecked?: boolean
 }

@@ -1,6 +1,5 @@
 import useTranslation from 'next-translate/useTranslation'
 import { ReactChild, useEffect, useState } from 'react'
-import { Category } from '../../models/Category'
 import { http } from '../../utils/http'
 import styles from './FilterProducts.module.scss'
 
@@ -8,66 +7,98 @@ interface IProps {
   filterProducts: (urlParams: string) => void
 }
 
+interface IFilter {
+  id: number
+  name: string
+  value: string
+  column: 'categories:category_id' | 'brand:brand_id' | 'labels:label_id'
+  isChecked: boolean
+}
+
 const defaultFiltersCount = 4
 
 function FilterProducts({ filterProducts }: IProps) {
   const { t, lang } = useTranslation('common')
 
-  const [productFilters, setProductFilters] = useState<Category[]>([])
+  const [productFilters, setProductFilters] = useState<IFilter[]>([])
   const [showAllFilters, setShowAllFilters] = useState<boolean>(false)
 
   useEffect(() => {
     http
-      .get(`/api/v1/products/get-all-product-categories`, {
+      .get(`/api/v1/products/get-all-filters`, {
         headers: {
           'Content-Language': lang,
         },
       })
       .then(res => {
         const { data } = res.data
-        if (data?.length > 0) {
-          const filters = data.map((filter: any) => {
-            return {
-              id: filter.id,
-              categoryName: filter.category_name,
-              categorySlug: filter.category_slug,
-              categoryDescription: filter.category_description,
-              parentId: filter.parent_id,
-              seoTitle: filter.seo_title,
-              seoUrl: filter.seo_url,
-              seoDescription: filter.seo_description,
-              imageUrl: filter.image_url,
-              parentCategory: filter.parent_category,
-              childrenCategories: filter.children_categories,
-              isChecked: false,
-            }
-          })
-          setProductFilters(filters)
-        }
+        const filters: IFilter[] = [
+          ...mapCatgeoryFilters(data.categories),
+          ...mapBrandFilters(data.brands),
+          ...mapLabelFilters(data.labels),
+        ]
+        setProductFilters(filters)
       })
       .catch(error => {
         console.error(error)
       })
   }, [lang])
 
+  const mapCatgeoryFilters = (items: any[]): IFilter[] => {
+    return items.map(item => {
+      return {
+        id: item.id,
+        name: item.category_name,
+        value: item.id,
+        type: 'categories',
+        isChecked: false,
+        column: 'categories:category_id',
+      }
+    })
+  }
+  const mapBrandFilters = (items: any[]): IFilter[] => {
+    return items.map(item => {
+      return {
+        id: item.id,
+        name: item.title,
+        value: item.id,
+        type: 'brands',
+        isChecked: false,
+        column: 'brand:brand_id',
+      }
+    })
+  }
+  const mapLabelFilters = (items: any[]): IFilter[] => {
+    return items.map(item => {
+      return {
+        id: item.id,
+        name: item.name,
+        value: item.id,
+        type: 'labels',
+        isChecked: false,
+        column: 'labels:label_id',
+      }
+    })
+  }
+
   const handleFilterChange = (event: any, index: any) => {
     const updatedFilters = [...productFilters]
     updatedFilters[index].isChecked = event.target.checked
     const url = generateFiltrationURL(
-      updatedFilters.filter((filter: Category) => filter.isChecked)
+      updatedFilters.filter((filter: IFilter) => filter.isChecked)
     )
     filterProducts(url)
     setProductFilters(updatedFilters)
   }
 
-  const generateFiltrationURL = (filters: Category[]): string => {
+  const generateFiltrationURL = (filters: IFilter[]): string => {
     let url: string = ''
-    filters.forEach((filter: Category, index: number) => {
+    filters.forEach((filter: IFilter, index: number) => {
       if (filter.isChecked) {
         url = url
-          .concat(`where[${index}][column]=categories:category_slug`)
+          .concat(`where[${index}][column]=${filter.column}`)
           .concat('&')
-          .concat(`where[${index}][value]=${filter.categorySlug}`)
+          .concat(`where[${index}][value]=${filter.value}`)
           .concat('&')
           .concat(`where[${index}][operator]==`)
         if (filters.length - 1 !== index) {
@@ -78,7 +109,7 @@ function FilterProducts({ filterProducts }: IProps) {
     return url
   }
 
-  const renderFilter = (filter: Category, index: number): ReactChild => {
+  const renderFilter = (filter: IFilter, index: number): ReactChild => {
     return (
       <div className={styles['filter-wrapper']}>
         <label
@@ -91,7 +122,7 @@ function FilterProducts({ filterProducts }: IProps) {
             onChange={e => handleFilterChange(e, index)}
             className={styles['form-checkbox']}
           />
-          <span>{filter.categoryName}</span>
+          <span>{filter.name}</span>
         </label>
       </div>
     )
@@ -100,7 +131,7 @@ function FilterProducts({ filterProducts }: IProps) {
     <div className={styles['product-filters']}>
       {productFilters
         ?.slice(0, showAllFilters ? productFilters.length : defaultFiltersCount)
-        .map((filter: Category, index: number) => renderFilter(filter, index))}
+        .map((filter: IFilter, index: number) => renderFilter(filter, index))}
       {!showAllFilters && productFilters?.length > defaultFiltersCount && (
         <button
           className={styles['btn-view-more']}

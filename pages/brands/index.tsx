@@ -7,6 +7,7 @@ import { Col, Row } from 'antd'
 import BrandCard from '../../components/brand-card'
 import { http } from '../../utils/http'
 import { Brand } from '../../models/Brand'
+import { mapBrandPropertiesToCamelCase } from '../../utils/mappings'
 
 export default function Brands() {
   const { t, lang } = useTranslation('common')
@@ -22,7 +23,7 @@ export default function Brands() {
       .then(res => {
         const { items } = res.data?.data
         if (items?.length > 0) {
-          const brands = brandPropertiesMapping(items)
+          const brands = mapBrandPropertiesToCamelCase(items)
           setBrands(brands)
         }
       })
@@ -30,19 +31,6 @@ export default function Brands() {
         console.error('API response error', err)
       })
   }, [lang])
-
-  const brandPropertiesMapping = (items: any[]): Brand[] => {
-    const brands = items.map(brand => {
-      return {
-        id: brand.id,
-        title: brand.title,
-        shortDescription: brand.short_description,
-        image: brand.image,
-        slug: brand.slug,
-      }
-    })
-    return brands
-  }
 
   const renderBrandsList = () => {
     return (
