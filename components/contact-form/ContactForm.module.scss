@@ -7,12 +7,15 @@
     font-size: 28px;
     font-weight: bold;
     color: $primary-text-color;
+    @media #{$sm} {
+      font-size: 24px;
+    }
   }
 
   input,
   textarea {
     background: $white;
-    box-shadow: 0px 4px 57px rgba(2, 16, 32, 0.03);
+    box-shadow: 0px 4px 57px rgba(2, 16, 32, 0.05);
     border-radius: 4px;
     border: none;
   }
@@ -23,6 +26,9 @@
   }
   input {
     height: 40px;
+    font-size: 16px;
+    color: $primary-text-color;
+    opacity: 0.7;
   }
   textarea {
     resize: none;
@@ -35,11 +41,15 @@
     font-size: 16px;
     a {
       text-decoration: underline;
+      &:hover {
+        color: $secondary-text-color;
+      }
     }
   }
 
   :global .ant-form-item {
     margin-bottom: 16px;
+    font-size: 16px;
   }
   // shifted "required steric symbol" from prefix to postfix as per design
   :global .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
@@ -53,5 +63,13 @@
     font-weight: bold;
     line-height: 1;
     content: "*";
+  }
+  :global .ant-input:focus,
+  :global .ant-input-focused {
+    border-color: $secondary-text-color;
+    border-right-width: 1px !important;
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 2px rgb(24 144 255 / 20%);
+    box-shadow: 0 0 0 2px rgba($color: $secondary-text-color, $alpha: 0.5);
   }
 }

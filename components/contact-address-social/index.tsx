@@ -27,7 +27,7 @@ function ContactAddressSocialLinks() {
   const renderSocialLinks = () => {
     return (
       <div className={styles['social-wrapper']}>
-        <h5>{t('followSocial')}</h5>
+        <h5 className={styles['page-title']}>{t('followSocial')}</h5>
         <div className={styles['social-icons']}>
           {Object.entries(socialMediaLinks).map(([key, val]) => {
             return (

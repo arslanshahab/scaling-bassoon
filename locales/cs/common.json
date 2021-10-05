@@ -98,5 +98,9 @@
   "filesForDownloads": "Soubory ke stažení",
   "ourBrands": "Naše značky",
   "searchAttachments": "Vyhledejte přílohy",
-  "noProducts": "Nebyly nalezeny žádné produkty odpovídající vašemu výběru."
+  "noProducts": "Nebyly nalezeny žádné produkty odpovídající vašemu výběru.",
+  "provideName": "Zadejte prosím své jméno!",
+  "provideEmail": "Zadejte prosím svůj email!",
+  "provideMessage": "Zadejte prosím svoji zprávu!",
+  "sendingFailed": "Odeslání se nezdařilo"
 }

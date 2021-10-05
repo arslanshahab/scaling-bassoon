@@ -1,26 +1,52 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Form, Input } from 'antd'
 import useTranslation from 'next-translate/useTranslation'
 import styles from './ContactForm.module.scss'
 import Button from './../common/button'
-import { contactFormFields } from '../../constants/contactForm'
+import { contactFormFields, IContactField } from '../../constants/contactForm'
 import { http } from '../../utils/http'
+import { useGoogleReCaptcha } from 'react-google-recaptcha-v3'
+import { useRouter } from 'next/router'
 
 interface IRequestBody {
-  name: string
-  email: string
-  phone: string
-  message: string
+  'name': string
+  'email': string
+  'phone': string
+  'message': string
+  'product_info': string | string[] | undefined // not using camelCase because API request body expects product_info
+  'g-recaptcha-response': string // not using camelCase because API request body expects g-recaptcha-response
 }
 
 function ContactForm() {
   const { t, lang } = useTranslation('common')
+  const [productInfo, setProductInfo] = useState<
+    string | string[] | undefined
+  >()
+  const router = useRouter()
+  const { executeRecaptcha } = useGoogleReCaptcha()
+  const [dynamicAction] = useState('homepage')
 
-  const renderRulesConfig = (message: string) => {
+  useEffect(() => {
+    setProductInfo(router.query?.id)
+  }, [router.query?.id])
+
+  useEffect(() => {
+    if (!executeRecaptcha || !dynamicAction) {
+      return
+    }
+
+    const handleReCaptchaVerify = async () => {
+      await executeRecaptcha(dynamicAction)
+    }
+
+    handleReCaptchaVerify()
+  }, [executeRecaptcha, dynamicAction])
+
+  const renderRulesConfig = (field: any) => {
     return [
       {
-        required: true,
-        message,
+        ...field,
+        message: t(`${field.message!}`),
       },
     ]
   }
@@ -39,19 +65,27 @@ function ContactForm() {
       autoComplete: 'off',
     }
   }
-  const renderFormField = (field: any, index: number) => {
+  const renderFormField = (field: IContactField, index: number) => {
     return (
       <Form.Item
         key={index}
         label={t(`${field.name}`)}
         name={field.name}
-        rules={field.required ? renderRulesConfig(field.message!) : []}>
-        {field.type === 'textarea' ? <Input.TextArea rows={4} /> : <Input />}
+        hidden={field.hidden}
+        rules={renderRulesConfig(field)}>
+        {field.type === 'any' ? <Input.TextArea rows={4} /> : <Input />}
       </Form.Item>
     )
   }
 
-  const onFinish = (values: IRequestBody) => {
+  const onFinish = async (values: IRequestBody) => {
+    if (!executeRecaptcha) {
+      return
+    }
+    const token = await executeRecaptcha('dynamicAction')
+
+    values.product_info = productInfo
+    values['g-recaptcha-response'] = token
     http
       .post(`/api/v1/contact-us-form`, values, {
         headers: {
@@ -62,6 +96,7 @@ function ContactForm() {
         alert(t('contactThankyou'))
       })
       .catch((err: any) => {
+        alert(t('sendingFailed'))
         console.error('API response error', err)
       })
   }

@@ -98,5 +98,9 @@
   "filesForDownloads": "Files for downloads",
   "ourBrands": "Our Brands",
   "searchAttachments": "Search for attachments",
-  "noProducts": "No products were found matching your selection."
+  "noProducts": "No products were found matching your selection.",
+  "provideName": "Please enter your name!",
+  "provideEmail": "Please enter your email!",
+  "provideMessage": "Please enter your message!",
+  "sendingFailed": "Sending Failed"
 }
