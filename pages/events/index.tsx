@@ -1,50 +1,116 @@
 import Head from 'next/head'
 import Layout from '../../components/layout'
-import { Col, Row } from 'antd'
+import { Col, Row, Skeleton, Space } from 'antd'
 import useTranslation from 'next-translate/useTranslation'
 import styles from '../../styles/Events.module.scss'
 import EventCard from '../../components/common/event-card'
 import placeholderImg from '../../assets/images/doctors.jpeg'
+import { useEffect, useState } from 'react'
+import { http } from '../../utils/http'
+import { mapBlogPropertiesToCamelCase } from '../../utils/mappings'
+import { Blog } from '../../models/Blog'
+import { global } from '../../constants/global'
+import { useWindowWidth } from '@react-hook/window-size'
 
-const placeholderData = [
-  {
-    title: 'Event title Lorem ipsum dolor sit ametdfgfdg',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing el',
-    date: '01.01.2022',
-  },
-  {
-    title: 'Event title',
-    description: '',
-    date: '01.01.2022',
-  },
-  {
-    title: 'Event title',
-    description:
-      'dolor sit amet consectetur adipisicing elit dolor sit amet consectetur adis',
-    date: '01.01.2022',
-  },
-  {
-    title: 'Event title',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit dolor sit amet consectetur adipisicing elit dolor sit amet consectetur adipisicing elit',
-    date: '01.01.2022',
-  },
-  {
-    title: 'Event title',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit dolor sit amet consectetur adipisicing elit dolor sit amet consectetur adipisicing elit',
-    date: '01.01.2022',
-  },
-  {
-    title: 'Event title',
-    description:
-      'Lorem ipsum dolor sit amet consectetur adipisicing elit dolor sit amet consectetur adipisicing elit dolor sit amet consectetur adipisicing elit',
-    date: '01.01.2022',
-  },
-]
+const perpage = 6
+const baseURL = `/api/v1/blogs/by-category/${global.blogCategory.event}?paginate=1&perPage=${perpage}`
+
+interface ICurrentURL {
+  url: string
+  isSearch: boolean
+}
 
 export default function Events() {
-  const { t } = useTranslation('common')
+  const { t, lang } = useTranslation('common')
+  const [blogs, setBlogs] = useState<Blog[]>([])
+  const [paginationInfo, setPaginationInfo] = useState<any>()
+  const [currentURL] = useState<ICurrentURL>({
+    url: baseURL,
+    isSearch: false,
+  })
+  const [visibleSkeletonItems, setVisibleSkeletonItems] = useState([1, 2, 3])
+  const onlyWidth = useWindowWidth()
+
+  const { mobileMaxWidth, tabletMaxWidth } = global.ourNews
+
+  useEffect(() => {
+    if (onlyWidth < mobileMaxWidth) {
+      setVisibleSkeletonItems([1])
+    }
+    if (onlyWidth > mobileMaxWidth && onlyWidth < tabletMaxWidth) {
+      setVisibleSkeletonItems([1, 2])
+    }
+    if (onlyWidth > tabletMaxWidth) {
+      setVisibleSkeletonItems([1, 2, 3])
+    }
+  }, [onlyWidth, mobileMaxWidth, tabletMaxWidth])
+
+  useEffect(() => {
+    async function fetchBlogs() {
+      try {
+        const response = await loadMoreBlogs(currentURL.url, false)
+        const { items } = response.data?.data || []
+        const paginationInfo = response.data?.data?.pagination
+        if (items?.length > 0) {
+          const blogs = mapBlogPropertiesToCamelCase(items)
+          setBlogs(blogs)
+          setPaginationInfo(paginationInfo)
+        } else {
+          setBlogs([])
+          setPaginationInfo(null)
+        }
+      } catch (error) {
+        console.error(error)
+      }
+    }
+    fetchBlogs()
+  }, [lang, currentURL])
+
+  // default function to fetch blogs, made it separate to handle pagination and avoid conflicts on language switching
+  const loadMoreBlogs = async (url: string, isPaginatedRequest: boolean) => {
+    const response = await http.get(`${url}`, {
+      headers: {
+        'Content-Language': lang,
+      },
+    })
+
+    if (isPaginatedRequest) {
+      const { items } = response.data?.data || []
+      const paginationInfo = response.data?.data?.pagination
+      if (items?.length > 0) {
+        const blogs = mapBlogPropertiesToCamelCase(items)
+        setBlogs(prevState => [...prevState, ...blogs])
+        setPaginationInfo(paginationInfo)
+      }
+    }
+    return response
+  }
+
+  const renderSkeletonLoading = () => {
+    return (
+      <Row gutter={32}>
+        {visibleSkeletonItems.map((item, index) => (
+          <Col
+            span={8}
+            xs={{ span: 24 }}
+            md={{ span: 12 }}
+            lg={{ span: 8 }}
+            key={index}>
+            <>
+              <Space style={{ width: '100%' }}>
+                <Skeleton.Avatar
+                  size='large'
+                  style={{ width: '300px', height: '200px' }}
+                  shape='square'
+                />
+              </Space>
+              <Skeleton active paragraph={{ rows: 3 }} />
+            </>
+          </Col>
+        ))}
+      </Row>
+    )
+  }
 
   return (
     <div className={styles['events-wrapper']}>
@@ -57,30 +123,39 @@ export default function Events() {
         <div className={styles.container}>
           <h1>{t('events.titleCase')}</h1>
           <div className={styles['events-cards-wrapper']}>
-            <Row gutter={32}>
-              {placeholderData.map((item, index) => (
-                <Col
-                  span={8}
-                  xs={{ span: 24 }}
-                  md={{ span: 12 }}
-                  lg={{ span: 8 }}
-                  key={index}>
-                  <EventCard
-                    id={index}
-                    image={placeholderImg}
-                    date={item.date}
-                    title={item.title}
-                    description={item.description}
-                  />
-                </Col>
-              ))}
-            </Row>
-            <button
-              className={styles['btn-view-more']}
-              // onClick={() => loadMoreEvents()}
-            >
-              {t('loadMoreProducts')}
-            </button>
+            {blogs?.length > 0 ? (
+              <>
+                <Row gutter={32}>
+                  {blogs.map((item, index) => (
+                    <Col
+                      span={8}
+                      xs={{ span: 24 }}
+                      md={{ span: 12 }}
+                      lg={{ span: 8 }}
+                      key={index}>
+                      <EventCard
+                        id={index}
+                        image={placeholderImg}
+                        date={item.date}
+                        title={item.title}
+                        description={item.body}
+                      />
+                    </Col>
+                  ))}
+                </Row>
+                {paginationInfo?.next_page_url && (
+                  <button
+                    className={styles['btn-view-more']}
+                    onClick={() =>
+                      loadMoreBlogs(paginationInfo?.next_page_url, true)
+                    }>
+                    {t('viewMoreArticles')}
+                  </button>
+                )}
+              </>
+            ) : (
+              renderSkeletonLoading()
+            )}
           </div>
         </div>
       </Layout>

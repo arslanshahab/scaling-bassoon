@@ -1,4 +1,4 @@
-@import './../../../styles/globalTheme.scss';
+@import "./../../../styles/globalTheme.scss";
 
 .event-card {
   border-radius: 4px;
@@ -28,9 +28,8 @@
       font-size: 20px;
       color: $primary-text-color;
       cursor: pointer;
-      white-space: wrap;
-      overflow: hidden;
       height: calc((20px * 1.6 * 2) + 8px);
+      line-height: 130.5%;
       @media #{$sm} {
         height: auto;
       }

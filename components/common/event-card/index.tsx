@@ -28,11 +28,14 @@ function EventCard(props: IProps) {
       <div className={styles['event-card-description']}>
         <p className={styles['event-card-date']}>{props.date}</p>
         <h4 onClick={() => router.push('/events/1')}>{props.title}</h4>
-        <p className={styles['event-card-desc']}>
-          {props.description?.length > 75
-            ? `${props.description.substring(0, 75)}...`
-            : props.description}
-        </p>
+        <div
+          className={styles['event-card-desc']}
+          dangerouslySetInnerHTML={{
+            __html:
+              props.description?.length > 120
+                ? `${props.description.substring(0, 120)}...`
+                : props.description,
+          }}></div>
         <Button
           size='sm'
           variant='outlined'
