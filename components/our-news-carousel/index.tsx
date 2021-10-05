@@ -1,5 +1,5 @@
 import useTranslation from 'next-translate/useTranslation'
-import { Row, Col } from 'antd'
+import { Row, Col, Typography } from 'antd'
 import Image from 'next/image'
 import {
   CarouselProvider,
@@ -86,7 +86,9 @@ function OurNewsCarousel() {
           </Col>
           <Col span={16} xs={{ span: 24 }} md={{ span: 16 }} lg={{ span: 16 }}>
             <div className={styles['text-section']}>
-              <h4>{productsTitle}</h4>
+              <Typography.Paragraph ellipsis className={styles.h4}>
+                {productsTitle}
+              </Typography.Paragraph>
               <div
                 dangerouslySetInnerHTML={{
                   __html: `${productsShortDescription?.substring(

@@ -49,14 +49,17 @@ function ProductShortDescription(props: IProps) {
               .map(spec => renderSpecificationItem(spec))}
             {!showAllLabels && attributes?.length > defaultSpecsCount && (
               <span
-                className={styles['view-more-lables-btn']}
+                className={`${styles['view-more-lables-btn']}`}
                 onClick={() => setShowAllLabels(true)}>
-                <Image
-                  src={`/icons/three-dots.svg`}
-                  alt='view more labels'
-                  width={20}
-                  height={24}
-                />
+                <span className={styles.image}>
+                  <Image
+                    src={`/icons/three-dots.svg`}
+                    alt='view more labels'
+                    width={20}
+                    height={24}
+                  />
+                </span>
+                <span className={styles.text}>{t('showAll')}</span>
               </span>
             )}
           </div>

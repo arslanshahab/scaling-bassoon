@@ -15,12 +15,11 @@
   }
 
   .text-section {
-    h4 {
+    .h4 {
       font-weight: bold;
       font-size: 22px;
       color: $primary-text-color;
-      white-space: nowrap;
-      overflow: hidden;
+      height: auto;
     }
     div {
       height: 76px;

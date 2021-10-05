@@ -5,6 +5,10 @@
     font-weight: bold;
     font-size: 40px;
     color: $primary-text-color;
+    line-height: 130%;
+    @media #{$sm} {
+      font-size: 32px;
+    }
   }
   h4 {
     color: $primary-text-color;
@@ -86,12 +90,22 @@
       @media #{$sm} {
         grid-area: auto/auto/auto/auto !important;
         width: 100%;
-        &::before{
-          content: 'Show All';
-          font-size: 16px;
+      }
+      .image {
+        @media #{$sm} {
+          display: none;
         }
-        div {
-          display: none !important;
+      }
+      .text {
+        font-size: 16px;
+        @media #{$md} {
+          display: none;
+        }
+        @media #{$lg} {
+          display: none;
+        }
+        @media #{$xlg} {
+          display: none;
         }
       }
     }
