@@ -133,13 +133,19 @@ export default function CategoryDetail() {
             )}
           </Row>
         </div>
-        <Row gutter={{ sm: 32, md: 32, lg: 32 }}>
-          <Col span={24} xs={{ span: 24 }} md={{ span: 24 }} lg={{ span: 24 }}>
-            <RelatedProducts
-              recommendedProducts={product?.recommendedProducts!}
-            />
-          </Col>
-        </Row>
+        <div className={styles['related-container']}>
+          <Row gutter={{ sm: 32, md: 32, lg: 32 }}>
+            <Col
+              span={24}
+              xs={{ span: 24 }}
+              md={{ span: 24 }}
+              lg={{ span: 24 }}>
+              <RelatedProducts
+                recommendedProducts={product?.recommendedProducts!}
+              />
+            </Col>
+          </Row>
+        </div>
       </Layout>
     </div>
   )
