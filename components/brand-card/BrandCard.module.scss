@@ -12,7 +12,6 @@
     height: 215px;
     width: 100%;
     padding: 2rem 4rem;
-    cursor: pointer;
     border-bottom: 1px solid $wild-sand;
     .image {
       object-fit: cover;
@@ -31,21 +30,17 @@
       font-weight: bold;
       font-size: 30px;
       color: $primary-text-color;
-      cursor: pointer;
       white-space: nowrap;
       overflow: hidden;
       @media #{$sm} {
         font-size: 20px;
       }
     }
-    p {
+    p, div {
       color: $primary-text-color;
       opacity: 0.7;
+      text-align: center;
       margin-bottom: 2rem;
-      height: 80px;
-      @media #{$sm-md} {
-        height: 56px;
-      }
     }
   }
 }
