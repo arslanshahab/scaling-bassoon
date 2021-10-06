@@ -17,6 +17,7 @@ interface IProps {
   orderReverse?: boolean
   icon?: string
   iconName?: string
+  isPageTitle?: boolean
   staticImageProps?: any
   iconPosition?: 'top' | 'right' | 'bottom' | 'left' | 'center'
 }
@@ -34,6 +35,7 @@ function ImageSection({
   staticImage,
   icon,
   iconName,
+  isPageTitle,
   staticImageProps,
   iconPosition,
 }: IProps) {
@@ -47,7 +49,12 @@ function ImageSection({
           lg={{ span: 12 }}>
           <div>
             <div className={styles['text-wrapper']}>
-              <h1 className={styles['small-heading']}>{heading}</h1>
+              <h1
+                className={`${styles['small-heading']} ${
+                  isPageTitle ? styles['page-title'] : null
+                }`}>
+                {heading}
+              </h1>
               <div
                 className={styles.content}
                 dangerouslySetInnerHTML={{ __html: content }}

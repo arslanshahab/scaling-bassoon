@@ -22,6 +22,12 @@
           font-size: 24px;
         }
       }
+      &.page-title {
+        font-size: 56px;
+        @media #{$sm} {
+          font-size: 36px;
+        }
+      }
       @media #{$md} {
         font-size: 32px;
         line-height: 2rem;

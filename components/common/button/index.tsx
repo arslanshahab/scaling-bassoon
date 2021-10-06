@@ -7,7 +7,7 @@ interface IButtonProps {
   children: any
   className?: string
   onClick?: () => void
-  type: 'button' | 'submit' | 'reset' | undefined
+  type?: 'button' | 'submit' | 'reset' | undefined
 }
 
 function Button({

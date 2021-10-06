@@ -73,7 +73,7 @@ export default function Solutions() {
                       content={`<p>${solution.shortDescription.value} </p> \n <p>${solution.longDescription.value}</p>`}
                       buttonText={t('showSolutions')}
                       onClick={() => router.push('/solutions/1')}
-                      image={solution.image01.value[0]}
+                      image={solution.image01?.value[0]}
                       reverse
                       orderReverse={index % 2 === 0}
                       icon={solutionIcons[index].icon}
