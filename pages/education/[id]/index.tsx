@@ -13,7 +13,7 @@ import { global } from '../../../constants/global'
 import BlogCarousel from '../../../components/blog-carousel'
 import Image from 'next/image'
 
-export default function EventDetail() {
+export default function EducationDetail() {
   const { t, lang } = useTranslation('common')
   const [blog, setBlog] = useState<Blog>()
   const router = useRouter()
