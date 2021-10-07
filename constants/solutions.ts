@@ -67,6 +67,6 @@ export type SolutionIcon = {
 export const solutionsIdentifier: string = 'PAGE_SOLUTIONS_V1'
 export const solutionDetailIdentifier: any = {
   1: 'SOLUTION_MEDICAL',
-  2: 'SOLUTION_BEAUTY',
-  3: 'SOLUTION_FITNESS',
+  2: 'SOLUTION_FITNESS',
+  3: 'SOLUTION_BEAUTY',
 }

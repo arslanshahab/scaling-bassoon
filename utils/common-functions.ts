@@ -37,12 +37,12 @@ export const sortArrayAlphabetically = (
 export const getSolutionId = (identifier: any) => {
   switch (identifier) {
     case '1':
-      return 2
-    case '2':
       return 3
-    case '3':
+    case '2':
       return 6
-    default:
+    case '3':
       return 2
+    default:
+      return 3
   }
 }
