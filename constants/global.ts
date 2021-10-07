@@ -10,6 +10,16 @@ export const global = {
     reference: 3,
     education: 4,
   },
+  productFilterType: {
+    categories: 'categories',
+    brands: 'brands',
+    labels: 'labels',
+  },
+  productFilterColumn: {
+    categories: 'categories:category_id',
+    brands: 'brand:brand_id',
+    labels: 'labels:label_id',
+  },
   blogPage: {
     events: 'events',
     references: 'references',

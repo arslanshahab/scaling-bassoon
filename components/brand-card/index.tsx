@@ -37,7 +37,7 @@ function BrandCard(props: Brand) {
           size='sm'
           variant='outlined'
           type='button'
-          onClick={() => router.push(`/categories?brand=${props.slug}`)}
+          onClick={() => router.push(`/categories?brands=${props.id}`)}
           fullWidth>
           {t('showProducts')}
         </Button>

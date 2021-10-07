@@ -25,7 +25,8 @@
   }
   .card-description {
     padding: 2rem 1rem;
-    h4 {
+    h4,
+    .h4 {
       font-weight: bold;
       font-size: 20px;
       color: $primary-text-color;

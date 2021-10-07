@@ -1,3 +1,4 @@
+import { Typography } from 'antd'
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -28,9 +29,12 @@ function ProductCard(props: IProps) {
         />
       </div>
       <div className={styles['card-description']}>
-        <h4 onClick={() => router.push(`/categories/${props.id}`)}>
+        <Typography.Paragraph
+          onClick={() => router.push(`/categories/${props.id}`)}
+          ellipsis
+          className={styles.h4}>
           {props.name}
-        </h4>
+        </Typography.Paragraph>
         <p>{`${props.description?.substring(0, 75)}...`}</p>
         <Button
           size='sm'

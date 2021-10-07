@@ -34,6 +34,7 @@ export default function Categories() {
         const response = await loadMoreProducts(currentURL.url, false)
         const { items } = response.data?.data || []
         const paginationInfo = response.data?.data?.pagination
+
         if (items?.length > 0) {
           const products = mapProductPropertiesToCamelCase(items)
           setProducts(products)
@@ -111,6 +112,7 @@ export default function Categories() {
                 filterProducts={(urlParams: string) =>
                   filterProducts(urlParams)
                 }
+                productsLength={products.length}
               />
             </div>
             <div className={styles['slider-col']}>

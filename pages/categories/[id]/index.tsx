@@ -142,6 +142,7 @@ export default function CategoryDetail() {
               lg={{ span: 24 }}>
               <RelatedProducts
                 recommendedProducts={product?.recommendedProducts!}
+                category={product?.categories?.[0]?.id!}
               />
             </Col>
           </Row>

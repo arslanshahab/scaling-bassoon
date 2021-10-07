@@ -13,6 +13,9 @@
       font-size: 24px;
     }
   }
+  :global .ant-table{
+    font-size: 16px;
+  }
   .table-downloads {
     table {
       background: $white;

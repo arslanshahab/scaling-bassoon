@@ -16,6 +16,7 @@ import Link from 'next/link'
 
 interface IProps {
   recommendedProducts: Product[]
+  category: number
 }
 
 function RelatedProducts(props: IProps) {
@@ -39,7 +40,9 @@ function RelatedProducts(props: IProps) {
     <div className={styles['related-products-wrapper']}>
       <div className={styles['link-title-md']}>
         <h4>{t('similarProducts')}</h4>
-        <Link href='/categories'>{t('showAllProducts')}</Link>
+        <Link href={`/categories?categories=${props.category}`}>
+          {t('showAllProducts')}
+        </Link>
       </div>
       <CarouselProvider
         naturalSlideWidth={10}
@@ -72,7 +75,9 @@ function RelatedProducts(props: IProps) {
         </ButtonNext>
       </CarouselProvider>
       <div className={styles['link-title-sm']}>
-        <Link href='/categories'>{t('showAllProducts')}</Link>
+        <Link href={`/categories?categories=${props.category}`}>
+          {t('showAllProducts')}
+        </Link>
       </div>
     </div>
   )

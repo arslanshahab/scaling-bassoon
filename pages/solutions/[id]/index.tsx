@@ -15,6 +15,7 @@ import {
   mapProductPropertiesToCamelCase,
   mapSolutionPropertiesToCamelCase,
 } from '../../../utils/mappings'
+import { getSolutionId } from '../../../utils/common-functions'
 
 export default function Solutions() {
   const { t, lang } = useTranslation('common')
@@ -25,26 +26,30 @@ export default function Solutions() {
   const { id } = router.query
 
   useEffect(() => {
-    http
-      .get(
-        `/api/v1/products/get-all-products?&where[0][column]=categories:category_slug&where[0][value]=${id}&where[0][operator]==`,
-        {
-          headers: {
-            'Content-Language': lang,
-          },
-        }
-      )
-      .then((res: any) => {
-        const { data } = res.data
-        const { items } = data
-        if (items?.length > 0) {
-          const products = mapProductPropertiesToCamelCase(items)
-          setRelateddProducts(products)
-        }
-      })
-      .catch((err: any) => {
-        console.error('API response error', err)
-      })
+    if (id) {
+      http
+        .get(
+          `/api/v1/products/get-all-products?&where[0][column]=categories:category_id&where[0][value]=${getSolutionId(
+            id
+          )}&where[0][operator]==`,
+          {
+            headers: {
+              'Content-Language': lang,
+            },
+          }
+        )
+        .then((res: any) => {
+          const { data } = res.data
+          const { items } = data
+          if (items?.length > 0) {
+            const products = mapProductPropertiesToCamelCase(items)
+            setRelateddProducts(products)
+          }
+        })
+        .catch((err: any) => {
+          console.error('API response error', err)
+        })
+    }
   }, [lang, id])
 
   useEffect(() => {
@@ -107,7 +112,12 @@ export default function Solutions() {
           </div>
         </div>
         <OurPartners />
-        <RelatedProducts recommendedProducts={relatedProducts} />
+        {relatedProducts?.length > 0 && (
+          <RelatedProducts
+            recommendedProducts={relatedProducts}
+            category={getSolutionId(id)}
+          />
+        )}
         <div className={styles.container}>
           <div className={styles['solution-card']}>
             {solutionDetail && (
