@@ -1,6 +1,5 @@
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
-import { useRouter } from 'next/router'
 import Button from '../button'
 import styles from './BlogCard.module.scss'
 
@@ -9,31 +8,38 @@ interface IProps {
   date: string
   title: string
   description: string
-  image: StaticImageData
+  image: string
+  className?: string | null
+  onClick: () => void
 }
 
 function BlogCard(props: IProps) {
   const { t } = useTranslation('common')
-  const router = useRouter()
 
   return (
     <div className={styles['blog-card']}>
-      <Image
-        src={props.image}
-        alt={props.title}
-        layout='responsive'
-        className={styles['blog-card-image']}
-        onClick={() => router.push('/events/1')}
-      />
+      <div
+        className={`${styles['card-image']} ${styles[`${props.className}`]}`}>
+        <Image
+          src={`${process.env.NEXT_PUBLIC_API_URL}${props.image}`}
+          alt={props.title}
+          layout='fill'
+          objectFit='cover'
+          className={styles.image}
+        />
+      </div>
       <div className={styles['blog-card-description']}>
         <p className={styles['blog-card-date']}>{props.date}</p>
-        <h4 onClick={() => router.push('/events/1')}>{props.title}</h4>
+        <h4>{props.title}</h4>
         <div
           className={styles['blog-card-desc']}
           dangerouslySetInnerHTML={{
             __html:
-              props.description?.length > 120
-                ? `${props.description.substring(0, 120)}...`
+              props.description?.length > (props.className ? 75 : 120)
+                ? `${props.description.substring(
+                    0,
+                    props.className ? 75 : 120
+                  )}...`
                 : props.description,
           }}></div>
         <Button
@@ -41,7 +47,7 @@ function BlogCard(props: IProps) {
           variant='outlined'
           type='button'
           fullWidth
-          onClick={() => router.push('/events/1')}>
+          onClick={props.onClick}>
           {t('moreInfo')}
         </Button>
       </div>

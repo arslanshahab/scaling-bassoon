@@ -104,5 +104,6 @@
   "provideName": "Please enter your name!",
   "provideEmail": "Please enter your email!",
   "provideMessage": "Please enter your message!",
-  "sendingFailed": "Sending Failed"
+  "sendingFailed": "Sending Failed",
+  "similarArticles": "Similar articles"
 }

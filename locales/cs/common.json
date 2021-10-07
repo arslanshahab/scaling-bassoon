@@ -104,5 +104,6 @@
   "provideName": "Zadejte prosím své jméno!",
   "provideEmail": "Zadejte prosím svůj email!",
   "provideMessage": "Zadejte prosím svoji zprávu!",
-  "sendingFailed": "Odeslání se nezdařilo"
+  "sendingFailed": "Odeslání se nezdařilo",
+  "similarArticles": "Podobné články"
 }

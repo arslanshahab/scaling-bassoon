@@ -21,6 +21,8 @@ export type Blog = {
   author: Author
   categories: BlogCategory[]
   tags: Tag[]
+  relatedArticles?: RelatedArticle
+  images?: BlogImage[]
 }
 
 export type Author = {
@@ -33,4 +35,15 @@ export type Tag = {
   name: string
   color: string
   model: string
+}
+
+export type RelatedArticle = {
+  items: Blog[]
+}
+
+export type BlogImage = {
+  id: number
+  modelId: number
+  model: string
+  imagePath: string
 }

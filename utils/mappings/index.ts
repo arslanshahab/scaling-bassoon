@@ -5,7 +5,7 @@ import { Product } from '../../models/Product'
 import { Brand } from '../../models/Brand'
 import { SolutionItem } from '../../models/SolutionPage'
 import { Label } from '../../models/Label'
-import { Blog } from '../../models/Blog'
+import { Blog, BlogImage } from '../../models/Blog'
 
 export const mapProductPropertiesToCamelCase = (items: any[]): Product[] => {
   const products = items.map((item: any) => {
@@ -110,27 +110,45 @@ export const mapLabelPropertiesToCamelCase = (items: any[]): Label[] => {
 }
 
 export const mapBlogPropertiesToCamelCase = (items: any[]): Blog[] => {
-  const blogs = items.map(blog => {
+  return items.map(blog => mapSingleBlogPropertiesToCamelCase(blog))
+}
+
+export const mapSingleBlogPropertiesToCamelCase = (blog: any): Blog => {
+  return {
+    id: blog.id,
+    title: blog.title,
+    metaTitle: blog.meta_title,
+    metaDescription: blog.meta_description,
+    body: blog.body,
+    slug: blog.slug,
+    language: blog.language,
+    featuredType: blog.featured_type,
+    featuredMedia: blog.featured_media,
+    featuredImage: blog.featured_image,
+    featuredImageSet: blog.featured_image_set,
+    featuredVideo: blog.featured_video,
+    featuredVideoThumb: blog.featured_video_thumb,
+    visibility: blog.visibility,
+    date: blog.date,
+    author: blog.author,
+    categories: blog.categories,
+    tags: blog.tags,
+    relatedArticles: {
+      items: mapBlogPropertiesToCamelCase(blog.related_articles?.items || []),
+    },
+    images: mapBlogImagePropertiesToCamelCase(blog.images || []),
+  }
+}
+
+export const mapBlogImagePropertiesToCamelCase = (
+  items: any[]
+): BlogImage[] => {
+  return items.map(image => {
     return {
-      id: blog.id,
-      title: blog.title,
-      metaTitle: blog.meta_title,
-      metaDescription: blog.meta_description,
-      body: blog.body,
-      slug: blog.slug,
-      language: blog.language,
-      featuredType: blog.featured_type,
-      featuredMedia: blog.featured_media,
-      featuredImage: blog.featured_image,
-      featuredImageSet: blog.featured_image_set,
-      featuredVideo: blog.featured_video,
-      featuredVideoThumb: blog.featured_video_thumb,
-      visibility: blog.visibility,
-      date: blog.date,
-      author: blog.author,
-      categories: blog.categories,
-      tags: blog.tags,
+      id: image.id,
+      model: image.model,
+      modelId: image.model_id,
+      imagePath: image.image_path,
     }
   })
-  return blogs
 }

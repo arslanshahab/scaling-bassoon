@@ -1,0 +1,32 @@
+@import "./globalTheme.scss";
+
+.blog-detail-wrapper {
+  width: 100%;
+  .blog-description {
+    color: $primary-text-color;
+    .date {
+      font-weight: 500;
+      line-height: 160%;
+      &::before {
+        content: "-";
+        margin-right: 4px;
+      }
+    }
+    h1 {
+      line-height: 130.5%;
+    }
+    .description {
+      color: $primary-text-color;
+      opacity: 0.7;
+      @media #{$sm} {
+        text-align: justify;
+      }
+    }
+  }
+  .related-blogs-wrapper {
+    padding: 4rem 0;
+    @media #{$sm} {
+      padding: 2rem 0;
+    }
+  }
+}

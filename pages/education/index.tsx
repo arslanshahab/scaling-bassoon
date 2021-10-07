@@ -3,14 +3,14 @@ import Layout from '../../components/layout'
 import { Col, Row, Skeleton, Space } from 'antd'
 import useTranslation from 'next-translate/useTranslation'
 import styles from '../../styles/Events.module.scss'
-import EventCard from '../../components/common/event-card'
-import placeholderImg from '../../assets/images/doctors.jpeg'
+import BlogCard from '../../components/common/blog-card'
 import { useEffect, useState } from 'react'
 import { http } from '../../utils/http'
 import { mapBlogPropertiesToCamelCase } from '../../utils/mappings'
 import { Blog } from '../../models/Blog'
 import { global } from '../../constants/global'
 import { useWindowWidth } from '@react-hook/window-size'
+import { useRouter } from 'next/router'
 
 const perpage = 6
 const baseURL = `/api/v1/blogs/by-category/${global.blogCategory.education}?paginate=1&perPage=${perpage}`
@@ -22,6 +22,8 @@ interface ICurrentURL {
 
 export default function Education() {
   const { t, lang } = useTranslation('common')
+  const router = useRouter()
+
   const [blogs, setBlogs] = useState<Blog[]>([])
   const [paginationInfo, setPaginationInfo] = useState<any>()
   const [currentURL] = useState<ICurrentURL>({
@@ -133,12 +135,13 @@ export default function Education() {
                       md={{ span: 12 }}
                       lg={{ span: 8 }}
                       key={index}>
-                      <EventCard
-                        id={index}
-                        image={placeholderImg}
+                      <BlogCard
+                        id={item.id}
+                        image={item.featuredImage}
                         date={item.date}
                         title={item.title}
                         description={item.body}
+                        onClick={() => router.push(`/education/${item.id}`)}
                       />
                     </Col>
                   ))}

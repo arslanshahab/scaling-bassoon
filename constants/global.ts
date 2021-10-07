@@ -10,4 +10,9 @@ export const global = {
     reference: 3,
     education: 4,
   },
+  blogPage: {
+    events: 'events',
+    references: 'references',
+    education: 'education',
+  },
 }
