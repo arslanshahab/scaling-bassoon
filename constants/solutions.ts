@@ -12,7 +12,7 @@ export const solutions: Solution[] = [
     image: doctors,
     imageSecondary: doctors2,
     buttonText: 'showProducts',
-    link: '/doctors',
+    link: '/solutions/1',
     icon: '/icons/medical-s.svg',
   },
   {
@@ -20,7 +20,7 @@ export const solutions: Solution[] = [
     description: 'loremIpsumLong',
     image: clubs,
     buttonText: 'showProducts',
-    link: '/clubs',
+    link: '/solutions/2',
     icon: '/icons/gym-s.svg',
   },
   {
@@ -29,7 +29,7 @@ export const solutions: Solution[] = [
     image: salons,
     imageSecondary: salons2,
     buttonText: 'showProducts',
-    link: '/salons',
+    link: '/solutions/3',
     icon: '/icons/beauty-s.svg',
   },
 ]
