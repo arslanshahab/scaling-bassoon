@@ -29,7 +29,11 @@
       padding: 2rem 0;
     }
   }
-  .fallback-image{
+  .fallback-image {
     border-radius: 10px;
+  }
+  .related-container {
+    width: 100%;
+    overflow: hidden;
   }
 }

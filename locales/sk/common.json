@@ -105,5 +105,6 @@
   "provideEmail": " Prosím, zadajte svoj email!",
   "provideMessage": "Prosím, zadajte svoju správu!",
   "sendingFailed": "Odoslanie zlyhalo",
-  "similarArticles": "Podobné články"
+  "similarArticles": "Podobné články",
+  "similarEvents": "Podobnej udalosti"
 }

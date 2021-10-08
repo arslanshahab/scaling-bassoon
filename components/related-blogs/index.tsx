@@ -41,7 +41,7 @@ function RelatedBlogs(props: IProps) {
   return (
     <div className={styles['related-blogs-wrapper']}>
       <div className={styles['link-title-md']}>
-        <h4>{t('similarArticles')}</h4>
+        <h4>{t('similarEvents')}</h4>
       </div>
       <CarouselProvider
         naturalSlideWidth={10}

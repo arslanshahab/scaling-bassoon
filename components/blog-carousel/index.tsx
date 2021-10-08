@@ -87,6 +87,7 @@ function BlogCarousel(props: IProps) {
             (currentIndex - 1) % (props.images?.length - 1)
           )
         }
+        disabled={props.images?.length < 2}
         className={`${styles['btn-arrow']} ${styles['arrow-left']}`}></button>
       <button
         onClick={() =>
@@ -94,6 +95,7 @@ function BlogCarousel(props: IProps) {
             (currentIndex + 1) % props.images?.length
           )
         }
+        disabled={props.images?.length < 2}
         className={`${styles['btn-arrow']} ${styles['arrow-right']}`}></button>
       {showLightBox && renderLightBox()}
     </div>

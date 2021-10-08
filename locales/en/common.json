@@ -105,5 +105,6 @@
   "provideEmail": "Please enter your email!",
   "provideMessage": "Please enter your message!",
   "sendingFailed": "Sending Failed",
-  "similarArticles": "Similar articles"
+  "similarArticles": "Similar articles",
+  "similarEvents": "Similar Events"
 }
