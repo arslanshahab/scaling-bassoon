@@ -11,6 +11,7 @@ import { global } from '../../constants/global'
 import { useWindowWidth } from '@react-hook/window-size'
 import BlogCard from '../../components/common/blog-card'
 import { useRouter } from 'next/router'
+import OurPartners from '../../components/our-partners'
 
 const perpage = 6
 const baseURL = `/api/v1/blogs/by-category/${global.blogCategory.reference}?paginate=1&perPage=${perpage}`
@@ -161,6 +162,7 @@ export default function References() {
             )}
           </div>
         </div>
+        <OurPartners />
       </Layout>
     </div>
   )
