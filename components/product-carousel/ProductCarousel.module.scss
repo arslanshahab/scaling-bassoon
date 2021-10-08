@@ -72,7 +72,8 @@
       background: $primary-text-color;
       color: $white;
     }
-    &:disabled {
+    &:disabled,
+    &.disabled {
       background-color: $alto;
       opacity: 0.5;
       color: $white;

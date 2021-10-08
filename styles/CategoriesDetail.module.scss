@@ -1,6 +1,9 @@
 @import "./globalTheme.scss";
 
-.related-container {
+.category-details-wrapper {
   width: 100%;
-  overflow: hidden;
+  .related-container {
+    width: 100%;
+    overflow: hidden;
+  }
 }

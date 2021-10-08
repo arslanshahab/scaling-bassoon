@@ -7,6 +7,9 @@
   width: 100%;
   color: $primary-text-color;
   position: relative;
+  @media #{$md} {
+    padding: 0 4%;
+  }
   .link-title-md {
     display: flex;
     justify-content: space-between;
@@ -116,7 +119,7 @@
         transform: rotate(-45deg);
         vertical-align: top;
       }
-      @media #{$sm} {
+      @media #{$sm-md} {
         font-size: 22px;
         bottom: 0;
         margin-top: 0;
@@ -131,8 +134,8 @@
         left: 0;
         transform: rotate(45deg);
       }
-      @media #{$sm} {
-        right: calc(-28px);
+      @media #{$sm-md} {
+        right: calc(-25px);
       }
     }
     :global .carousel__back-button {
@@ -141,8 +144,8 @@
         right: 0;
         transform: rotate(-135deg);
       }
-      @media #{$sm} {
-        left: calc(-28px);
+      @media #{$sm-md} {
+        left: calc(-25px);
       }
     }
   }
