@@ -1,4 +1,4 @@
-@import "./../../styles/globalTheme.scss";
+@import './../../styles/globalTheme.scss';
 
 .contact-form {
   width: 100%;
@@ -52,17 +52,21 @@
     font-size: 16px;
   }
   // shifted "required steric symbol" from prefix to postfix as per design
-  :global .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
+  :global
+    .ant-form-item-label
+    > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::before {
     display: none;
   }
-  :global .ant-form-item-label > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::after {
+  :global
+    .ant-form-item-label
+    > label.ant-form-item-required:not(.ant-form-item-required-mark-optional)::after {
     display: inline-block;
     margin-left: 4px;
     color: $secondary-text-color;
     font-size: 14px;
     font-weight: bold;
     line-height: 1;
-    content: "*";
+    content: '*';
   }
   :global .ant-input:focus,
   :global .ant-input-focused {
@@ -71,5 +75,19 @@
     outline: 0;
     -webkit-box-shadow: 0 0 0 2px rgb(24 144 255 / 20%);
     box-shadow: 0 0 0 2px rgba($color: $secondary-text-color, $alpha: 0.5);
+  }
+  :global .ant-spin {
+    margin-right: 1rem;
+  }
+  :global .ant-spin-dot-item {
+    background-color: white;
+    transition: background-color 0.3s ease-in-out;
+  }
+  & button {
+    &:hover {
+      :global .ant-spin-dot-item {
+        background-color: $secondary-text-color;
+      }
+    }
   }
 }

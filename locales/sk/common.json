@@ -1,5 +1,7 @@
 {
-  "home": { "titleCase": "Domov" },
+  "home": {
+    "titleCase": "Domov"
+  },
   "solutions": {
     "titleCase": "Riešenia",
     "upperCase": "Riešenia",
@@ -38,7 +40,8 @@
   "contact": {
     "titleCase": "Kontakt",
     "upperCase": "Kontakt",
-    "lowerCase": "Kontakt"
+    "lowerCase": "Kontakt",
+    "submitLoading": "Odosielam"
   },
   "menu": "Menu",
   "contactUs": "Kontaktujte nás",

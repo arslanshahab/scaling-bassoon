@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Form, Input } from 'antd'
+import { Form, Input, Spin } from 'antd'
 import useTranslation from 'next-translate/useTranslation'
 import styles from './ContactForm.module.scss'
 import Button from './../common/button'
@@ -25,6 +25,7 @@ function ContactForm() {
   const router = useRouter()
   const { executeRecaptcha } = useGoogleReCaptcha()
   const [dynamicAction] = useState('homepage')
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     setProductInfo(router.query?.id)
@@ -82,6 +83,7 @@ function ContactForm() {
     if (!executeRecaptcha) {
       return
     }
+    setLoading(true)
     const token = await executeRecaptcha('dynamicAction')
 
     values.product_info = productInfo
@@ -94,9 +96,11 @@ function ContactForm() {
       })
       .then(() => {
         alert(t('contactThankyou'))
+        setLoading(false)
       })
       .catch((err: any) => {
         alert(t('sendingFailed'))
+        setLoading(false)
         console.error('API response error', err)
       })
   }
@@ -110,14 +114,15 @@ function ContactForm() {
           {t('tncMessage')} <a>{t('termsConditions')}</a>
         </p>
         <Form.Item>
-          <Button
-            fullWidth={false}
-            onClick={() => {}}
-            size='md'
-            variant='regular'
-            type='submit'>
-            {t('contactUs')}
-          </Button>
+          {loading ? (
+            <Button variant='regular' size='md' fullWidth={false}>
+              <Spin /> {`${t('contact.submitLoading')}...`}
+            </Button>
+          ) : (
+            <Button fullWidth={false} size='md' variant='regular' type='submit'>
+              {t('contactUs')}
+            </Button>
+          )}
         </Form.Item>
       </Form>
     </div>

@@ -1,5 +1,7 @@
 {
-  "home": { "titleCase": "Home" },
+  "home": {
+    "titleCase": "Home"
+  },
   "solutions": {
     "titleCase": "Solutions",
     "upperCase": "SOLUTIONS",
@@ -38,7 +40,8 @@
   "contact": {
     "titleCase": "Contact",
     "upperCase": "CONTACT",
-    "lowerCase": "contact"
+    "lowerCase": "contact",
+    "submitLoading": "Submitting"
   },
   "menu": "Menu",
   "contactUs": "Contact Us",
