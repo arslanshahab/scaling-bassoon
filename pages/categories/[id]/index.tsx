@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import useTranslation from 'next-translate/useTranslation'
-import { Row, Col } from 'antd'
+import { Row, Col, Skeleton } from 'antd'
 import Layout from '../../../components/layout'
 import styles from '../../../styles/CategoriesDetail.module.scss'
 import { http } from '../../../utils/http'
@@ -74,6 +74,34 @@ export default function CategoryDetail() {
       })
   }, [lang, id])
 
+  const renderSkeletonLoading = () => {
+    return (
+      <Row gutter={[32, 16]}>
+        <Col span={24} xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 11 }}>
+          <Skeleton.Avatar size='large' shape='square' />
+
+          <Row>
+            {[...Array(4).keys()].map((item, index) => (
+              <div className={styles['img-placeholder']} key={index}>
+                <Skeleton.Avatar size='large' shape='square'></Skeleton.Avatar>
+              </div>
+            ))}
+          </Row>
+        </Col>
+        <Col span={24} xs={{ span: 24 }} md={{ span: 10 }} lg={{ span: 13 }}>
+          <Skeleton active paragraph={{ rows: 3 }} />
+          <Row>
+            {[...Array(3).keys()].map((item, index) => (
+              <div className={styles['img-placeholder']} key={index}>
+                <Skeleton.Avatar size='large' shape='square'></Skeleton.Avatar>
+              </div>
+            ))}
+          </Row>
+        </Col>
+      </Row>
+    )
+  }
+
   return (
     <div className={styles['category-details-wrapper']}>
       <Head>
@@ -83,63 +111,71 @@ export default function CategoryDetail() {
       </Head>
       <Layout>
         <div className={styles.container} style={{ paddingBottom: '2rem' }}>
-          <Row gutter={{ sm: 32, md: 48, lg: 48 }}>
-            <Col
-              span={24}
-              xs={{ span: 24 }}
-              md={{ span: 11 }}
-              lg={{ span: 11 }}>
-              <ProductCarousel
-                images={
-                  product?.images.map(x => {
-                    return {
-                      original: `${process.env.NEXT_PUBLIC_API_URL}${x.image_path}`,
-                      thumbnail: `${process.env.NEXT_PUBLIC_API_URL}${x.image_path}`,
+          {product ? (
+            <>
+              <Row gutter={{ sm: 32, md: 48, lg: 48 }}>
+                <Col
+                  span={24}
+                  xs={{ span: 24 }}
+                  md={{ span: 11 }}
+                  lg={{ span: 11 }}>
+                  <ProductCarousel
+                    images={
+                      product?.images.map(x => {
+                        return {
+                          original: `${process.env.NEXT_PUBLIC_API_URL}${x.image_path}`,
+                          thumbnail: `${process.env.NEXT_PUBLIC_API_URL}${x.image_path}`,
+                        }
+                      }) || []
                     }
-                  }) || []
-                }
-              />
-            </Col>
-            <Col
-              span={24}
-              xs={{ span: 24 }}
-              md={{ span: 13 }}
-              lg={{ span: 13 }}>
-              {product && (
-                <ProductShortDescription
-                  id={product.id}
-                  productsTitle={product.productsTitle}
-                  productsDescription={product.productsDescription}
-                  productsShortDescription={product.productsShortDescription}
-                  attributes={product.attributes}
-                  slug={product.slug}
-                />
-              )}
-            </Col>
-          </Row>
-          <Row gutter={{ sm: 32, md: 48, lg: 48 }}>
-            <Col
-              span={24}
-              xs={{ span: 24 }}
-              md={{ span: isFullDesc ? 24 : 11 }}
-              lg={{ span: isFullDesc ? 24 : 11 }}>
-              <ProductLongDescription
-                productsDescription={product?.productsDescription!}
-              />
-            </Col>
-            {!isFullDesc && (
-              <Col
-                span={24}
-                xs={{ span: 24 }}
-                md={{ span: 13 }}
-                lg={{ span: 13 }}>
-                <ProductBulletsDescription
-                  productsAdditionalInfo={product?.productsAdditionalInfo!}
-                />
-                <ProductAttachments attachments={product?.attachments!} />
-              </Col>
-            )}
-          </Row>
+                  />
+                </Col>
+                <Col
+                  span={24}
+                  xs={{ span: 24 }}
+                  md={{ span: 13 }}
+                  lg={{ span: 13 }}>
+                  {product && (
+                    <ProductShortDescription
+                      id={product.id}
+                      productsTitle={product.productsTitle}
+                      productsDescription={product.productsDescription}
+                      productsShortDescription={
+                        product.productsShortDescription
+                      }
+                      attributes={product.attributes}
+                      slug={product.slug}
+                    />
+                  )}
+                </Col>
+              </Row>
+              <Row gutter={{ sm: 32, md: 48, lg: 48 }}>
+                <Col
+                  span={24}
+                  xs={{ span: 24 }}
+                  md={{ span: isFullDesc ? 24 : 11 }}
+                  lg={{ span: isFullDesc ? 24 : 11 }}>
+                  <ProductLongDescription
+                    productsDescription={product?.productsDescription!}
+                  />
+                </Col>
+                {!isFullDesc && (
+                  <Col
+                    span={24}
+                    xs={{ span: 24 }}
+                    md={{ span: 13 }}
+                    lg={{ span: 13 }}>
+                    <ProductBulletsDescription
+                      productsAdditionalInfo={product?.productsAdditionalInfo!}
+                    />
+                    <ProductAttachments attachments={product?.attachments!} />
+                  </Col>
+                )}
+              </Row>
+            </>
+          ) : (
+            renderSkeletonLoading()
+          )}
         </div>
         {product?.recommendedProducts?.length! > 0 && (
           <div className={styles['related-container']}>

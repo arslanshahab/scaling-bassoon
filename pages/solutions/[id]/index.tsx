@@ -16,6 +16,7 @@ import {
   mapSolutionPropertiesToCamelCase,
 } from '../../../utils/mappings'
 import { getSolutionId } from '../../../utils/common-functions'
+import { Row, Col, Skeleton } from 'antd'
 
 export default function Solutions() {
   const { t, lang } = useTranslation('common')
@@ -88,6 +89,28 @@ export default function Solutions() {
       })
   }, [lang])
 
+  const renderSkeletonLoading = () => {
+    return (
+      <Row gutter={[32, 32]}>
+        <Col span={24} xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 11 }}>
+          <Skeleton active paragraph={{ rows: 8 }} />
+          <Skeleton.Avatar
+            size='large'
+            shape='square'
+            style={{ width: '200px', height: '50px', marginBottom: '16px' }}
+          />
+        </Col>
+        <Col span={24} xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 13 }}>
+          <Skeleton.Avatar
+            size='large'
+            shape='square'
+            className={styles['hero-img-placeholder']}
+          />
+        </Col>
+      </Row>
+    )
+  }
+
   return (
     <div className={styles['solutions-wrapper']}>
       <Head>
@@ -97,6 +120,7 @@ export default function Solutions() {
       </Head>
       <Layout>
         <div className={styles.container}>
+          {!solutionHeader && renderSkeletonLoading()}
           <div className={styles['solution-card']}>
             {solutionHeader && (
               <ImageSection

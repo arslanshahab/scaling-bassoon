@@ -1,4 +1,4 @@
-@import "./globalTheme.scss";
+@import './globalTheme.scss';
 
 .solutions-wrapper {
   width: 100%;
@@ -15,6 +15,28 @@
     margin-bottom: 4rem;
     @media #{$sm} {
       margin-bottom: 2rem;
+    }
+  }
+}
+
+.hero-img-placeholder {
+  :global .ant-skeleton-avatar {
+    width: 500px;
+    height: 300px;
+
+    @media #{$xlg} {
+      width: 600px;
+      height: 350px;
+    }
+
+    @media #{$lg} {
+      width: 500px;
+      height: 350px;
+    }
+    @media #{$sm-md} {
+      width: 300px;
+      height: 220px;
+      margin-bottom: 16px;
     }
   }
 }

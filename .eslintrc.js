@@ -19,6 +19,7 @@ module.exports = {
     es6: true,
   },
   rules: {
+    'prettier/prettier': ['warn', { endOfLine: 'auto' }],
     'no-console': 'off',
     'react/prop-types': 0,
     'react/jsx-props-no-spreading': 'off',

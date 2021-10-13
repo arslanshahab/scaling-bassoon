@@ -10,6 +10,9 @@ import { Product } from '../../models/Product'
 import FilterProducts from '../../components/filter-products'
 import OurNewsCarousel from '../../components/our-news-carousel'
 import { mapProductPropertiesToCamelCase } from '../../utils/mappings'
+import { useWindowWidth } from '@react-hook/window-size'
+import { Col, Row, Skeleton } from 'antd'
+import { global } from '../../constants/global'
 
 const perpage = 8
 const baseURL = `/api/v1/products/get-all-products?paginate=1&perpage=${perpage}`
@@ -27,6 +30,66 @@ export default function Categories() {
     url: baseURL,
     isSearch: false,
   })
+  const [visibleSkeletonItems, setVisibleSkeletonItems] = useState({
+    newsCarouselItems: 0,
+    productListItems: 0,
+    spanNewsCarousel: 0,
+    spanProductList: 0,
+  })
+  const onlyWidth = useWindowWidth()
+
+  const { mobileMaxWidth, tabletMaxWidth } = global.ourNews
+
+  useEffect(() => {
+    if (onlyWidth < mobileMaxWidth) {
+      setVisibleSkeletonItems({
+        newsCarouselItems: 1,
+        productListItems: 2,
+        spanNewsCarousel: 24,
+        spanProductList: 24,
+      })
+    }
+    if (onlyWidth > mobileMaxWidth && onlyWidth < tabletMaxWidth) {
+      setVisibleSkeletonItems({
+        newsCarouselItems: 1,
+        productListItems: 2,
+        spanNewsCarousel: 12,
+        spanProductList: 12,
+      })
+    }
+    if (onlyWidth > tabletMaxWidth) {
+      setVisibleSkeletonItems({
+        newsCarouselItems: 2,
+        productListItems: 4,
+        spanNewsCarousel: 12,
+        spanProductList: 6,
+      })
+    }
+  }, [onlyWidth, mobileMaxWidth, tabletMaxWidth])
+
+  const renderSkeletonLoading = (param: number, spanNr: number) => {
+    return (
+      <Row gutter={{ md: 16, sm: 16 }}>
+        {[...Array(param).keys()].map((item, index) => (
+          <Col
+            span={spanNr}
+            xs={{ span: 24 }}
+            md={{ span: spanNr }}
+            lg={{ span: spanNr }}
+            key={index}>
+            <>
+              <Skeleton.Avatar
+                size='large'
+                style={{ width: '180px', height: '120px' }}
+                shape='square'
+              />
+              <Skeleton active paragraph={{ rows: 2 }} />
+            </>
+          </Col>
+        ))}
+      </Row>
+    )
+  }
 
   useEffect(() => {
     async function fetchProducts() {
@@ -117,18 +180,36 @@ export default function Categories() {
             </div>
             <div className={styles['slider-col']}>
               <div className={styles.slider}>
-                <OurNewsCarousel />
+                {products?.length > 0 ? (
+                  <OurNewsCarousel />
+                ) : (
+                  <>
+                    {renderSkeletonLoading(
+                      visibleSkeletonItems.newsCarouselItems,
+                      visibleSkeletonItems.spanNewsCarousel
+                    )}
+                  </>
+                )}
               </div>
             </div>
           </div>
         </div>
-        <ProductList
-          products={products}
-          paginationInfo={paginationInfo}
-          loadMoreProducts={(url: string, isPaginateRequest: boolean) =>
-            loadMoreProducts(url, isPaginateRequest)
-          }
-        />
+        {products?.length > 0 ? (
+          <ProductList
+            products={products}
+            paginationInfo={paginationInfo}
+            loadMoreProducts={(url: string, isPaginateRequest: boolean) =>
+              loadMoreProducts(url, isPaginateRequest)
+            }
+          />
+        ) : (
+          <div className={styles.container}>
+            {renderSkeletonLoading(
+              visibleSkeletonItems.productListItems,
+              visibleSkeletonItems.spanProductList
+            )}
+          </div>
+        )}
       </Layout>
     </div>
   )
