@@ -84,7 +84,7 @@ function ContactForm() {
       return
     }
     setLoading(true)
-    const token = await executeRecaptcha('dynamicAction')
+    const token = await executeRecaptcha('contact_form')
 
     values.product_info = productInfo
     values['g-recaptcha-response'] = token
@@ -99,7 +99,7 @@ function ContactForm() {
         setLoading(false)
       })
       .catch((err: any) => {
-        alert(t('sendingFailed'))
+        alert(err.response?.data?.errors || t('sendingFailed'))
         setLoading(false)
         console.error('API response error', err)
       })
