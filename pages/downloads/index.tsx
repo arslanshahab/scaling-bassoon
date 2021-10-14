@@ -66,6 +66,9 @@ export default function Downloads() {
           const attachments = mapAttachmentPropertiesToCamelCase(items)
           setAttachments(attachments)
           setPaginationInfo(paginationInfo)
+        } else {
+          setAttachments([])
+          setPaginationInfo(null)
         }
       } catch (error) {
         console.error(error)
@@ -88,7 +91,6 @@ export default function Downloads() {
         },
       }
     )
-
     if (isPaginatedRequest) {
       const { items } = response.data?.data || []
       const paginationInfo = response.data?.data?.pagination
@@ -96,6 +98,9 @@ export default function Downloads() {
         const attachments = mapAttachmentPropertiesToCamelCase(items)
         setAttachments(attachments)
         setPaginationInfo(paginationInfo)
+      } else {
+        setAttachments([])
+        setPaginationInfo(null)
       }
     }
 
