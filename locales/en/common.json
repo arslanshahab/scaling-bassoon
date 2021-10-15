@@ -109,5 +109,6 @@
   "provideMessage": "Please enter your message!",
   "sendingFailed": "Sending Failed",
   "similarArticles": "Similar articles",
-  "similarEvents": "Similar Events"
+  "similarEvents": "Similar Events",
+  "showOurProducts": "Show our products"
 }

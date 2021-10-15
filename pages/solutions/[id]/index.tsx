@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import Layout from '../../../components/layout'
 import styles from '../../../styles/Solutions.module.scss'
 import useTranslation from 'next-translate/useTranslation'
@@ -23,6 +23,7 @@ export default function Solutions() {
   const [solutionHeader, setSolutionHeader] = useState<SolutionItem>()
   const [solutionDetail, setSolutionDetail] = useState<SolutionItem>()
   const [relatedProducts, setRelateddProducts] = useState<Product[]>([])
+  const moreInfoRef = useRef<null | HTMLDivElement>(null)
   const router = useRouter()
   const { id } = router.query
 
@@ -89,6 +90,13 @@ export default function Solutions() {
       })
   }, [lang])
 
+  const handleMoreInfoScroll = () => {
+    if (moreInfoRef && moreInfoRef.current) {
+      moreInfoRef.current.scrollIntoView({
+        behavior: 'smooth',
+      })
+    }
+  }
   const renderSkeletonLoading = () => {
     return (
       <Row gutter={[32, 32]}>
@@ -128,6 +136,7 @@ export default function Solutions() {
                 isPageTitle
                 content={solutionHeader?.shortDescription?.value}
                 buttonText={t(`moreInfo`)}
+                onClick={handleMoreInfoScroll}
                 image={solutionHeader?.image01?.value[0]}
                 reverse
                 orderReverse
@@ -142,18 +151,21 @@ export default function Solutions() {
             category={getSolutionId(id)}
           />
         )}
-        <div className={styles.container}>
+        <div className={styles.container} ref={moreInfoRef}>
           <div className={styles['solution-card']}>
             {solutionDetail && (
               <ImageSection
                 heading={solutionDetail?.title?.value}
                 content={solutionDetail?.longDescription?.value}
-                buttonText={t(`moreInfo`)}
+                buttonText={t(`showOurProducts`)}
                 image={solutionDetail?.image01?.value[0]}
                 reverse
                 icon='/icons/medical-s.svg'
                 iconName={solutionDetail?.title?.value}
                 iconPosition='center'
+                onClick={() =>
+                  router.push(`/categories?categories=${getSolutionId(id)}`)
+                }
               />
             )}
           </div>

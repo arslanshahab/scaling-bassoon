@@ -63,7 +63,7 @@
   "gyno": "Gynekológia",
   "loremIpsumShort": "Lorem ipsum dolor sit amet.",
   "productDescription": "popis produktu",
-  "similarProducts": "podobné produkty",
+  "similarProducts": "Podobné produkty",
   "categories": "Kategórie",
   "loadMoreProducts": "Načítať viac produktov",
   "ourNews": "Naše novinky",
@@ -109,5 +109,6 @@
   "provideMessage": "Prosím, zadajte svoju správu!",
   "sendingFailed": "Odoslanie zlyhalo",
   "similarArticles": "Podobné články",
-  "similarEvents": "Podobnej udalosti"
+  "similarEvents": "Podobnej udalosti",
+  "showOurProducts": "Ukázať naše výrobky"
 }

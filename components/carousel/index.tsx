@@ -76,6 +76,7 @@ function Slider() {
         showThumbs={false}
         showStatus={false}
         showArrows
+        autoPlay
         className={styles['main-carousel']}>
         {slides.map(slide => renderSlide(slide))}
       </Carousel>
