@@ -11,7 +11,6 @@ import { Blog } from '../../../models/Blog'
 import RelatedBlogs from '../../../components/related-blogs'
 import { global } from '../../../constants/global'
 import BlogCarousel from '../../../components/blog-carousel'
-import Image from 'next/image'
 
 export default function EducationDetail() {
   const { t, lang } = useTranslation('common')
@@ -33,6 +32,15 @@ export default function EducationDetail() {
             // mapping blog properties to retain camelCase convention
             ...mapSingleBlogPropertiesToCamelCase(data),
           }
+          // append featured image to images to make it part of the carousel
+          blog.images = [
+            {
+              id: 0,
+              imagePath: blog.featuredImage,
+              model: '',
+              modelId: 0,
+            },
+          ]
           setBlog(blog)
         }
       })
@@ -78,7 +86,7 @@ export default function EducationDetail() {
               xs={{ span: 24 }}
               md={{ span: 12 }}
               lg={{ span: 12 }}>
-              {blog?.images?.length! > 0 ? (
+              {blog?.images?.length! > 0 && (
                 <BlogCarousel
                   images={
                     blog?.images?.map(x => {
@@ -89,17 +97,6 @@ export default function EducationDetail() {
                     }) || []
                   }
                 />
-              ) : (
-                blog?.featuredImage && (
-                  <Image
-                    src={`${process.env.NEXT_PUBLIC_API_URL}${blog?.featuredImage}`}
-                    alt={`${blog?.title}`}
-                    objectFit='cover'
-                    width={705}
-                    height={440}
-                    className={styles['fallback-image']}
-                  />
-                )
               )}
             </Col>
           </Row>
@@ -113,7 +110,14 @@ export default function EducationDetail() {
               lg={{ span: 24 }}>
               <div className={styles['related-blogs-wrapper']}>
                 <RelatedBlogs
-                  recommendedBlogs={blog?.relatedArticles?.items!}
+                  recommendedBlogs={
+                    blog?.relatedArticles?.items?.slice(
+                      0,
+                      blog?.relatedArticles?.items?.length > 6
+                        ? 6
+                        : blog?.relatedArticles?.items?.length
+                    ) || []
+                  }
                   type={global.blogPage.events}
                 />
               </div>
