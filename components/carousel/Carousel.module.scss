@@ -29,14 +29,15 @@
     
     @include control-arrow(none, 1);
 
-    .textSection {
+    .text-section {
       text-align: left;
       padding: 8%;
       h1 {
         font-size: 56px;
         font-weight: bolder;
         color: $primary-text-color;
-        margin-bottom: 0;
+        margin-bottom: 16px;
+        line-height: 103.5%;
         @media #{$sm-md} {
           font-size: 36px;
         }

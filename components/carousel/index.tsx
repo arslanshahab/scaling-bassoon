@@ -43,11 +43,11 @@ function Slider() {
     return (
       <Row gutter={32} key={id}>
         <Col span={12} xs={{ span: 24 }} md={{ span: 12 }} lg={{ span: 12 }}>
-          <div className={styles.textSection}>
+          <div className={styles['text-section']}>
             <h1>{name}</h1>
             <div dangerouslySetInnerHTML={{ __html: content }}></div>
             <Button
-              className={styles.readButton}
+              className={styles['read-button']}
               type='button'
               fullWidth={false}
               onClick={() => {}}

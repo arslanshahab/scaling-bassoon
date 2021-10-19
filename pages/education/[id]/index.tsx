@@ -27,7 +27,7 @@ export default function EducationDetail() {
       })
       .then((res: any) => {
         const { data } = res.data
-        if (data) {
+        if (!data || !Array.isArray(data)) {
           const blog = {
             // mapping blog properties to retain camelCase convention
             ...mapSingleBlogPropertiesToCamelCase(data),
