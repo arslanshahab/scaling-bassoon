@@ -26,7 +26,8 @@ export const contactFormFields: IContactField[] = [
     label: 'Message',
     required: true,
     message: 'provideMessage',
-    type: 'any',
+    type: 'string',
+    isTextArea: true,
   },
 ]
 
@@ -38,4 +39,5 @@ export type IContactField = {
   type: string
   hidden?: boolean
   pattern?: RegExp
+  isTextArea?: boolean
 }

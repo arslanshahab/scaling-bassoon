@@ -74,7 +74,11 @@ function ContactForm() {
         name={field.name}
         hidden={field.hidden}
         rules={renderRulesConfig(field)}>
-        {field.type === 'any' ? <Input.TextArea rows={4} /> : <Input />}
+        {field.isTextArea ? (
+          <Input.TextArea rows={4} showCount maxLength={250} />
+        ) : (
+          <Input />
+        )}
       </Form.Item>
     )
   }
