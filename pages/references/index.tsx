@@ -7,14 +7,16 @@ import { useEffect, useState } from 'react'
 import { http } from '../../utils/http'
 import { mapBlogPropertiesToCamelCase } from '../../utils/mappings'
 import { Blog } from '../../models/Blog'
-import { global } from '../../constants/global'
+import { BlogCategory, global, SortingDirection } from '../../constants/global'
 import { useWindowWidth } from '@react-hook/window-size'
 import BlogCard from '../../components/common/blog-card'
 import { useRouter } from 'next/router'
 import OurPartners from '../../components/our-partners'
 
 const perpage = 6
-const baseURL = `/api/v1/blogs/by-category/${global.blogCategory.reference}?paginate=1&perPage=${perpage}`
+const orderColumn = 'blogs.ordinal'
+const orderDirection = SortingDirection.ASC
+const baseURL = `/api/v1/blogs/by-category/${BlogCategory.REFERENCE}?paginate=1&perPage=${perpage}&order_column=${orderColumn}&order_direction=${orderDirection}`
 
 interface ICurrentURL {
   url: string

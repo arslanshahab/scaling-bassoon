@@ -8,6 +8,7 @@ export type Product = {
   productsFeaturedImage: string
   visibility: number
   slug: string
+  ordinal: number
   categories: Category[]
   attachments: Attachment[]
   images: ProductImage[]

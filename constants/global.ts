@@ -26,3 +26,14 @@ export const global = {
     education: 'education',
   },
 }
+
+export enum SortingDirection {
+  ASC = 'asc',
+  DESC = 'desc',
+}
+
+export enum BlogCategory {
+  EVENT = 2,
+  REFERENCE = 3,
+  EDUCATION = 4,
+}

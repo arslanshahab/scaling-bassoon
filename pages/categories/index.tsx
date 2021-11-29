@@ -12,10 +12,12 @@ import OurNewsCarousel from '../../components/our-news-carousel'
 import { mapProductPropertiesToCamelCase } from '../../utils/mappings'
 import { useWindowWidth } from '@react-hook/window-size'
 import { Col, Row, Skeleton } from 'antd'
-import { global } from '../../constants/global'
+import { global, SortingDirection } from '../../constants/global'
 
 const perpage = 8
-const baseURL = `/api/v1/products/get-all-products?paginate=1&perpage=${perpage}`
+const orderColumn = 'products.ordinal'
+const orderDirection = SortingDirection.ASC
+const baseURL = `/api/v1/products/get-all-products?paginate=1&perpage=${perpage}&order_column=${orderColumn}&order_direction=${orderDirection}`
 
 interface ICurrentURL {
   url: string
