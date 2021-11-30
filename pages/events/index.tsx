@@ -13,7 +13,7 @@ import { useWindowWidth } from '@react-hook/window-size'
 import { useRouter } from 'next/router'
 
 const perpage = 6
-const orderColumn = 'blogs.ordinal'
+const orderColumn = 'ordinal'
 const orderDirection = SortingDirection.ASC
 const baseURL = `/api/v1/blogs/by-category/${BlogCategory.EVENT}?paginate=1&perPage=${perpage}&order_column=${orderColumn}&order_direction=${orderDirection}`
 
