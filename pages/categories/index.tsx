@@ -102,7 +102,7 @@ export default function Categories() {
 
         if (items?.length > 0) {
           const products = mapProductPropertiesToCamelCase(items)
-          setProducts(products)
+          setProducts(getFilteredProducts(products))
           setPaginationInfo(paginationInfo)
         } else {
           setProducts([])
@@ -115,7 +115,26 @@ export default function Categories() {
     fetchProducts()
   }, [lang, currentURL])
 
-  // default function to fetch products, made it separate to handle pagination and avoid conflicts on language switching
+  // get products where slug is not empty string and short_description is not empty string
+  const getFilteredProducts = (products: Product[]): Product[] => {
+    const filteredProducts = products.filter(
+      product =>
+        product.slug !== '' &&
+        product.productsShortDescription !== '' &&
+        product.slug !== ''
+    )
+    return sortProductsByOrdinal(filteredProducts)
+  }
+
+  // function that takes products as a parameter and sorts them by ordinal and returns the sorted products
+  const sortProductsByOrdinal = (products: Product[]): Product[] => {
+    return products.sort((a, b) => {
+      return a.ordinal - b.ordinal
+    })
+  }
+
+  // default function to fetch products, made it separate to handle pagination and
+  // avoid conflicts on language switching
   const loadMoreProducts = async (url: string, isPaginatedRequest: boolean) => {
     const response = await http.get(`${url}`, {
       headers: {
@@ -128,7 +147,9 @@ export default function Categories() {
       const paginationInfo = response.data?.data?.pagination
       if (items?.length > 0) {
         const products = mapProductPropertiesToCamelCase(items)
-        setProducts(prevState => [...prevState, ...products])
+        setProducts(prevState =>
+          getFilteredProducts([...prevState, ...products])
+        )
         setPaginationInfo(paginationInfo)
       }
     }

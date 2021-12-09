@@ -56,13 +56,23 @@ function OurNewsCarousel() {
 
         if (items?.length > 0) {
           const products = mapProductPropertiesToCamelCase(items)
-          setProducts(products)
+          setProducts(getFilteredProducts(products))
         }
       })
       .catch(err => {
         console.error('API response error', err)
       })
   }, [lang])
+
+  // get products where slug is not empty string and short_description is not empty string
+  const getFilteredProducts = (products: Product[]): Product[] => {
+    return products.filter(
+      product =>
+        product.slug !== '' &&
+        product.productsShortDescription !== '' &&
+        product.slug !== ''
+    )
+  }
 
   const renderSlide = (product: Product) => {
     const {
