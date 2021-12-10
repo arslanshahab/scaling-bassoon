@@ -17,7 +17,7 @@ import { global, SortingDirection } from '../../constants/global'
 const perpage = 8
 const orderColumn = 'products.ordinal'
 const orderDirection = SortingDirection.ASC
-const baseURL = `/api/v1/products/get-all-products?paginate=1&perpage=${perpage}&order_column=${orderColumn}&order_direction=${orderDirection}`
+const baseURL = `/api/v1/products/get-all-products?paginate=1&perpage=${perpage}&order_column=${orderColumn}&order_direction=${orderDirection}&casting=unsigned&localeColumn=ordinal`
 
 interface ICurrentURL {
   url: string
@@ -133,10 +133,14 @@ export default function Categories() {
     })
   }
 
+  const appendLocaleToUrl = (url: string) => {
+    return `${url}&locales=${lang}`
+  }
+
   // default function to fetch products, made it separate to handle pagination and
   // avoid conflicts on language switching
   const loadMoreProducts = async (url: string, isPaginatedRequest: boolean) => {
-    const response = await http.get(`${url}`, {
+    const response = await http.get(`${appendLocaleToUrl(url)}`, {
       headers: {
         'Content-Language': lang,
       },
