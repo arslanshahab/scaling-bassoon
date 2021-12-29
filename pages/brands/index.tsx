@@ -8,6 +8,11 @@ import BrandCard from '../../components/brand-card'
 import { http } from '../../utils/http'
 import { Brand } from '../../models/Brand'
 import { mapBrandPropertiesToCamelCase } from '../../utils/mappings'
+import { SortingDirection } from '../../constants/global'
+
+const orderColumn = 'brands.ordinal'
+const orderDirection = SortingDirection.ASC
+const baseUrl = `/api/v1/products/get-all-brands?locales=cs&localeColumn=ordinal&order_direction=${orderDirection}&order_column=${orderColumn}&casting=unsigned`
 
 export default function Brands() {
   const { t, lang } = useTranslation('common')
@@ -15,7 +20,7 @@ export default function Brands() {
 
   useEffect(() => {
     http
-      .get(`/api/v1/products/get-all-brands`, {
+      .get(appendLocaleToUrl(baseUrl), {
         headers: {
           'Content-Language': lang,
         },
@@ -31,6 +36,10 @@ export default function Brands() {
         console.error('API response error', err)
       })
   }, [lang])
+
+  const appendLocaleToUrl = (url: string) => {
+    return `${url}&locales=${lang}`
+  }
 
   const renderBrandsList = () => {
     return (
