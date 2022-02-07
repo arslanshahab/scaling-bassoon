@@ -14,4 +14,8 @@
   p {
     color: $primary-text-color;
   }
+  a {
+    color: $secondary-text-color !important;
+    text-decoration: underline !important;
+  }
 }
