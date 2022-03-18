@@ -56,7 +56,7 @@ export const mapAttachmentPropertiesToCamelCase = (
       productId: item.product_id,
       attachmentUrl: item.attachment_url,
       attachmentName: item.attachment_name,
-      fileSize: '35 KB', // temporary, needs to be replaced by api response
+      fileSize: item.attachment_size,
       key: item.id,
     }
   })
