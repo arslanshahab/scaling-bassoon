@@ -33,14 +33,17 @@ export default function EducationDetail() {
             ...mapSingleBlogPropertiesToCamelCase(data),
           }
           // append featured image to images to make it part of the carousel
-          blog.images = [
-            {
-              id: 0,
-              imagePath: blog.featuredImage,
-              model: '',
-              modelId: 0,
-            },
-          ]
+          if (blog.images) {
+            blog.images = [
+              {
+                id: 0,
+                imagePath: blog.featuredImage,
+                model: '',
+                modelId: 0,
+              },
+              ...blog.images,
+            ]
+          }
           setBlog(blog)
         }
       })
