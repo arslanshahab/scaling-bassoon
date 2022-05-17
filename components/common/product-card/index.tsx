@@ -35,7 +35,9 @@ function ProductCard(props: IProps) {
           className={styles.h4}>
           {props.name}
         </Typography.Paragraph>
-        <p>{`${props.description?.substring(0, 75)}...`}</p>
+        <p>{`${props.description?.substring(0, 75)}${
+          props.description?.length > 75 ? '...' : ''
+        }`}</p>
         <Button
           size='sm'
           variant='outlined'
